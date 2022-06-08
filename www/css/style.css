@@ -1,0 +1,117 @@
+/* Common styles */
+html {
+    line-height: 1.5;
+}
+
+body {
+    margin: 0;
+    padding: 0 1rem 0 1rem;
+    font-family: Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    color: #313233;
+}
+
+article {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    article {
+        max-width: 65ch;
+    }
+}
+
+a {
+    color: #5d676a;
+}
+
+/* EDAoogle styles */
+article .title {
+    margin: 6rem 0 6rem 0;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+    user-select: none;
+}
+
+article a {
+    color: #313233;
+    text-decoration: none;
+}
+
+article .search input {
+    margin: 0 0 4rem 0;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 32ch;
+    font-size: 120%;
+}
+
+article .results {
+    margin: 2rem 0 2rem 0;
+    font-size: 90%;
+}
+
+article .result {
+    margin: 2rem 0 2rem 0;
+}
+
+/* Wikipedia styles */
+#siteSub, .mw-jump-link, .printfooter, .catlinks {
+    display: none;
+}
+
+h1.firstHeading {
+    color: #313233;
+}
+
+#contentSub2 a:hover {
+    opacity: .75;
+}
+
+.infobox {
+    margin: 1em 0 1em 1.5em;
+    padding: 0.5em;
+    clear: right;
+    float: right;
+    font-size: 75%;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.tright {
+    margin: 0 0 1em 1.5em;
+    padding: 0.5em;
+    clear: right;
+    float: right;
+    font-size: 75%;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.tleft {
+    margin: 0 1.5em 1em 0;
+    padding: 0.5em;
+    clear: left;
+    float: left;
+    font-size: 80%;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.wikitable, .mw-authority-control {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+table, tr, td, th {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+td, th {
+    padding: 0.5em;
+}
+
+hr {
+    border-color: rgba(0, 0, 0, 0.1);
+}

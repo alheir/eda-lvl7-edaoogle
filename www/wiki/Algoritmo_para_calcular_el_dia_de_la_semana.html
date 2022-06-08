@@ -1,0 +1,3459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cálculo del día de la semana - Wikipedia, la enciclopedia libre</title>
+    <link rel="preload" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+<article>
+<div id="content" class="mw-body" role="main">
+	<a id="top"/>
+	<div id="siteNotice"/>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading mw-first-heading">C&#225;lculo del d&#237;a de la semana</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">De Wikipedia, la enciclopedia libre</div>
+		<div id="contentSub"><span class="mw-redirectedfrom">(Redirigido desde &#171;<a href="https://es.wikipedia.org/w/index.php?title=Algoritmo_para_calcular_el_d%C3%ADa_de_la_semana&amp;redirect=no" class="mw-redirect" title="Algoritmo para calcular el d&#237;a de la semana">Algoritmo para calcular el d&#237;a de la semana</a>&#187;)</span></div>
+		<div id="contentSub2"/>
+		
+		<div id="jump-to-nav"/>
+		<a class="mw-jump-link" href="#mw-head">Ir a la navegaci&#243;n</a>
+		<a class="mw-jump-link" href="#searchInput">Ir a la b&#250;squeda</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="es" dir="ltr"><div class="mw-parser-output"><p>La <b>determinaci&#243;n del d&#237;a de la semana</b> para cualquier fecha se puede realizar con una variedad de algoritmos. Adem&#225;s, los calendarios perpetuos no requieren ning&#250;n c&#225;lculo por parte del usuario y son esencialmente tablas de b&#250;squeda. Una aplicaci&#243;n t&#237;pica es calcular el d&#237;a de la semana en el que naci&#243; alguien o ocurri&#243; un evento espec&#237;fico.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"/><div class="toctitle" lang="es" dir="ltr"><h2 id="mw-toc-heading">&#205;ndice</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"/></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Conceptos"><span class="tocnumber">1</span> <span class="toctext">Conceptos</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#D&#237;as_correspondientes"><span class="tocnumber">1.1</span> <span class="toctext">D&#237;as correspondientes</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Meses_correspondientes"><span class="tocnumber">1.2</span> <span class="toctext">Meses correspondientes</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#A&#241;os_correspondientes"><span class="tocnumber">1.3</span> <span class="toctext">A&#241;os correspondientes</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Siglos_correspondientes"><span class="tocnumber">1.4</span> <span class="toctext">Siglos correspondientes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#M&#233;todos_tabulares_para_calcular_el_d&#237;a_de_la_semana"><span class="tocnumber">2</span> <span class="toctext">M&#233;todos tabulares para calcular el d&#237;a de la semana</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="#Tabla_completa:_calendarios_juliano_y_gregoriano"><span class="tocnumber">2.1</span> <span class="toctext">Tabla completa: calendarios juliano y gregoriano</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Calendario_juliano_revisado"><span class="tocnumber">2.2</span> <span class="toctext">Calendario juliano revisado</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Dominical_Letter"><span class="tocnumber">2.3</span> <span class="toctext">Dominical Letter</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#El_&quot;d&#237;a_del_juicio_final&quot;"><span class="tocnumber">2.4</span> <span class="toctext">El "d&#237;a del juicio final"</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Verificar_el_resultado"><span class="tocnumber">2.5</span> <span class="toctext">Verificar el resultado</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Algoritmos_matem&#225;ticos"><span class="tocnumber">3</span> <span class="toctext">Algoritmos matem&#225;ticos</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Algoritmo_de_Gauss"><span class="tocnumber">3.1</span> <span class="toctext">Algoritmo de Gauss</span></a>
+<ul>
+<li class="toclevel-3 tocsection-14"><a href="#Variaci&#243;n_desigual"><span class="tocnumber">3.1.1</span> <span class="toctext">Variaci&#243;n desigual</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-15"><a href="#Algoritmo_de_Zeller"><span class="tocnumber">3.2</span> <span class="toctext">Algoritmo de Zeller</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Algoritmo_de_Wang"><span class="tocnumber">3.3</span> <span class="toctext">Algoritmo de Wang</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#Otros_algoritmos"><span class="tocnumber">4</span> <span class="toctext">Otros algoritmos</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="#M&#233;todo_de_Schwerdtfeger"><span class="tocnumber">4.1</span> <span class="toctext">M&#233;todo de Schwerdtfeger</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#M&#233;todo_de_Lewis_Carroll"><span class="tocnumber">4.2</span> <span class="toctext">M&#233;todo de Lewis Carroll</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#M&#233;todos_dependientes_de_la_implementaci&#243;n"><span class="tocnumber">4.3</span> <span class="toctext">M&#233;todos dependientes de la implementaci&#243;n</span></a>
+<ul>
+<li class="toclevel-3 tocsection-21"><a href="#M&#233;todos_de_Sakamoto"><span class="tocnumber">4.3.1</span> <span class="toctext">M&#233;todos de Sakamoto</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#Rata_Die"><span class="tocnumber">4.3.2</span> <span class="toctext">Rata Die</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-23"><a href="#V&#233;ase_tambi&#233;n"><span class="tocnumber">5</span> <span class="toctext">V&#233;ase tambi&#233;n</span></a></li>
+<li class="toclevel-1 tocsection-24"><a href="#Referencias"><span class="tocnumber">6</span> <span class="toctext">Referencias</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="#Enlaces_externos"><span class="tocnumber">7</span> <span class="toctext">Enlaces externos</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Conceptos">Conceptos</span></h2>
+<p>En el c&#225;lculo num&#233;rico, los d&#237;as de la semana se representan como n&#250;meros de d&#237;as de la semana. Si el lunes es el primer d&#237;a de la semana, los d&#237;as se pueden codificar del 1 al 7, de lunes a domingo, de acuerdo con <a href="https://es.wikipedia.org/wiki/ISO_8601" title="ISO 8601">ISO 8601</a>. El d&#237;a designado con 7 tambi&#233;n se puede contar como <i>0</i>, aplicando el <a href="https://es.wikipedia.org/wiki/Aritm%C3%A9tica_modular" title="Aritm&#233;tica modular">m&#243;dulo aritm&#233;tico</a> 7, que calcula el resto de un n&#250;mero despu&#233;s de la divisi&#243;n por 7. Por lo tanto, el n&#250;mero 7 se trata como 0, 8 como 1, 9 como 2, 18 como 4 y as&#237; sucesivamente. Si el domingo se cuenta como d&#237;a 1, 7 d&#237;as despu&#233;s (es decir, el d&#237;a 8) tambi&#233;n es domingo, y el d&#237;a 18 es el mismo que el d&#237;a 4, que es mi&#233;rcoles, ya que viene tres d&#237;as despu&#233;s del domingo.<sup id="cite_ref-1" class="reference separada"><a href="#cite_note-1"><span class="corchete-llamada">[</span>1<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Est&#225;ndar
+</th>
+<th>lunes
+</th>
+<th>martes
+</th>
+<th>mi&#233;rcoles
+</th>
+<th>jueves
+</th>
+<th>viernes
+</th>
+<th>s&#225;bado
+</th>
+<th>domingo
+</th>
+<th>Ejemplos de uso
+</th></tr>
+<tr>
+<td><a href="https://es.wikipedia.org/wiki/ISO_8601" title="ISO 8601">ISO 8601</a>
+</td>
+<td>1
+</td>
+<td>2
+</td>
+<td>3
+</td>
+<td>4
+</td>
+<td>5
+</td>
+<td>6
+</td>
+<td>7
+</td>
+<td>%_ISODOWI%,&#160;%@ISODOWI[]% (<a href="https://es.wikipedia.org/w/index.php?title=4DOS&amp;action=edit&amp;redlink=1" class="new" title="4DOS (a&#250;n no redactado)">4DOS</a>);<sup id="cite_ref-4DOS_8.00_HELP_2-0" class="reference separada"><a href="#cite_note-4DOS_8.00_HELP-2"><span class="corchete-llamada">[</span>2<span class="corchete-llamada">]</span></a></sup>&#8203; DAYOFWEEK() (<a href="https://es.wikipedia.org/wiki/HP_Prime" title="HP Prime">HP Prime</a>)<sup id="cite_ref-Moravia_2015_3-0" class="reference separada"><a href="#cite_note-Moravia_2015-3"><span class="corchete-llamada">[</span>3<span class="corchete-llamada">]</span></a></sup>&#8203;
+</td></tr>
+<tr>
+<td>
+</td>
+<td>0
+</td>
+<td>1
+</td>
+<td>2
+</td>
+<td>3
+</td>
+<td>4
+</td>
+<td>5
+</td>
+<td>6
+</td>
+<td>
+</td></tr>
+<tr>
+<td>
+</td>
+<td>2
+</td>
+<td>3
+</td>
+<td>4
+</td>
+<td>5
+</td>
+<td>6
+</td>
+<td>7
+</td>
+<td>1
+</td>
+<td><a href="https://es.wikipedia.org/w/index.php?title=%25NDAY_OF_WEEK%25&amp;action=edit&amp;redlink=1" class="new" title="%NDAY OF WEEK% (a&#250;n no redactado)">%NDAY OF WEEK%</a> (<a href="https://es.wikipedia.org/wiki/NetWare" class="mw-redirect" title="NetWare">NetWare</a>, <a href="https://es.wikipedia.org/wiki/DR-DOS" title="DR-DOS">DR-DOS</a><sup id="cite_ref-4" class="reference separada"><a href="#cite_note-4"><span class="corchete-llamada">[</span>4<span class="corchete-llamada">]</span></a></sup>&#8203;); %_DOWI%,&#160;%@DOWI[]% (<a href="https://es.wikipedia.org/w/index.php?title=4DOS&amp;action=edit&amp;redlink=1" class="new" title="4DOS (a&#250;n no redactado)">4DOS</a>)<sup id="cite_ref-4DOS_8.00_HELP_2-1" class="reference separada"><a href="#cite_note-4DOS_8.00_HELP-2"><span class="corchete-llamada">[</span>2<span class="corchete-llamada">]</span></a></sup>&#8203;
+</td></tr>
+<tr>
+<td>
+</td>
+<td>1
+</td>
+<td>2
+</td>
+<td>3
+</td>
+<td>4
+</td>
+<td>5
+</td>
+<td>6
+</td>
+<td>0
+</td>
+<td>Calculadoras financieras HP
+</td></tr></tbody></table>
+<p>El enfoque b&#225;sico de casi todos los m&#233;todos para calcular el d&#237;a de la semana comienza a partir de una 'fecha de anclaje': un par conocido (como el 1 de enero de 1800 como mi&#233;rcoles), que determina el n&#250;mero de d&#237;as entre el d&#237;a conocido y el d&#237;a que est&#225; tratando de determinar, y utilizando m&#243;dulo aritm&#233;tico 7 para encontrar un nuevo d&#237;a num&#233;rico de la semana.
+</p><p>Un enfoque est&#225;ndar es buscar (o calcular, usando una regla conocida) el valor del primer d&#237;a de la semana de un siglo dado, buscar (o calcular, usando un m&#233;todo de congruencia) un ajuste para el mes, calcular el n&#250;mero de a&#241;os bisiestos desde el comienzo del siglo, y luego s&#250;melos junto con el n&#250;mero de a&#241;os desde el comienzo del siglo y el n&#250;mero de d&#237;a del mes. Eventualmente, uno termina con un recuento de d&#237;as al que se aplica m&#243;dulo 7 para determinar el d&#237;a de la semana de la fecha.<sup id="cite_ref-5" class="reference separada"><a href="#cite_note-5"><span class="corchete-llamada">[</span>5<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p><p>Algunos m&#233;todos hacen todas las sumas primero y luego eliminan los sietes, mientras que otros los eliminan en cada paso, como en el <a href="https://es.wikipedia.org/wiki/C%C3%A1lculo_del_d%C3%ADa_de_la_semana#M&#233;todo_de_Lewis_Carroll" title="C&#225;lculo del d&#237;a de la semana">m&#233;todo de Lewis Carroll</a>. De cualquier manera es bastante viable: la primera es m&#225;s f&#225;cil para calculadoras y programas de computadora, la segunda para c&#225;lculos mentales (es muy posible hacer todos los c&#225;lculos en la cabeza con un poco de pr&#225;ctica). Ninguno de los m&#233;todos que se proporcionan aqu&#237; realiza comprobaciones de rango, por lo que las fechas no razonables producir&#225;n resultados err&#243;neos.
+</p>
+<h3><span id="D.C3.ADas_correspondientes"/><span class="mw-headline" id="D&#237;as_correspondientes">D&#237;as correspondientes</span></h3>
+<p>Cada s&#233;ptimo d&#237;a del mes tiene el mismo nombre que el anterior:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>D&#237;a del
+<p>mes
+</p>
+</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">d</span>
+</th></tr>
+<tr>
+<td>00 07 14 21 28</td>
+<td>0
+</td></tr>
+<tr>
+<td>01 08 15 22 29</td>
+<td>1
+</td></tr>
+<tr>
+<td>02 09 16 23 30</td>
+<td>2
+</td></tr>
+<tr>
+<td>03 10 17 24 31</td>
+<td>3
+</td></tr>
+<tr>
+<td>04 11 18 25</td>
+<td>4
+</td></tr>
+<tr>
+<td>05 12 19 26</td>
+<td>5
+</td></tr>
+<tr>
+<td>06 13 20 27</td>
+<td>6
+</td></tr></tbody></table>
+<h3><span class="mw-headline" id="Meses_correspondientes">Meses correspondientes</span></h3>
+<p>Los "meses correspondientes" son aquellos meses dentro del a&#241;o calendario que comienzan el mismo d&#237;a de la semana. Por ejemplo, septiembre y diciembre se corresponden, porque el 1 de septiembre cae el mismo d&#237;a que el 1 de diciembre (ya que hay exactamente trece semanas de 7 d&#237;as entre las dos fechas). Los meses solo pueden corresponder si el n&#250;mero de d&#237;as entre sus primeros d&#237;as es divisible por 7, o en otras palabras, si sus primeros d&#237;as est&#225;n separados por un n&#250;mero entero de semanas. Por ejemplo, febrero de un a&#241;o com&#250;n corresponde a marzo porque febrero tiene 28 d&#237;as, un n&#250;mero divisible por 7, siendo 28 d&#237;as exactamente cuatro semanas. En un <a href="https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto" title="A&#241;o bisiesto">a&#241;o bisiesto</a>, enero y febrero corresponden a meses diferentes a los de un a&#241;o com&#250;n, ya que agregar el 29 de febrero significa que cada mes subsiguiente comienza un d&#237;a despu&#233;s.
+</p><p>Enero corresponde a octubre en a&#241;os comunes y abril y julio en a&#241;os bisiestos. Febrero corresponde a marzo y noviembre en a&#241;os comunes y agosto en a&#241;os bisiestos. Marzo siempre corresponde a noviembre, abril siempre corresponde a julio y septiembre siempre corresponde a diciembre. Agosto no corresponde a ning&#250;n otro mes de un a&#241;o com&#250;n. Octubre no corresponde a ning&#250;n otro mes de un a&#241;o bisiesto. Mayo y junio nunca corresponden a ning&#250;n otro mes.
+</p><p>En la siguiente tabla de meses, los meses correspondientes tienen el mismo n&#250;mero, un hecho que se deriva directamente de la definici&#243;n:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>A&#241;os comunes</th>
+<th>A&#241;os bisiestos</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span>
+</th></tr>
+<tr>
+<td>Ene Oct</td>
+<td>Oct</td>
+<td>0
+</td></tr>
+<tr>
+<td>May</td>
+<td>May</td>
+<td>1
+</td></tr>
+<tr>
+<td>Ago</td>
+<td>Feb Ago</td>
+<td>2
+</td></tr>
+<tr>
+<td>Feb Mar Nov</td>
+<td>Mar Nov</td>
+<td>3
+</td></tr>
+<tr>
+<td>Jun</td>
+<td>Jun</td>
+<td>4
+</td></tr>
+<tr>
+<td>Sep Dic</td>
+<td>Sept Dic</td>
+<td>5
+</td></tr>
+<tr>
+<td>Abr Jul</td>
+<td>Ene Abr Jul</td>
+<td>6
+</td></tr></tbody></table>
+<h3><span id="A.C3.B1os_correspondientes"/><span class="mw-headline" id="A&#241;os_correspondientes">A&#241;os correspondientes</span></h3>
+<p>Hay siete d&#237;as posibles en los que puede comenzar un a&#241;o, y los <a href="https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto" title="A&#241;o bisiesto">a&#241;os bisiestos</a> alterar&#225;n el d&#237;a de la semana despu&#233;s del 29 de febrero. Esto significa que hay 14 configuraciones que puede tener un a&#241;o. Todas las configuraciones pueden ser referenciadas por una <a href="https://es.wikipedia.org/wiki/Letra_dominical" title="Letra dominical">letra dominical</a>, pero como el 29 de febrero no tiene ninguna letra asignada, un a&#241;o bisiesto tiene dos letras dominicales, una para enero y febrero y la otra (un paso atr&#225;s en la secuencia alfab&#233;tica) de marzo a diciembre.
+</p><p>Por ejemplo, 2019 fue un <a href="https://es.wikipedia.org/wiki/Anexo:A%C3%B1o_com%C3%BAn_comenzado_en_martes" title="Anexo:A&#241;o com&#250;n comenzado en martes">a&#241;o com&#250;n que comenzaba el martes</a>, lo que indica que el a&#241;o en su conjunto correspond&#237;a al <a href="https://es.wikipedia.org/wiki/A%C3%B1o_natural" title="A&#241;o natural">a&#241;o calendario</a> 2013. Por otro lado, 2020 es un <a href="https://es.wikipedia.org/wiki/Anexo:A%C3%B1o_bisiesto_comenzado_en_mi%C3%A9rcoles" title="Anexo:A&#241;o bisiesto comenzado en mi&#233;rcoles">a&#241;o bisiesto que comienza el mi&#233;rcoles</a> y, en su conjunto, corresponde al a&#241;o calendario 1992; en concreto, sus 2 primeros meses, excepto el 29 de febrero, corresponden a los del a&#241;o calendario 2014, mientras que, debido al d&#237;a bisiesto 2020, sus 10 meses posteriores corresponden al a&#241;o calendario 2015.
+</p><p>Seg&#250;n lo anterior, cada <a href="https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto" title="A&#241;o bisiesto">a&#241;o bisiesto</a> se repite una vez cada 28 a&#241;os, y cada <a href="https://es.wikipedia.org/wiki/A%C3%B1o_com%C3%BAn" title="A&#241;o com&#250;n">a&#241;o com&#250;n</a> se repite una vez cada 6 a&#241;os y dos veces cada 11 a&#241;os. Por ejemplo, la &#250;ltima ocurrencia de un a&#241;o bisiesto que comienza un martes fue 2008 y la pr&#243;xima ocurrencia ser&#225; 2036. De la misma manera, los pr&#243;ximos a&#241;os comunes que comienzan el mi&#233;rcoles ser&#225;n 2025, 2031, 2042 y luego 2053. Ambas declaraciones son cierto a menos que se omita un a&#241;o bisiesto, pero eso no suceder&#225; hasta 2100. En el caso de que un a&#241;o centenario no sea bisiesto, el pr&#243;ximo a&#241;o bisiesto ocurrir&#225; 40 a&#241;os despu&#233;s de cualquier a&#241;o bisiesto entre 12 y 28 a&#241;os, inclusive, lejos a partir de ese a&#241;o del siglo, y cualquier a&#241;o bisiesto dentro de los 12 a&#241;os siguientes al a&#241;o del siglo volver&#225; a ocurrir 12 a&#241;os despu&#233;s.
+</p><p>Para obtener m&#225;s detalles, consulte la tabla siguiente:
+</p>
+<table class="wikitable" style="text-align:center">
+
+<tbody><tr>
+<th>A&#241;o del
+<p>siglo mod 28
+</p>
+</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">y</span>
+</th></tr>
+<tr>
+<td><span style="color:blue;">00</span> 06 <span style="color:red;">12</span> 17 23</td>
+<td>0
+</td></tr>
+<tr>
+<td>01 07 <span style="color:blue;">12</span> 18 <span style="color:red;">24</span></td>
+<td>1
+</td></tr>
+<tr>
+<td>02 <span style="color:red;">08</span> 13 19 <span style="color:blue;">24</span></td>
+<td>2
+</td></tr>
+<tr>
+<td>03 <span style="color:blue;">08</span> 14 <span style="color:red;">20</span> 25</td>
+<td>3
+</td></tr>
+<tr>
+<td><span style="color:red;">04</span> 09 15 <span style="color:blue;">20</span> 26</td>
+<td>4
+</td></tr>
+<tr>
+<td><span style="color:blue;">04</span> 10 <span style="color:red;">16</span> 21 27</td>
+<td>5
+</td></tr>
+<tr>
+<td>05 11 <span style="color:blue;">16</span> 22 <span style="color:red;">00</span></td>
+<td>6
+</td></tr></tbody></table>
+<p>Notas:
+</p>
+<ul><li>Negro significa todos los meses del a&#241;o com&#250;n</li>
+<li><span style="color:red;">Rojo</span> significa los primeros 2 meses del a&#241;o bisiesto</li>
+<li><span style="color:blue;">Azul</span> significa los &#250;ltimos 10 meses del a&#241;o bisiesto</li></ul>
+<h3><span class="mw-headline" id="Siglos_correspondientes">Siglos correspondientes</span></h3>
+<table class="wikitable" style="text-align:center">
+
+<tbody><tr>
+<th>Siglo juliano mod 700</th>
+<th>Siglo gregoriano mod 400<sup id="cite_ref-6" class="reference separada"><a href="#cite_note-6"><span class="corchete-llamada">[</span>6<span class="corchete-llamada">]</span></a></sup>&#8203;</th>
+<th>Dpia
+</th></tr>
+<tr>
+<td>400: 1100 1800 ...</td>
+<td>300: 1500 1900 ...</td>
+<td>Dom
+</td></tr>
+<tr>
+<td>300: 1000 1700 ...</td>
+<td/>
+<td>Lun
+</td></tr>
+<tr>
+<td>200  0900 1600 ...</td>
+<td>200: 1800 2200 ...</td>
+<td>Mar
+</td></tr>
+<tr>
+<td>100  0800 1500 ...</td>
+<td/>
+<td>Mi&#233;
+</td></tr>
+<tr>
+<td>700: 1400 2100 ...</td>
+<td>100: 1700 2100 ...</td>
+<td>Jue<sup id="cite_ref-7" class="reference separada"><a href="#cite_note-7"><span class="corchete-llamada">[</span>7<span class="corchete-llamada">]</span></a></sup>&#8203;
+</td></tr>
+<tr>
+<td>600: 1300 2000 ...</td>
+<td/>
+<td>Vie
+</td></tr>
+<tr>
+<td>500: 1200 1900 ...</td>
+<td>000: 1600 2000 ...</td>
+<td>S&#225;b
+</td></tr></tbody></table>
+<p>"A&#241;o 000" es, en cronolog&#237;a normal, el a&#241;o 1 AC (que precede al 1 DC). En el <a href="https://es.wikipedia.org/wiki/Numeraci%C3%B3n_de_a%C3%B1os_astron%C3%B3mica" title="Numeraci&#243;n de a&#241;os astron&#243;mica">a&#241;o astron&#243;mico</a>, el a&#241;o 0 se sit&#250;a entre el 1 a. C. y el 1 d. C. En el <a href="https://es.wikipedia.org/wiki/Calendario_juliano_prol%C3%A9ptico" title="Calendario juliano prol&#233;ptico">calendario juliano prol&#233;ptico</a>, (es decir, el <a href="https://es.wikipedia.org/wiki/Calendario_juliano" title="Calendario juliano">calendario juliano</a> como habr&#237;a sido si se hubiera operado correctamente desde el principio), el 1 a. C. comienza el jueves. En el <a href="https://es.wikipedia.org/wiki/Calendario_gregoriano_prol%C3%A9ptico" title="Calendario gregoriano prol&#233;ptico">calendario gregoriano prol&#233;ptico</a>, (llamado as&#237; porque no fue ideado hasta 1582), el 1 a.C. comienza el s&#225;bado.
+</p>
+<h2><span id="M.C3.A9todos_tabulares_para_calcular_el_d.C3.ADa_de_la_semana"/><span class="mw-headline" id="M&#233;todos_tabulares_para_calcular_el_d&#237;a_de_la_semana">M&#233;todos tabulares para calcular el d&#237;a de la semana</span></h2>
+<h3><span class="mw-headline" id="Tabla_completa:_calendarios_juliano_y_gregoriano">Tabla completa: calendarios juliano y gregoriano</span></h3>
+<p>Para las fechas julianas anteriores a 1300 y posteriores a 1999, debe utilizarse el a&#241;o de la tabla que difiere en un m&#250;ltiplo exacto de 700 a&#241;os. Para las fechas gregorianas posteriores a 2299, se debe utilizar el a&#241;o de la tabla que difiere en un m&#250;ltiplo exacto de 400 a&#241;os. Los valores " r0 " a " r6 " indican el resto cuando el valor de las centenas se divide por 7 y 4 respectivamente, lo que indica c&#243;mo se extiende la serie en cualquier direcci&#243;n. Tanto los valores julianos como los gregorianos se muestran 1500-1999 por conveniencia. Las cifras en negrita (por ejemplo, <b>04</b>) indican un a&#241;o bisiesto. Si un a&#241;o termina en 00 y sus cientos est&#225;n en negrita, es un a&#241;o bisiesto. As&#237;, 19 indica que 1900 no es un a&#241;o bisiesto gregoriano, (pero <b>19</b> en la columna juliana indica que <i>es</i> un a&#241;o bisiesto juliano, al igual que todos los a&#241;os julianos <i>x</i> 00 a&#241;os). <b>20</b> indica que 2000 es un a&#241;o bisiesto. Utilice <b>enero</b> y <b>febrero</b> solo en a&#241;os bisiestos.
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th colspan="2" style="line-height:10px; border-bottom:none"><small>Cientos de a&#241;os</small></th>
+<th colspan="4" rowspan="2">D&#237;gitos del a&#241;o restante</th>
+<th colspan="5" rowspan="2">Mes</th>
+<th colspan="1" rowspan="2"><small style="line-height:10px">D&#237;a de la semana</small></th>
+<th colspan="1" rowspan="2">#
+</th></tr>
+<tr>
+<th style="border-top:none; line-height:10px"><small>Juliano<br/>(r &#247; 7)</small>
+</th>
+<th style="border-top:none; line-height:10px"><small>Gregoriano<br/>(r &#247; 4)</small>
+</th></tr>
+<tr>
+<td><small><b>r5</b></small> <b>19</b></td>
+<td><b>16</b> <b>20</b> <small><b>r0</b></small></td>
+<td>00 06 &#8195; 17 23</td>
+<td><b>28</b> 34 &#8195; 45 51</td>
+<td><b>56</b> 62 &#8195; 73 79</td>
+<td><b>84</b> 90</td>
+<td>Ene</td>
+<td/>
+<td/>
+<td/>
+<td>Oct</td>
+<td>S&#225;bado</td>
+<td>0
+</td></tr>
+<tr>
+<td><small><b>r4</b></small> <b>18</b></td>
+<td>15 19 <small>r3</small></td>
+<td>01 07 <b>12</b> 18</td>
+<td>29 35 <b>40</b> 46</td>
+<td>57 63 <b>68</b> 74</td>
+<td>85 91 <b>96</b></td>
+<td/>
+<td/>
+<td>May</td>
+<td/>
+<td/>
+<td>Domingo</td>
+<td>1
+</td></tr>
+<tr>
+<td><small><b>r3</b></small> <b>17</b></td>
+<td><center><small>N/A</small></center></td>
+<td>02 &#8195; 13 19 <b>24</b></td>
+<td>30 &#8195; 41 47 <b>52</b></td>
+<td>58 &#8195; 69 75 <b>80</b></td>
+<td>86 &#8195; 97</td>
+<td><b>Feb</b></td>
+<td/>
+<td/>
+<td>Ago</td>
+<td/>
+<td>Lunes</td>
+<td>2
+</td></tr>
+<tr>
+<td><small><b>r2</b></small> <b>16</b></td>
+<td>18 22 <small>r2</small></td>
+<td>03 <b>08</b> 14 &#8195; 25</td>
+<td>31 <b>36</b> 42 &#8195; 53</td>
+<td>59 <b>64</b> 70 &#8195; 81</td>
+<td>87 <b>92</b> 98</td>
+<td>Feb</td>
+<td>Mar</td>
+<td/>
+<td/>
+<td>Nov</td>
+<td>Martes</td>
+<td>3
+</td></tr>
+<tr>
+<td><small><b>r1</b></small> <b>15</b></td>
+<td><center><small>N/A</small></center></td>
+<td>&#8195; 09 15 <b>20</b> 26</td>
+<td>&#8195; 37 43 <b>48</b> 54</td>
+<td>&#8195; 65 71 <b>76</b> 82</td>
+<td>&#8195; 93 99</td>
+<td/>
+<td/>
+<td>Jun</td>
+<td/>
+<td/>
+<td>Mi&#233;rcoles</td>
+<td>4
+</td></tr>
+<tr>
+<td><small><b>r0</b></small> <b>14</b></td>
+<td>17 21 <small>r1</small></td>
+<td><b>04</b> 10 &#8195; 21 27</td>
+<td><b>32</b> 38 &#8195; 49 55</td>
+<td><b>60</b> 66 &#8195; 77 83</td>
+<td><b>88</b> 94</td>
+<td/>
+<td/>
+<td/>
+<td>Sep</td>
+<td>Dec</td>
+<td>Jueves</td>
+<td>5
+</td></tr>
+<tr>
+<td><small><b>r6</b></small> <b>13</b></td>
+<td><center><small>N/A</small></center></td>
+<td>05 11 <b>16</b> 22</td>
+<td>33 39 <b>44</b> 50</td>
+<td>61 67 <b>72</b> 78</td>
+<td>89 95</td>
+<td><b>Ene</b></td>
+<td>Abr</td>
+<td>Jul</td>
+<td/>
+<td/>
+<td>Viernes</td>
+<td>6
+</td></tr></tbody></table>
+<p>Para determinar el d&#237;a de la semana (1 de enero de 2000, s&#225;bado)
+</p>
+<ul><li><span style="background-color:#FFFF88">el d&#237;a del mes: 1 ~ 31 (1)</span></li></ul>
+<ul><li><span style="background-color:#FFFF88">el mes: (6)</span></li>
+<li><span style="background-color:#FF8888">el a&#241;o: (0)</span></li>
+<li><span style="background-color:#88FF88">siglo mod 4 del calendario gregoriano y mod 7 para el calendario juliano (0)</span>.</li>
+<li><span style="background-color:#BBBBFF">sumar 1+6+0+0=7. Dividir por 7 deja un residuo de 0, por lo que el d&#237;a de la semana es s&#225;bado.</span></li></ul>
+<p>La f&#243;rmula es w = (d + m + y + c) mod 7.
+</p>
+<h3><span class="mw-headline" id="Calendario_juliano_revisado">Calendario juliano revisado</span></h3>
+<p>T&#233;ngase en cuenta que la fecha (y, por lo tanto, el d&#237;a de la semana) en los calendarios juliano y gregoriano revisados es la misma desde el 14 de octubre de 1923 hasta el 28 de febrero de 2800 d.C. inclusive y que para a&#241;os grandes es posible restar 6300 o un m&#250;ltiplo del mismo antes. comenzando para llegar a un a&#241;o que est&#233; dentro o m&#225;s cerca de la mesa.
+</p><p>Para buscar el d&#237;a de la semana de cualquier fecha de cualquier a&#241;o usando la tabla, reste 100 del a&#241;o, divida la diferencia por 100, multiplique el cociente resultante (omitiendo las fracciones) por siete y divida el producto por nueve. Tenga en cuenta el cociente (omitiendo fracciones). Ingrese la tabla con el a&#241;o juliano, y justo antes de la divisi&#243;n final sume 50 y reste el cociente anotado arriba.
+</p><p>Ejemplo: &#191;Cu&#225;l es el d&#237;a de la semana del 27 de enero de 8315?
+</p><p>8315-6300 = 2015, 2015-100 = 1915, 1915/100 = 19 resto 15, 19x7 = 133, 133/9 = 14 resto 7. 2015 es 700 a&#241;os antes que 1315, por lo que se usa 1315. De la tabla: para cientos (13): 6. Para los d&#237;gitos restantes (15): 4. Para el mes (enero): 0. Para la fecha (27): 27. 6 + 4 + 0 + 27 + 50-14 = 73. 73/7 = 10 restante 3. D&#237;a de la semana = martes.
+</p>
+<h3><span class="mw-headline" id="Dominical_Letter">Dominical Letter</span></h3>
+<p>Para encontrar la <a href="https://es.wikipedia.org/wiki/Letra_dominical" title="Letra dominical">letra dominical</a>, calcule el d&#237;a de la semana para el 1 de enero o el 1 de octubre. Si es domingo, la letra dominical es A, si es s&#225;bado B, e igualmente hacia atr&#225;s a lo largo de la semana y hacia adelante a trav&#233;s del alfabeto hasta el lunes, que es G
+</p><p>Los a&#241;os bisiestos tienen dos letras dominicales, por lo que para enero y febrero calcule el d&#237;a de la semana para el 1 de enero y para marzo a diciembre calcule el d&#237;a de la semana para el 1 de octubre.
+</p><p>Los a&#241;os bisiestos son todos los a&#241;os que se dividen exactamente por cuatro con las siguientes excepciones:
+</p><p><b>En el calendario gregoriano</b>, todos los a&#241;os que se dividen exactamente entre 100 (excepto los que se dividen exactamente entre 400).
+</p><p><b>En el calendario juliano revisado</b>, todos los a&#241;os que se dividen exactamente por 100 (excepto los que dan un resto 200 o 600 cuando se dividen por 900).
+</p>
+<h3><span id="El_.22d.C3.ADa_del_juicio_final.22"/><span class="mw-headline" id="El_&quot;d&#237;a_del_juicio_final&quot;">El "d&#237;a del juicio final"</span></h3>
+<p>Este es un artefacto de las matem&#225;ticas recreativas. Consulte la <a href="https://es.wikipedia.org/wiki/Regla_del_fin_del_mundo" title="Regla del fin del mundo">regla del fin del mundo</a> para obtener una explicaci&#243;n.
+</p>
+<h3><span class="mw-headline" id="Verificar_el_resultado">Verificar el resultado</span></h3>
+<p>Utilice esta tabla para encontrar el d&#237;a de la semana sin ning&#250;n c&#225;lculo.
+</p>
+<table class="wikitable" style="text-align:center">
+
+<tbody><tr>
+<th colspan="5">&#205;ndice</th>
+<th>Lun<br/>A</th>
+<th>Mar<br/>B</th>
+<th>Mi&#233;<br/>C</th>
+<th>Jue<br/>D</th>
+<th>Vie<br/>E</th>
+<th>S&#225;b<br/>F</th>
+<th>Dom<br/>G</th>
+<th colspan="18," rowspan="2">Calendario gregoriano y juliano perpetuo
+<p>Utilice enero y febrero para los a&#241;os bisiestos
+</p><p>Fecha de la letra en la fila del a&#241;o para la letra de la fila del siglo
+</p><p>Todos los d&#237;as C son d&#237;as del juicio final
+</p>
+</th></tr>
+<tr>
+<th>Siglo juliano</th>
+<th>Siglo gregoriano</th>
+<th colspan="3">Fecha
+</th>
+<td><b>01</b><br/>08<br/>15<br/>22<br/>29</td>
+<td><b>02</b><br/>09<br/>16<br/>23<br/>30</td>
+<td><b>03</b><br/>10<br/>17<br/>24<br/>31</td>
+<td><b>04</b><br/>11<br/>18<br/>25<br/> <br/></td>
+<td><b>05</b><br/>12<br/>19<br/>26<br/> <br/></td>
+<td><b>06</b><br/>13<br/>20<br/>27<br/> <br/></td>
+<td><b>07</b><br/>14<br/>21<br/>28<br/> <br/>
+</td></tr>
+<tr>
+<td><span style="color:red;">12 19</span></td>
+<td><span style="color:red;">16 20</span></td>
+<td>Abr</td>
+<td>Jul</td>
+<td><span style="color:red;">Ene</span></td>
+<td><span style="color:blue;">G</span></td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>01</td>
+<td>07</td>
+<td><span style="color:red;">12</span></td>
+<td>18</td>
+<td/>
+<td>29</td>
+<td>35</td>
+<td><span style="color:red;">40</span></td>
+<td>46</td>
+<td/>
+<td>57</td>
+<td>63</td>
+<td><span style="color:red;">68</span></td>
+<td>74</td>
+<td/>
+<td>85</td>
+<td>91</td>
+<td><span style="color:red;">96</span>
+</td></tr>
+<tr>
+<td><span style="color:red;">13 20</span></td>
+<td/>
+<td>Sep</td>
+<td>Dic</td>
+<td/>
+<td><span style="color:blue;">F</span></td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>02</td>
+<td/>
+<td>13</td>
+<td>19</td>
+<td><span style="color:red;">24</span></td>
+<td>30</td>
+<td/>
+<td>41</td>
+<td>47</td>
+<td><span style="color:red;">52</span></td>
+<td>58</td>
+<td/>
+<td>69</td>
+<td>75</td>
+<td><span style="color:red;">80</span></td>
+<td>86</td>
+<td/>
+<td>97
+</td></tr>
+<tr>
+<td><span style="color:red;">14 21</span></td>
+<td>17 21</td>
+<td>Jun</td>
+<td/>
+<td/>
+<td><span style="color:blue;">E</span></td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>03</td>
+<td><span style="color:red;">08</span></td>
+<td>14</td>
+<td/>
+<td>25</td>
+<td>31</td>
+<td><span style="color:red;">36</span></td>
+<td>42</td>
+<td/>
+<td>53</td>
+<td>59</td>
+<td><span style="color:red;">64</span></td>
+<td>70</td>
+<td/>
+<td>81</td>
+<td>87</td>
+<td><span style="color:red;">92</span></td>
+<td>98
+</td></tr>
+<tr>
+<td><span style="color:red;">15 22</span></td>
+<td/>
+<td>Feb</td>
+<td>Mar</td>
+<td>Nov</td>
+<td><span style="color:blue;">D</span></td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td/>
+<td>09</td>
+<td>15</td>
+<td><span style="color:red;">20</span></td>
+<td>26</td>
+<td/>
+<td>37</td>
+<td>43</td>
+<td><span style="color:red;">48</span></td>
+<td>54</td>
+<td/>
+<td>65</td>
+<td>71</td>
+<td><span style="color:red;">76</span></td>
+<td>82</td>
+<td/>
+<td>93</td>
+<td>99
+</td></tr>
+<tr>
+<td><span style="color:red;">16 23</span></td>
+<td>18 22</td>
+<td>Ago</td>
+<td><span style="color:red;">Feb</span></td>
+<td/>
+<td><span style="color:blue;">C</span></td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>B</td>
+<td><span style="color:red;">04</span></td>
+<td>10</td>
+<td/>
+<td>21</td>
+<td>27</td>
+<td><span style="color:red;">32</span></td>
+<td>38</td>
+<td/>
+<td>49</td>
+<td>55</td>
+<td><span style="color:red;">60</span></td>
+<td>66</td>
+<td/>
+<td>77</td>
+<td>83</td>
+<td><span style="color:red;">88</span></td>
+<td>94</td>
+<td>
+</td></tr>
+<tr>
+<td><span style="color:red;">17 24</span></td>
+<td/>
+<td>May</td>
+<td/>
+<td/>
+<td><span style="color:blue;">B</span></td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>A</td>
+<td>05</td>
+<td>11</td>
+<td><span style="color:red;">16</span></td>
+<td>22</td>
+<td/>
+<td>33</td>
+<td>39</td>
+<td><span style="color:red;">44</span></td>
+<td>50</td>
+<td/>
+<td>61</td>
+<td>67</td>
+<td><span style="color:red;">72</span></td>
+<td>78</td>
+<td/>
+<td>89</td>
+<td>95</td>
+<td>
+</td></tr>
+<tr>
+<td><span style="color:red;">18 25</span></td>
+<td>19 23</td>
+<td>Ene</td>
+<td>Oct</td>
+<td/>
+<td><span style="color:blue;">A</span></td>
+<td><span style="color:blue;">B</span></td>
+<td><span style="color:blue;">C</span></td>
+<td><span style="color:blue;">D</span></td>
+<td><span style="color:blue;">E</span></td>
+<td><span style="color:blue;">F</span></td>
+<td><span style="color:blue;">G</span></td>
+<td>06</td>
+<td/>
+<td>17</td>
+<td>23</td>
+<td><span style="color:red;">28</span></td>
+<td>34</td>
+<td/>
+<td>45</td>
+<td>51</td>
+<td><span style="color:red;">56</span></td>
+<td>62</td>
+<td/>
+<td>73</td>
+<td>79</td>
+<td><span style="color:red;">84</span></td>
+<td>90</td>
+<td/>
+<td><span style="color:red;">0</span>0
+</td></tr>
+<tr>
+<th colspan="2," rowspan="2">[A&#241;o/100]</th>
+<th colspan="3">Siglo gregoriano
+</th>
+<td><span style="color:red;">20<br/>16</span></td>
+<td/>
+<td>21<br/>17</td>
+<td/>
+<td>22<br/>18</td>
+<td/>
+<td>23<br/>19
+</td>
+<th colspan="18," rowspan="2">A&#241;o mod 100
+</th></tr>
+<tr>
+<th colspan="3">Siglo juliano
+</th>
+<td><span style="color:red;">19<br/>12</span></td>
+<td><span style="color:red;">20<br/>13</span></td>
+<td><span style="color:red;">21<br/>14</span></td>
+<td><span style="color:red;">22<br/>15</span></td>
+<td><span style="color:red;">23<br/>16</span></td>
+<td><span style="color:red;">24<br/>17</span></td>
+<td><span style="color:red;">25<br/>18</span>
+</td></tr></tbody></table>
+<p><b>Ejemplos:</b>
+</p>
+<ul><li>Por m&#233;todo com&#250;n:</li></ul>
+<dl><dd><i>26 de diciembre de 1893 (Gregoriano)</i></dd></dl>
+<p>Diciembre es en la fila F y 26 se encuentra en la columna E, por lo que la carta para la fecha se encuentra en la fila C F y la columna E. 93 (a&#241;os mod 100) est&#225; en la fila D (fila a&#241;os) y la letra C en la fila a&#241;os se encuentra en la columna G. 18 ([a&#241;o / 100] en la columna del siglo gregoriano) est&#225; en la fila C (fila del siglo) y la letra en la fila del siglo y la columna G es B, por lo que el d&#237;a de la semana es el martes.
+</p>
+<dl><dd><i>13 de octubre de 1307 (Juliano)</i></dd></dl>
+<p>El 13 de octubre es un d&#237;a F. La letra F en la fila de a&#241;os (07) se encuentra en la columna G . La letra en la fila del siglo (13) y la columna G es E, por lo que el d&#237;a de la semana es el viernes.
+</p>
+<dl><dd><i>Enero 1, 2000 (Gregoriano)</i></dd></dl>
+<p>El 1 de enero corresponde a G, G en la fila del a&#241;o ( 0 0) corresponde a F en la fila del siglo ( 20 ) y F corresponde al s&#225;bado.
+</p><p>Una f&#243;rmula concisa para el m&#233;todo: <i>"La letra de fecha (G), la letra (G) est&#225; en la fila del a&#241;o (0 0) para la letra (F) en la fila del siglo (20), y para el d&#237;a, la letra (F) se convierte en d&#237;a laborable (s&#225;bado)"</i>.
+</p><p><b>El m&#233;todo letra dominical</b>
+</p><p>Cada d&#237;a del a&#241;o (excepto el 29 de febrero) tiene asignada una letra en la secuencia recurrente ABCDEFG. La serie comienza con A el 1 de enero y contin&#250;a hasta A nuevamente el 31 de diciembre. La letra del domingo es la que se opone a todos los domingos del a&#241;o. Dado que el 29 de febrero no tiene carta, esto significa que la carta dominical de marzo a diciembre est&#225; un paso atr&#225;s en la secuencia en comparaci&#243;n con la de enero y febrero. La letra para cualquier fecha se encontrar&#225; donde la fila que contiene el mes (en negro) a la izquierda del "cuadrado latino" se encuentra con la columna que contiene la fecha sobre el "cuadrado latino". La letra del domingo se encontrar&#225; donde la columna que contiene el siglo (debajo del "cuadrado latino") se encuentra con la fila que contiene los dos &#250;ltimos d&#237;gitos del a&#241;o a la derecha del "cuadrado latino".
+</p><p>Entonces, por ejemplo, para encontrar el d&#237;a de la semana del 16 de junio de 2020:
+</p><p>La columna "20" se encuentra con la fila "20" en "D". La fila "junio" se encuentra con la columna "16" en "F". Como F es dos letras desde D, el d&#237;a de la semana es dos d&#237;as desde el domingo, es decir, martes.
+</p>
+<h2><span id="Algoritmos_matem.C3.A1ticos"/><span class="mw-headline" id="Algoritmos_matem&#225;ticos">Algoritmos matem&#225;ticos</span></h2>
+<h3><span class="mw-headline" id="Algoritmo_de_Gauss">Algoritmo de Gauss</span></h3>
+<p>En una nota escrita a mano en una colecci&#243;n de tablas astron&#243;micas, <a href="https://es.wikipedia.org/wiki/Carl_Friedrich_Gauss" title="Carl Friedrich Gauss">Carl Friedrich Gauss</a> describi&#243; un m&#233;todo para calcular el d&#237;a de la semana del 1 de enero de un a&#241;o determinado. &#160;Nunca lo public&#243;. Finalmente se incluy&#243; en sus obras completas en 1927.<sup id="cite_ref-Schwerdtfeger_8-0" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p><p>El m&#233;todo de Gauss fue aplicable al calendario gregoriano. Numer&#243; los d&#237;as de la semana del 0 al 6 comenzando con el domingo. Defini&#243; la siguiente operaci&#243;n: El d&#237;a laborable del 1 de enero del a&#241;o n&#250;mero <i><b>A</b></i> es<sup id="cite_ref-Gauss_9-0" class="reference separada"><a href="#cite_note-Gauss-9"><span class="corchete-llamada">[</span>9<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(1+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>4</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>100</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>400</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(1+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f4960e0c6d14e47ba87c89a2b84e8530755eb571" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:58.138ex; height:2.843ex;" alt="{\displaystyle R(1+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}"/></span></dd></dl>
+<p>o
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(1+5R(Y-1,4)+3(Y-1)+5R(C,4),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>Y</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>3</mn>
+        <mo stretchy="false">(</mo>
+        <mi>Y</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>C</mi>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(1+5R(Y-1,4)+3(Y-1)+5R(C,4),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b550b3077061acc944e1c4b835a64ba2c77c966b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:45.608ex; height:2.843ex;" alt="{\displaystyle R(1+5R(Y-1,4)+3(Y-1)+5R(C,4),7)}"/></span></dd></dl>
+<p>del cual se puede derivar un m&#233;todo para el calendario juliano
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(6+5R(A-1,4)+3(A-1),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>6</mn>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>3</mn>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(6+5R(A-1,4)+3(A-1),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b36b94f64c2357ff756388dd5cdb84e10b0c4a7c" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:34.009ex; height:2.843ex;" alt="{\displaystyle R(6+5R(A-1,4)+3(A-1),7)}"/></span></dd></dl>
+<p>o
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(6+5R(Y-1,4)+3(Y-1)+6C,7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>6</mn>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>Y</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>3</mn>
+        <mo stretchy="false">(</mo>
+        <mi>Y</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>C</mi>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(6+5R(Y-1,4)+3(Y-1)+6C,7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/38d90da973640af1fd5bfd27b95425c3fb04b4e1" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:39.838ex; height:2.843ex;" alt="{\displaystyle R(6+5R(Y-1,4)+3(Y-1)+6C,7)}"/></span></dd></dl>
+<p>d&#243;nde <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(y,m)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>y</mi>
+        <mo>,</mo>
+        <mi>m</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(y,m)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f7d28d6342baf677182110c8fdfde387520ba904" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:7.803ex; height:2.843ex;" alt="{\displaystyle R(y,m)}"/></span> es el <a href="https://es.wikipedia.org/wiki/Resto" title="Resto">resto</a> despu&#233;s de la divisi&#243;n de y por m,<sup id="cite_ref-Schwerdtfeger_8-1" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203; o y m&#243;dulo m , y Y + 100 <i><b>C</b></i> = <i><b>A</b></i>.
+</p><p>Para el a&#241;o 2000, A - 1 = 1999, Y - 1 = 99 y C = 19, el d&#237;a de la semana del 1 de enero es
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}&amp;=R(1+5R(1999,4)+4R(1999,100)+6R(1999,400),7)\\&amp;=R(1+1+4+0,7)\\&amp;=6\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1999</mn>
+                <mo>,</mo>
+                <mn>4</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1999</mn>
+                <mo>,</mo>
+                <mn>100</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1999</mn>
+                <mo>,</mo>
+                <mn>400</mn>
+                <mo stretchy="false">)</mo>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mo>+</mo>
+                <mn>0</mn>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>6</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}&amp;=R(1+5R(1999,4)+4R(1999,100)+6R(1999,400),7)\\&amp;=R(1+1+4+0,7)\\&amp;=6\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/fb8bf3f0164e6f4db52d226c1c6628e38ca62c7b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -4.005ex; width:58.699ex; height:9.176ex;" alt="{\displaystyle {\begin{aligned}&amp;=R(1+5R(1999,4)+4R(1999,100)+6R(1999,400),7)\\&amp;=R(1+1+4+0,7)\\&amp;=6\end{aligned}}}"/></span></dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}&amp;=R(1+5R(99,4)+3\times 99+5R(19,4),7)\\&amp;=R(1+1+3+1,7)\\&amp;=6=Sabado.\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>99</mn>
+                <mo>,</mo>
+                <mn>4</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>3</mn>
+                <mo>&#215;</mo>
+                <mn>99</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>19</mn>
+                <mo>,</mo>
+                <mn>4</mn>
+                <mo stretchy="false">)</mo>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>3</mn>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>6</mn>
+                <mo>=</mo>
+                <mi>S</mi>
+                <mi>a</mi>
+                <mi>b</mi>
+                <mi>a</mi>
+                <mi>d</mi>
+                <mi>o</mi>
+                <mo>.</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}&amp;=R(1+5R(99,4)+3\times 99+5R(19,4),7)\\&amp;=R(1+1+3+1,7)\\&amp;=6=Sabado.\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8186bcef169efb2ecbd185bf79f32038f08810fa" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -4.005ex; width:44.145ex; height:9.176ex;" alt="{\displaystyle {\begin{aligned}&amp;=R(1+5R(99,4)+3\times 99+5R(19,4),7)\\&amp;=R(1+1+3+1,7)\\&amp;=6=Sabado.\end{aligned}}}"/></span></dd></dl>
+<p>El d&#237;a de la semana del &#250;ltimo d&#237;a del a&#241;o n&#250;mero A - 1 o 0 de enero del a&#241;o n&#250;mero A es
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>4</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>100</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>400</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2f051a7e7a3418391dffda867c64e707700c6fda" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:54.135ex; height:2.843ex;" alt="{\displaystyle R(5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}"/></span></dd></dl>
+<p>El d&#237;a de la semana de 0 (un a&#241;o com&#250;n) o 1 (un a&#241;o bisiesto) de enero en el a&#241;o n&#250;mero A es
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(6+5R(A,4)+4R(A,100)+6R(A,400),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>6</mn>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>4</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>100</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>400</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(6+5R(A,4)+4R(A,100)+6R(A,400),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e7a5d0556a9b3fde6c1785f317aaaa6d303ea699" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:46.129ex; height:2.843ex;" alt="{\displaystyle R(6+5R(A,4)+4R(A,100)+6R(A,400),7)}"/></span></dd></dl>
+<p>Para determinar el d&#237;a de la semana de una fecha arbitraria, usaremos la siguiente tabla de b&#250;squeda.
+</p>
+<table class="wikitable" style="text-align:center;">
+<tbody><tr>
+<th>Meses
+</th>
+<td>11<br/>Ene</td>
+<td>12<br/>Feb</td>
+<td>1<br/>Mar</td>
+<td>2<br/>Abr</td>
+<td>3<br/>May</td>
+<td>4<br/>Jun</td>
+<td>5<br/>Jul</td>
+<td>6<br/>Ago</td>
+<td>7<br/>Sep</td>
+<td>8<br/>Oct</td>
+<td>9<br/>Nov</td>
+<td>10<br/>Dec
+</td>
+<th><i>M</i>
+</th></tr>
+<tr>
+<th>a&#241;os comunes
+</th>
+<td rowspan="2">0</td>
+<td rowspan="2">3</td>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td rowspan="2"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span>
+</td></tr>
+<tr>
+<th>a&#241;os bisiestos
+</th>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>6
+</td></tr>
+<tr>
+<th>Algoritmo
+</th>
+<td colspan="13"><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle m=R(\left\lceil 2.6M\right\rceil ,7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>m</mi>
+        <mo>=</mo>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mrow>
+          <mo>&#8968;</mo>
+          <mrow>
+            <mn>2.6</mn>
+            <mi>M</mi>
+          </mrow>
+          <mo>&#8969;</mo>
+        </mrow>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle m=R(\left\lceil 2.6M\right\rceil ,7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8a906061fc447f9d6cfbfadb0a97de473a79c070" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:18.774ex; height:2.843ex;" alt="{\displaystyle m=R(\left\lceil 2.6M\right\rceil ,7)}"/></span>
+</td></tr></tbody></table>
+<p>Nota: menos 1 si M es 11 o 12 y m&#225;s 1 si M es menor de 11 en un a&#241;o bisiesto.
+</p><p>El d&#237;a de la semana para cualquier d&#237;a del a&#241;o n&#250;mero A es
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(D+m+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>D</mi>
+        <mo>+</mo>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>4</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>100</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>400</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(D+m+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5078f371bcb34d47cb2b36d8bf42379523d3f331" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:63.78ex; height:2.843ex;" alt="{\displaystyle R(D+m+5R(A-1,4)+4R(A-1,100)+6R(A-1,400),7)}"/></span></dd></dl>
+<p>o
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle R(6+D+\left\lceil 2.6M\right\rceil +5R(A,4)+4R(A,100)+6R(A,400),7)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mn>6</mn>
+        <mo>+</mo>
+        <mi>D</mi>
+        <mo>+</mo>
+        <mrow>
+          <mo>&#8968;</mo>
+          <mrow>
+            <mn>2.6</mn>
+            <mi>M</mi>
+          </mrow>
+          <mo>&#8969;</mo>
+        </mrow>
+        <mo>+</mo>
+        <mn>5</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>4</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>4</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>100</mn>
+        <mo stretchy="false">)</mo>
+        <mo>+</mo>
+        <mn>6</mn>
+        <mi>R</mi>
+        <mo stretchy="false">(</mo>
+        <mi>A</mi>
+        <mo>,</mo>
+        <mn>400</mn>
+        <mo stretchy="false">)</mo>
+        <mo>,</mo>
+        <mn>7</mn>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle R(6+D+\left\lceil 2.6M\right\rceil +5R(A,4)+4R(A,100)+6R(A,400),7)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ba206f22c63518d4e06f6ef4729c2e91169bf861" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:61.213ex; height:2.843ex;" alt="{\displaystyle R(6+D+\left\lceil 2.6M\right\rceil +5R(A,4)+4R(A,100)+6R(A,400),7)}"/></span></dd></dl>
+<p>donde D es el d&#237;a del mes y A - 1 para enero o febrero.
+</p><p>Los d&#237;as de semana para el 30 de abril de 1777 y el 23 de febrero de 1855 son
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}&amp;=R(30+6+5R(1776,4)+4R(1776,100)+6R(1776,400),7)\\&amp;=R(2+6+0+3+6,7)\\&amp;=3=Miercoles\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>30</mn>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1776</mn>
+                <mo>,</mo>
+                <mn>4</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1776</mn>
+                <mo>,</mo>
+                <mn>100</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1776</mn>
+                <mo>,</mo>
+                <mn>400</mn>
+                <mo stretchy="false">)</mo>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>2</mn>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mo>+</mo>
+                <mn>0</mn>
+                <mo>+</mo>
+                <mn>3</mn>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>3</mn>
+                <mo>=</mo>
+                <mi>M</mi>
+                <mi>i</mi>
+                <mi>e</mi>
+                <mi>r</mi>
+                <mi>c</mi>
+                <mi>o</mi>
+                <mi>l</mi>
+                <mi>e</mi>
+                <mi>s</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}&amp;=R(30+6+5R(1776,4)+4R(1776,100)+6R(1776,400),7)\\&amp;=R(2+6+0+3+6,7)\\&amp;=3=Miercoles\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/241da1570dcb63a47505cd008819ffa6f205aff7" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -4.005ex; width:63.864ex; height:9.176ex;" alt="{\displaystyle {\begin{aligned}&amp;=R(30+6+5R(1776,4)+4R(1776,100)+6R(1776,400),7)\\&amp;=R(2+6+0+3+6,7)\\&amp;=3=Miercoles\end{aligned}}}"/></span></dd></dl>
+<p>y
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}&amp;=R(6+23+\left\lceil 2.6\times 12\right\rceil +5R(1854,4)+4R(1854,100)+6R(1854,400),7)\\&amp;=R(6+2+4+3+6+5,7)\\&amp;=5=Viernes\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>6</mn>
+                <mo>+</mo>
+                <mn>23</mn>
+                <mo>+</mo>
+                <mrow>
+                  <mo>&#8968;</mo>
+                  <mrow>
+                    <mn>2.6</mn>
+                    <mo>&#215;</mo>
+                    <mn>12</mn>
+                  </mrow>
+                  <mo>&#8969;</mo>
+                </mrow>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1854</mn>
+                <mo>,</mo>
+                <mn>4</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1854</mn>
+                <mo>,</mo>
+                <mn>100</mn>
+                <mo stretchy="false">)</mo>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>1854</mn>
+                <mo>,</mo>
+                <mn>400</mn>
+                <mo stretchy="false">)</mo>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mi>R</mi>
+                <mo stretchy="false">(</mo>
+                <mn>6</mn>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mo>+</mo>
+                <mn>3</mn>
+                <mo>+</mo>
+                <mn>6</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mo>,</mo>
+                <mn>7</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>5</mn>
+                <mo>=</mo>
+                <mi>V</mi>
+                <mi>i</mi>
+                <mi>e</mi>
+                <mi>r</mi>
+                <mi>n</mi>
+                <mi>e</mi>
+                <mi>s</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}&amp;=R(6+23+\left\lceil 2.6\times 12\right\rceil +5R(1854,4)+4R(1854,100)+6R(1854,400),7)\\&amp;=R(6+2+4+3+6+5,7)\\&amp;=5=Viernes\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/17bff032f9bf32898a254bf636c1289ee1d75cef" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -4.005ex; width:76.907ex; height:9.176ex;" alt="{\displaystyle {\begin{aligned}&amp;=R(6+23+\left\lceil 2.6\times 12\right\rceil +5R(1854,4)+4R(1854,100)+6R(1854,400),7)\\&amp;=R(6+2+4+3+6+5,7)\\&amp;=5=Viernes\end{aligned}}}"/></span></dd></dl>
+<p>Esta f&#243;rmula tambi&#233;n fue convertida en m&#233;todos gr&#225;ficos y tabulares para calcular cualquier d&#237;a de la semana por Kraitchik y Schwerdtfeger.<sup id="cite_ref-Schwerdtfeger_8-2" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;<sup id="cite_ref-Kraitchik_10-0" class="reference separada"><a href="#cite_note-Kraitchik-10"><span class="corchete-llamada">[</span>10<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<h4><span id="Variaci.C3.B3n_desigual"/><span class="mw-headline" id="Variaci&#243;n_desigual">Variaci&#243;n desigual</span></h4>
+<p>Otra variaci&#243;n del algoritmo anterior tambi&#233;n funciona sin tablas de b&#250;squeda. Una peque&#241;a desventaja es la inusual convenci&#243;n de conteo de meses y a&#241;os. La formula es
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w=\left(d+\lfloor 2.6m-0.2\rfloor +y+\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right){\bmod {7}},}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>d</mi>
+            <mo>+</mo>
+            <mo fence="false" stretchy="false">&#8970;</mo>
+            <mn>2.6</mn>
+            <mi>m</mi>
+            <mo>&#8722;</mo>
+            <mn>0.2</mn>
+            <mo fence="false" stretchy="false">&#8971;</mo>
+            <mo>+</mo>
+            <mi>y</mi>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>y</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>c</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>&#8722;</mo>
+            <mn>2</mn>
+            <mi>c</mi>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>,</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w=\left(d+\lfloor 2.6m-0.2\rfloor +y+\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right){\bmod {7}},}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4eaab594fb0c6eb1750c61b90de736a73fe821c0" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.838ex; width:55.955ex; height:4.843ex;" alt="{\displaystyle w=\left(d+\lfloor 2.6m-0.2\rfloor +y+\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right){\bmod {7}},}"/></span></dd></dl>
+<p>d&#243;nde
+</p>
+<ul><li>Y es el a&#241;o menos 1 para enero o febrero y el a&#241;o para cualquier otro mes</li>
+<li>y son los 2 &#250;ltimos d&#237;gitos de Y</li>
+<li>c son los primeros 2 d&#237;gitos de Y</li>
+<li>d es el d&#237;a del mes (1 a 31)</li>
+<li>m es el mes cambiado (marzo = 1, ..., febrero = 12)</li>
+<li>w es el d&#237;a de la semana (0 = domingo, ..., 6 = s&#225;bado). Si w es negativo, se debe sumar 7.</li></ul>
+<p>Por ejemplo, 1 de enero de 2000 (a&#241;o - 1 de enero)
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(0-1)+\left\lfloor {\frac {0-1}{4}}\right\rfloor +\left\lfloor {\frac {20}{4}}\right\rfloor -2\cdot 20\right){\bmod {7}}\\&amp;=(1+28-1-1+5-40){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <mi>w</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mrow>
+                  <mo>(</mo>
+                  <mrow>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mo fence="false" stretchy="false">&#8970;</mo>
+                    <mn>2.6</mn>
+                    <mo>&#8901;</mo>
+                    <mn>11</mn>
+                    <mo>&#8722;</mo>
+                    <mn>0.2</mn>
+                    <mo fence="false" stretchy="false">&#8971;</mo>
+                    <mo>+</mo>
+                    <mo stretchy="false">(</mo>
+                    <mn>0</mn>
+                    <mo>&#8722;</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                    <mo>+</mo>
+                    <mrow>
+                      <mo>&#8970;</mo>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mfrac>
+                          <mrow>
+                            <mn>0</mn>
+                            <mo>&#8722;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mn>4</mn>
+                        </mfrac>
+                      </mrow>
+                      <mo>&#8971;</mo>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow>
+                      <mo>&#8970;</mo>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mfrac>
+                          <mn>20</mn>
+                          <mn>4</mn>
+                        </mfrac>
+                      </mrow>
+                      <mo>&#8971;</mo>
+                    </mrow>
+                    <mo>&#8722;</mo>
+                    <mn>2</mn>
+                    <mo>&#8901;</mo>
+                    <mn>20</mn>
+                  </mrow>
+                  <mo>)</mo>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>28</mn>
+                <mo>&#8722;</mo>
+                <mn>1</mn>
+                <mo>&#8722;</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mo>&#8722;</mo>
+                <mn>40</mn>
+                <mo stretchy="false">)</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>6</mn>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mtext>Sabado</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(0-1)+\left\lfloor {\frac {0-1}{4}}\right\rfloor +\left\lfloor {\frac {20}{4}}\right\rfloor -2\cdot 20\right){\bmod {7}}\\&amp;=(1+28-1-1+5-40){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/39e635eb937c415c29cc6bbd0c03ef8ff5798c16" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -5.505ex; width:73.108ex; height:12.176ex;" alt="{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(0-1)+\left\lfloor {\frac {0-1}{4}}\right\rfloor +\left\lfloor {\frac {20}{4}}\right\rfloor -2\cdot 20\right){\bmod {7}}\\&amp;=(1+28-1-1+5-40){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}"/></span></dd></dl>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(100-1)+\left\lfloor {\frac {100-1}{4}}\right\rfloor +\left\lfloor {\frac {20-1}{4}}\right\rfloor -2\cdot (20-1)\right){\bmod {7}}\\&amp;=(1+28+99+24+4-38){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <mi>w</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mrow>
+                  <mo>(</mo>
+                  <mrow>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mo fence="false" stretchy="false">&#8970;</mo>
+                    <mn>2.6</mn>
+                    <mo>&#8901;</mo>
+                    <mn>11</mn>
+                    <mo>&#8722;</mo>
+                    <mn>0.2</mn>
+                    <mo fence="false" stretchy="false">&#8971;</mo>
+                    <mo>+</mo>
+                    <mo stretchy="false">(</mo>
+                    <mn>100</mn>
+                    <mo>&#8722;</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                    <mo>+</mo>
+                    <mrow>
+                      <mo>&#8970;</mo>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mfrac>
+                          <mrow>
+                            <mn>100</mn>
+                            <mo>&#8722;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mn>4</mn>
+                        </mfrac>
+                      </mrow>
+                      <mo>&#8971;</mo>
+                    </mrow>
+                    <mo>+</mo>
+                    <mrow>
+                      <mo>&#8970;</mo>
+                      <mrow class="MJX-TeXAtom-ORD">
+                        <mfrac>
+                          <mrow>
+                            <mn>20</mn>
+                            <mo>&#8722;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mn>4</mn>
+                        </mfrac>
+                      </mrow>
+                      <mo>&#8971;</mo>
+                    </mrow>
+                    <mo>&#8722;</mo>
+                    <mn>2</mn>
+                    <mo>&#8901;</mo>
+                    <mo stretchy="false">(</mo>
+                    <mn>20</mn>
+                    <mo>&#8722;</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <mo>)</mo>
+                </mrow>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>28</mn>
+                <mo>+</mo>
+                <mn>99</mn>
+                <mo>+</mo>
+                <mn>24</mn>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mo>&#8722;</mo>
+                <mn>38</mn>
+                <mo stretchy="false">)</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd/>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>6</mn>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mtext>Sabado</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(100-1)+\left\lfloor {\frac {100-1}{4}}\right\rfloor +\left\lfloor {\frac {20-1}{4}}\right\rfloor -2\cdot (20-1)\right){\bmod {7}}\\&amp;=(1+28+99+24+4-38){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e5061877b2396ea147cd5abff57ab4794491dfce" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -5.505ex; width:87.572ex; height:12.176ex;" alt="{\displaystyle {\begin{aligned}w&amp;=\left(1+\lfloor 2.6\cdot 11-0.2\rfloor +(100-1)+\left\lfloor {\frac {100-1}{4}}\right\rfloor +\left\lfloor {\frac {20-1}{4}}\right\rfloor -2\cdot (20-1)\right){\bmod {7}}\\&amp;=(1+28+99+24+4-38){\bmod {7}}\\&amp;=6={\text{Sabado}}\end{aligned}}}"/></span></dd></dl>
+<p>
+|}
+</p><p>Nota: El primero es solo para un a&#241;o bisiesto 00 y el segundo es para cualquier a&#241;o 00.
+</p><p>El t&#233;rmino <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \lfloor 2.6m-0.2\rfloor \mod 7}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mn>2.6</mn>
+        <mi>m</mi>
+        <mo>&#8722;</mo>
+        <mn>0.2</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mspace width="1em"/>
+        <mi>mod</mi>
+        <mspace width="thinmathspace"/>
+        <mspace width="thinmathspace"/>
+        <mn>7</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \lfloor 2.6m-0.2\rfloor \mod 7}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c0ab2be2171956b9b0562a929633b9f44a0168b9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:22.313ex; height:2.843ex;" alt="{\displaystyle \lfloor 2.6m-0.2\rfloor \mod 7}"/></span>  da los valores de meses: m
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Mes</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span>
+</th></tr>
+<tr>
+<td>enero</td>
+<td>0
+</td></tr>
+<tr>
+<td>febrero</td>
+<td>3
+</td></tr>
+<tr>
+<td>marzo</td>
+<td>2
+</td></tr>
+<tr>
+<td>abril</td>
+<td>5
+</td></tr>
+<tr>
+<td>mayo</td>
+<td>0
+</td></tr>
+<tr>
+<td>junio</td>
+<td>3
+</td></tr>
+<tr>
+<td>julio</td>
+<td>5
+</td></tr>
+<tr>
+<td>agosto</td>
+<td>1
+</td></tr>
+<tr>
+<td>septiembre</td>
+<td>4
+</td></tr>
+<tr>
+<td>octubre</td>
+<td>6
+</td></tr>
+<tr>
+<td>noviembre</td>
+<td>2
+</td></tr>
+<tr>
+<td>diciembre</td>
+<td>4
+</td></tr></tbody></table>
+<p>El t&#233;rmino <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle y+\left\lfloor {\frac {y}{4}}\right\rfloor \mod 7}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>y</mi>
+        <mo>+</mo>
+        <mrow>
+          <mo>&#8970;</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mfrac>
+              <mi>y</mi>
+              <mn>4</mn>
+            </mfrac>
+          </mrow>
+          <mo>&#8971;</mo>
+        </mrow>
+        <mspace width="1em"/>
+        <mi>mod</mi>
+        <mspace width="thinmathspace"/>
+        <mspace width="thinmathspace"/>
+        <mn>7</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle y+\left\lfloor {\frac {y}{4}}\right\rfloor \mod 7}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cb948c28db52a8bf838a2c88dddd3e8005e0f0ca" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.838ex; width:17.874ex; height:4.843ex;" alt="{\displaystyle y+\left\lfloor {\frac {y}{4}}\right\rfloor \mod 7}"/></span> da los valores de a&#241;os: y
+</p>
+<table class="wikitable" style="text-align:center">
+
+<tbody><tr>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">y</span> mod 28</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">y</span>
+</th></tr>
+<tr>
+<td>01 07 12 18 --</td>
+<td>1
+</td></tr>
+<tr>
+<td>02-13 19 24</td>
+<td>2
+</td></tr>
+<tr>
+<td>03 08 14-25</td>
+<td>3
+</td></tr>
+<tr>
+<td>-- 09 15 20 26</td>
+<td>4
+</td></tr>
+<tr>
+<td>04 10-21 27</td>
+<td>5
+</td></tr>
+<tr>
+<td>05 11 16 22 --</td>
+<td>6
+</td></tr>
+<tr>
+<td>06-17 23 00</td>
+<td>0
+</td></tr></tbody></table>
+<p>El t&#233;rmino <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \left(\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right)\mod 7}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>c</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>&#8722;</mo>
+            <mn>2</mn>
+            <mi>c</mi>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mspace width="1em"/>
+        <mi>mod</mi>
+        <mspace width="thinmathspace"/>
+        <mspace width="thinmathspace"/>
+        <mn>7</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \left(\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right)\mod 7}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b67317411d4478893266ef600baaf0f4e1f1dee6" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.838ex; width:21.663ex; height:4.843ex;" alt="{\displaystyle \left(\left\lfloor {\frac {c}{4}}\right\rfloor -2c\right)\mod 7}"/></span> da los valores de los siglos: c
+</p>
+<table class="wikitable" style="text-align:center">
+
+<tbody><tr>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">c</span> mod 4</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">c</span>
+</th></tr>
+<tr>
+<td>1</td>
+<td>5
+</td></tr>
+<tr>
+<td>2</td>
+<td>3
+</td></tr>
+<tr>
+<td>3</td>
+<td>1
+</td></tr>
+<tr>
+<td>0</td>
+<td>0
+</td></tr></tbody></table>
+<p>Ahora de la f&#243;rmula general: <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w=d+m+y+c{\bmod {7}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>=</mo>
+        <mi>d</mi>
+        <mo>+</mo>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mi>y</mi>
+        <mo>+</mo>
+        <mi>c</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w=d+m+y+c{\bmod {7}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6b4b9a55ddc8bce6a5dbc2e6e6f73ea9fc0b09bc" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:25.546ex; height:2.509ex;" alt="{\displaystyle w=d+m+y+c{\bmod {7}}}"/></span>; El 1 de enero de 2000 se puede volver a calcular de la siguiente manera:
+</p><p><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}w&amp;=1+0+5+0{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=5(0-1{\bmod {2}}8=27)\\c&amp;=0(20{\bmod {4}}=0)\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <mi>w</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>0</mn>
+                <mo>+</mo>
+                <mn>5</mn>
+                <mo>+</mo>
+                <mn>0</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+                <mo>=</mo>
+                <mn>6</mn>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mtext>Sabado</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>d</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>1</mn>
+                <mo>,</mo>
+                <mi>m</mi>
+                <mo>=</mo>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>y</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>5</mn>
+                <mo stretchy="false">(</mo>
+                <mn>0</mn>
+                <mo>&#8722;</mo>
+                <mn>1</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                  </mrow>
+                </mrow>
+                <mn>8</mn>
+                <mo>=</mo>
+                <mn>27</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>c</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>0</mn>
+                <mo stretchy="false">(</mo>
+                <mn>20</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>4</mn>
+                  </mrow>
+                </mrow>
+                <mo>=</mo>
+                <mn>0</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}w&amp;=1+0+5+0{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=5(0-1{\bmod {2}}8=27)\\c&amp;=0(20{\bmod {4}}=0)\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0eb79fad147d562462c2ee9459b15be669a86880" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -5.505ex; width:40.253ex; height:12.176ex;" alt="{\displaystyle {\begin{aligned}w&amp;=1+0+5+0{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=5(0-1{\bmod {2}}8=27)\\c&amp;=0(20{\bmod {4}}=0)\end{aligned}}}"/></span>
+</p><p><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\begin{aligned}w&amp;=1+0+4+1{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=4(99{\bmod {2}}8=15)\\c&amp;=1(20-1{\bmod {4}}=3)\end{aligned}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <mtr>
+              <mtd>
+                <mi>w</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mn>0</mn>
+                <mo>+</mo>
+                <mn>4</mn>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>7</mn>
+                  </mrow>
+                </mrow>
+                <mo>=</mo>
+                <mn>6</mn>
+                <mo>=</mo>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mtext>Sabado</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>d</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>1</mn>
+                <mo>,</mo>
+                <mi>m</mi>
+                <mo>=</mo>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>y</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>4</mn>
+                <mo stretchy="false">(</mo>
+                <mn>99</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>2</mn>
+                  </mrow>
+                </mrow>
+                <mn>8</mn>
+                <mo>=</mo>
+                <mn>15</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>c</mi>
+              </mtd>
+              <mtd>
+                <mi/>
+                <mo>=</mo>
+                <mn>1</mn>
+                <mo stretchy="false">(</mo>
+                <mn>20</mn>
+                <mo>&#8722;</mo>
+                <mn>1</mn>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>4</mn>
+                  </mrow>
+                </mrow>
+                <mo>=</mo>
+                <mn>3</mn>
+                <mo stretchy="false">)</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\begin{aligned}w&amp;=1+0+4+1{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=4(99{\bmod {2}}8=15)\\c&amp;=1(20-1{\bmod {4}}=3)\end{aligned}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/95870e5575501397c14e66fdee39a7a369288864" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -5.505ex; width:40.253ex; height:12.176ex;" alt="{\displaystyle {\begin{aligned}w&amp;=1+0+4+1{\bmod {7}}=6={\text{Sabado}}\\d&amp;=1,m=0\\y&amp;=4(99{\bmod {2}}8=15)\\c&amp;=1(20-1{\bmod {4}}=3)\end{aligned}}}"/></span>
+</p>
+<p>
+|}
+</p><h3><span class="mw-headline" id="Algoritmo_de_Zeller">Algoritmo de Zeller</span></h3>
+<div class="noprint AP rellink"><span style="font-size:88%">Art&#237;culo principal:</span> <i><a href="https://es.wikipedia.org/wiki/Congruencia_de_Zeller" title="Congruencia de Zeller"> Congruencia de Zeller</a></i></div>
+<p>En el algoritmo de Zeller, los meses est&#225;n numerados del 3 de marzo al 14 de febrero. Se supone que el a&#241;o comienza en marzo; esto significa, por ejemplo, que enero de 1995 se tratar&#225; como el mes 13 de 1994.<sup id="cite_ref-11" class="reference separada"><a href="#cite_note-11"><span class="corchete-llamada">[</span>11<span class="corchete-llamada">]</span></a></sup>&#8203; La f&#243;rmula para el calendario gregoriano es<br/>
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w\equiv \left(\left\lfloor {\frac {13(m+1)}{5}}\right\rfloor +\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor +d+y-2c\right){\bmod {7}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>&#8801;</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mrow>
+                    <mn>13</mn>
+                    <mo stretchy="false">(</mo>
+                    <mi>m</mi>
+                    <mo>+</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                  <mn>5</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>y</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>c</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>+</mo>
+            <mi>d</mi>
+            <mo>+</mo>
+            <mi>y</mi>
+            <mo>&#8722;</mo>
+            <mn>2</mn>
+            <mi>c</mi>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w\equiv \left(\left\lfloor {\frac {13(m+1)}{5}}\right\rfloor +\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor +d+y-2c\right){\bmod {7}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d22dd82fb61a7f1bb2b2da1b76633d86a69735ee" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.505ex; width:56.788ex; height:6.343ex;" alt="{\displaystyle w\equiv \left(\left\lfloor {\frac {13(m+1)}{5}}\right\rfloor +\left\lfloor {\frac {y}{4}}\right\rfloor +\left\lfloor {\frac {c}{4}}\right\rfloor +d+y-2c\right){\bmod {7}}}"/></span></dd></dl>
+<p>d&#243;nde
+</p>
+<ul><li>Y es el a&#241;o menos 1 para enero o febrero y el a&#241;o para cualquier otro mes</li>
+<li>y son los 2 &#250;ltimos d&#237;gitos de Y</li>
+<li>c son los primeros 2 d&#237;gitos de Y</li>
+<li>d es el d&#237;a del mes (1 a 31)</li>
+<li>m es el mes cambiado (marzo = 3, ... enero = 13, febrero = 14)</li>
+<li>w es el d&#237;a de la semana (1 = domingo, .. 0 = s&#225;bado)</li></ul>
+<p>La &#250;nica diferencia es una entre el algoritmo de Zeller (Z) y el algoritmo de Gauss (G), es decir, <i>Z</i> - <i>G</i> = 1 = Domingo.
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle (d+\lfloor (m+1)2.6\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}-(d+\lfloor 2.6m-0.2\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo stretchy="false">(</mo>
+        <mi>d</mi>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mn>2.6</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>+</mo>
+        <mi>y</mi>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mi>y</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>4</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mi>c</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>4</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>&#8722;</mo>
+        <mn>2</mn>
+        <mi>c</mi>
+        <mo stretchy="false">)</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>&#8722;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>d</mi>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mn>2.6</mn>
+        <mi>m</mi>
+        <mo>&#8722;</mo>
+        <mn>0.2</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>+</mo>
+        <mi>y</mi>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mi>y</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>4</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>+</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mi>c</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo>/</mo>
+        </mrow>
+        <mn>4</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo>&#8722;</mo>
+        <mn>2</mn>
+        <mi>c</mi>
+        <mo stretchy="false">)</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle (d+\lfloor (m+1)2.6\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}-(d+\lfloor 2.6m-0.2\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d9a800c83a46c7b8005a4babbc52e1ec8add9752" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:105.293ex; height:2.843ex;" alt="{\displaystyle (d+\lfloor (m+1)2.6\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}-(d+\lfloor 2.6m-0.2\rfloor +y+\lfloor y/4\rfloor +\lfloor c/4\rfloor -2c){\bmod {7}}}"/></span></dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle =(\lfloor (m+2+1)2.6-(2.6m-0.2)\rfloor ){\bmod {7}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo>=</mo>
+        <mo stretchy="false">(</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mo>+</mo>
+        <mn>1</mn>
+        <mo stretchy="false">)</mo>
+        <mn>2.6</mn>
+        <mo>&#8722;</mo>
+        <mo stretchy="false">(</mo>
+        <mn>2.6</mn>
+        <mi>m</mi>
+        <mo>&#8722;</mo>
+        <mn>0.2</mn>
+        <mo stretchy="false">)</mo>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo stretchy="false">)</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle =(\lfloor (m+2+1)2.6-(2.6m-0.2)\rfloor ){\bmod {7}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d88009f01e5b61a6924d62cc7fb1df4b43d093eb" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:43.472ex; height:2.843ex;" alt="{\displaystyle =(\lfloor (m+2+1)2.6-(2.6m-0.2)\rfloor ){\bmod {7}}}"/></span> (Marzo = 3 en Z pero marzo = 1 en G)</dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle =(\lfloor 2.6m+7.8-2.6m+0.2\rfloor ){\bmod {7}}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo>=</mo>
+        <mo stretchy="false">(</mo>
+        <mo fence="false" stretchy="false">&#8970;</mo>
+        <mn>2.6</mn>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mn>7.8</mn>
+        <mo>&#8722;</mo>
+        <mn>2.6</mn>
+        <mi>m</mi>
+        <mo>+</mo>
+        <mn>0.2</mn>
+        <mo fence="false" stretchy="false">&#8971;</mo>
+        <mo stretchy="false">)</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle =(\lfloor 2.6m+7.8-2.6m+0.2\rfloor ){\bmod {7}}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d4a6c60fe42b7770ff12251b076bb86e9f0db7fe" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:37.66ex; height:2.843ex;" alt="{\displaystyle =(\lfloor 2.6m+7.8-2.6m+0.2\rfloor ){\bmod {7}}}"/></span></dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle =8{\bmod {7}}=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo>=</mo>
+        <mn>8</mn>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle =8{\bmod {7}}=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/556a8eca4db00309140e37949c8852e4598366df" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:14.72ex; height:2.176ex;" alt="{\displaystyle =8{\bmod {7}}=1}"/></span></dd></dl>
+<p>Entonces podemos obtener los valores de los meses a partir de los del algoritmo gaussiano agregando uno:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Mes</th>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span>
+</th></tr>
+<tr>
+<td>enero</td>
+<td>1
+</td></tr>
+<tr>
+<td>febrero</td>
+<td>4
+</td></tr>
+<tr>
+<td>marzo</td>
+<td>3
+</td></tr>
+<tr>
+<td>abril</td>
+<td>6
+</td></tr>
+<tr>
+<td>mayo</td>
+<td>1
+</td></tr>
+<tr>
+<td>junio</td>
+<td>4
+</td></tr>
+<tr>
+<td>julio</td>
+<td>6
+</td></tr>
+<tr>
+<td>agosto</td>
+<td>2
+</td></tr>
+<tr>
+<td>septiembre</td>
+<td>5
+</td></tr>
+<tr>
+<td>octubre</td>
+<td>0
+</td></tr>
+<tr>
+<td>noviembre</td>
+<td>3
+</td></tr>
+<tr>
+<td>diciembre</td>
+<td>5
+</td></tr></tbody></table>
+<h3><span class="mw-headline" id="Algoritmo_de_Wang">Algoritmo de Wang</span></h3>
+<p>El algoritmo de Wang <sup id="cite_ref-Wang_12-0" class="reference separada"><a href="#cite_note-Wang-12"><span class="corchete-llamada">[</span>12<span class="corchete-llamada">]</span></a></sup>&#8203; para el calendario gregoriano es (la f&#243;rmula debe restarse de 1 si m es 1 o 2 y el a&#241;o es bisiesto)
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -2\left(c{\bmod {4}}\right)\right){\bmod {7}},}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>d</mi>
+            <mo>&#8722;</mo>
+            <msub>
+              <mi>d</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>m</mi>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <msub>
+              <mi>y</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mo>&#8722;</mo>
+            <msub>
+              <mi>y</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow>
+                <msub>
+                  <mi>y</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>0</mn>
+                  </mrow>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>4</mn>
+                <mo>&#8722;</mo>
+                <msub>
+                  <mi>y</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                  </mrow>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>2</mn>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>&#8722;</mo>
+            <mn>2</mn>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mi>c</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>4</mn>
+                  </mrow>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>,</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -2\left(c{\bmod {4}}\right)\right){\bmod {7}},}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8826d7fb10921827e180edffa6f96a9c6c0d1659" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:65.518ex; height:2.843ex;" alt="{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -2\left(c{\bmod {4}}\right)\right){\bmod {7}},}"/></span></dd></dl>
+<p>d&#243;nde
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle y_{0}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>y</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle y_{0}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6d943dbbb0b56ca750c4d62c5b54b4ae29a773da" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.193ex; height:2.009ex;" alt="{\displaystyle y_{0}}"/></span>es el &#250;ltimo d&#237;gito del a&#241;o</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle y_{1}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>y</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>1</mn>
+          </mrow>
+        </msub>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle y_{1}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eef4db76d658a98219aca14df06d9869d2b43c42" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.193ex; height:2.009ex;" alt="y_1"/></span>es el &#250;ltimo segundo d&#237;gito del a&#241;o</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle c}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>c</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle c}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/86a67b81c2de995bd608d5b2df50cd8cd7d92455" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.007ex; height:1.676ex;" alt="c"/></span>son los 2 primeros d&#237;gitos del a&#241;o</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle d}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>d</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle d}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e85ff03cbe0c7341af6b982e47e9f90d235c66ab" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.216ex; height:2.176ex;" alt="d"/></span>es el d&#237;a del mes (1 a 31)</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle m}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>m</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle m}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0a07d98bb302f3856cbabc47b2b9016692e3f7bc" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:2.04ex; height:1.676ex;" alt="m"/></span>es el mes (enero = 1, ... diciembre = 12)</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/88b1e0c8e1be5ebe69d18a8010676fa42d7961e6" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.664ex; height:1.676ex;" alt="w"/></span>es el d&#237;a de la semana (0 = domingo, .. 6 = s&#225;bado)</li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle d_{0}(m)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>d</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle d_{0}(m)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/84c95c13974116c5eef1ea824c5524cacb890b2a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.113ex; height:2.843ex;" alt="{\displaystyle d_{0}(m)}"/></span>es la funci&#243;n de d&#237;as nulos con los valores enumerados en la siguiente tabla</li></ul>
+<table class="wikitable">
+
+<tbody><tr>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span></th>
+<th colspan="2"><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle d_{0}(m)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>d</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle d_{0}(m)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/84c95c13974116c5eef1ea824c5524cacb890b2a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.113ex; height:2.843ex;" alt="{\displaystyle d_{0}(m)}"/></span>
+</th></tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Un d&#237;a
+</td></tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td rowspan="3"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> + 2
+</td></tr>
+<tr>
+<td>5</td>
+<td>7
+</td></tr>
+<tr>
+<td>7</td>
+<td>9
+</td></tr>
+<tr>
+<td>9</td>
+<td>3</td>
+<td rowspan="2"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> + 1
+</td></tr>
+<tr>
+<td>11</td>
+<td>12
+</td></tr>
+<tr>
+<td>2</td>
+<td>12</td>
+<td><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> + 3
+</td></tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td rowspan="5"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> - 2
+</td></tr>
+<tr>
+<td>6</td>
+<td>4
+</td></tr>
+<tr>
+<td>8</td>
+<td>6
+</td></tr>
+<tr>
+<td>10</td>
+<td>8
+</td></tr>
+<tr>
+<td>12</td>
+<td>10
+</td></tr></tbody></table>
+<p>Se puede derivar un algoritmo para el calendario juliano del algoritmo anterior
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -c\right){\bmod {7}},}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>d</mi>
+            <mo>&#8722;</mo>
+            <msub>
+              <mi>d</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mo stretchy="false">(</mo>
+            <mi>m</mi>
+            <mo stretchy="false">)</mo>
+            <mo>+</mo>
+            <msub>
+              <mi>y</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>0</mn>
+              </mrow>
+            </msub>
+            <mo>&#8722;</mo>
+            <msub>
+              <mi>y</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mn>1</mn>
+              </mrow>
+            </msub>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow>
+                <msub>
+                  <mi>y</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>0</mn>
+                  </mrow>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>4</mn>
+                <mo>&#8722;</mo>
+                <msub>
+                  <mi>y</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mn>1</mn>
+                  </mrow>
+                </msub>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo>/</mo>
+                </mrow>
+                <mn>2</mn>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+            <mo>&#8722;</mo>
+            <mi>c</mi>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>,</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -c\right){\bmod {7}},}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b9b5a42df4d09455e9bb6d9385bdf078d39d0b1b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:55.316ex; height:2.843ex;" alt="{\displaystyle w=\left(d-d_{0}(m)+y_{0}-y_{1}+\left\lfloor y_{0}/4-y_{1}/2\right\rfloor -c\right){\bmod {7}},}"/></span></dd></dl>
+<p>donde <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle d_{0}(m)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>d</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle d_{0}(m)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/84c95c13974116c5eef1ea824c5524cacb890b2a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.113ex; height:2.843ex;" alt="{\displaystyle d_{0}(m)}"/></span> es un <a href="https://es.wikipedia.org/wiki/Regla_del_fin_del_mundo" title="Regla del fin del mundo">d&#237;a del juicio</a>.
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span></th>
+<th colspan="2"><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle d_{0}(m)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <msub>
+          <mi>d</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>0</mn>
+          </mrow>
+        </msub>
+        <mo stretchy="false">(</mo>
+        <mi>m</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle d_{0}(m)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/84c95c13974116c5eef1ea824c5524cacb890b2a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.113ex; height:2.843ex;" alt="{\displaystyle d_{0}(m)}"/></span>
+</th></tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>C d&#237;a
+</td></tr>
+<tr>
+<td>3</td>
+<td>7</td>
+<td rowspan="3"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> + 4
+</td></tr>
+<tr>
+<td>5</td>
+<td>9
+</td></tr>
+<tr>
+<td>7</td>
+<td>11
+</td></tr>
+<tr>
+<td>9</td>
+<td>5</td>
+<td rowspan="2"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> - 4
+</td></tr>
+<tr>
+<td>11</td>
+<td>7
+</td></tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span> - 2
+</td></tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td rowspan="5"><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span>
+</td></tr>
+<tr>
+<td>6</td>
+<td>6
+</td></tr>
+<tr>
+<td>8</td>
+<td>8
+</td></tr>
+<tr>
+<td>10</td>
+<td>10
+</td></tr>
+<tr>
+<td>12</td>
+<td>12
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Otros_algoritmos">Otros algoritmos</span></h2>
+<h3><span id="M.C3.A9todo_de_Schwerdtfeger"/><span class="mw-headline" id="M&#233;todo_de_Schwerdtfeger">M&#233;todo de Schwerdtfeger</span></h3>
+<p>En un m&#233;todo parcialmente tabular de Schwerdtfeger, el a&#241;o se divide en el siglo y el a&#241;o de dos d&#237;gitos dentro del siglo. El enfoque depende del mes. Para <span class="texhtml"><var>m</var> &#8805; 3</span>,
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle c=\left\lfloor {\frac {y}{100}}\right\rfloor \quad {\text{y}}\quad g=y-100c,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>c</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>&#8970;</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mfrac>
+              <mi>y</mi>
+              <mn>100</mn>
+            </mfrac>
+          </mrow>
+          <mo>&#8971;</mo>
+        </mrow>
+        <mspace width="1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtext>y</mtext>
+        </mrow>
+        <mspace width="1em"/>
+        <mi>g</mi>
+        <mo>=</mo>
+        <mi>y</mi>
+        <mo>&#8722;</mo>
+        <mn>100</mn>
+        <mi>c</mi>
+        <mo>,</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle c=\left\lfloor {\frac {y}{100}}\right\rfloor \quad {\text{y}}\quad g=y-100c,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/70b316193c28a998647f0456095d07aefd57e76f" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.838ex; width:30.495ex; height:4.843ex;" alt="{\displaystyle c=\left\lfloor {\frac {y}{100}}\right\rfloor \quad {\text{y}}\quad g=y-100c,}"/></span></dd></dl>
+<p>entonces <var>g</var> est&#225; entre 0 y 99. Para <var>m</var> = 1,2 ,
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle c=\left\lfloor {\frac {y-1}{100}}\right\rfloor \quad {\text{y}}\quad g=y-1-100c.}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>c</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>&#8970;</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mfrac>
+              <mrow>
+                <mi>y</mi>
+                <mo>&#8722;</mo>
+                <mn>1</mn>
+              </mrow>
+              <mn>100</mn>
+            </mfrac>
+          </mrow>
+          <mo>&#8971;</mo>
+        </mrow>
+        <mspace width="1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mtext>y</mtext>
+        </mrow>
+        <mspace width="1em"/>
+        <mi>g</mi>
+        <mo>=</mo>
+        <mi>y</mi>
+        <mo>&#8722;</mo>
+        <mn>1</mn>
+        <mo>&#8722;</mo>
+        <mn>100</mn>
+        <mi>c</mi>
+        <mo>.</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle c=\left\lfloor {\frac {y-1}{100}}\right\rfloor \quad {\text{y}}\quad g=y-1-100c.}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ea48448a7b19cd67d47cd95aaaba0ae3c97004e3" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.505ex; width:36.424ex; height:6.176ex;" alt="{\displaystyle c=\left\lfloor {\frac {y-1}{100}}\right\rfloor \quad {\text{y}}\quad g=y-1-100c.}"/></span></dd></dl>
+<p>La f&#243;rmula para el d&#237;a de la semana es<sup id="cite_ref-Schwerdtfeger_8-3" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle w=\left(d+e+f+g+\left\lfloor {\frac {g}{4}}\right\rfloor \right){\bmod {7}},}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>w</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>d</mi>
+            <mo>+</mo>
+            <mi>e</mi>
+            <mo>+</mo>
+            <mi>f</mi>
+            <mo>+</mo>
+            <mi>g</mi>
+            <mo>+</mo>
+            <mrow>
+              <mo>&#8970;</mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mfrac>
+                  <mi>g</mi>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+              <mo>&#8971;</mo>
+            </mrow>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo lspace="thickmathspace" rspace="thickmathspace">mod</mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+        <mo>,</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle w=\left(d+e+f+g+\left\lfloor {\frac {g}{4}}\right\rfloor \right){\bmod {7}},}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/885d7c555f3aab5070663f53fee91a8cfa7050c2" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -1.838ex; width:35.925ex; height:4.843ex;" alt="{\displaystyle w=\left(d+e+f+g+\left\lfloor {\frac {g}{4}}\right\rfloor \right){\bmod {7}},}"/></span></dd></dl>
+<p>donde se elige el m&#243;dulo positivo.<sup id="cite_ref-Schwerdtfeger_8-4" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p><p>El valor de <i>e</i> se obtiene de la siguiente tabla:
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<td><span class="texhtml mvar" style="font-style:italic; font-size:125%">m</span></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12
+</td></tr>
+<tr>
+<td><span class="texhtml mvar" style="font-style:italic; font-size:125%">e</span></td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>4</td>
+<td>6</td>
+<td>2</td>
+<td>4
+</td></tr></tbody></table>
+<p>El valor de <i>f</i> se obtiene de la siguiente tabla, que depende del calendario. Para el calendario gregoriano,<sup id="cite_ref-Schwerdtfeger_8-5" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<td><span class="texhtml"><i>c</i> mod 4</span></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3
+</td></tr>
+<tr>
+<th colspan="1"><span class="texhtml mvar" style="font-style:italic; font-size:125%">f</span></th>
+<th>0</th>
+<th>5</th>
+<th>3</th>
+<th>1
+</th></tr></tbody></table>
+<p>Para el calendario juliano,<sup id="cite_ref-Schwerdtfeger_8-6" class="reference separada"><a href="#cite_note-Schwerdtfeger-8"><span class="corchete-llamada">[</span>8<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<td><span class="texhtml"><i>c</i> mod 7</span></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6
+</td></tr>
+<tr>
+<th colspan="1"><span class="texhtml mvar" style="font-style:italic; font-size:125%">f</span></th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+<th>6
+</th></tr></tbody></table>
+<h3><span id="M.C3.A9todo_de_Lewis_Carroll"/><span class="mw-headline" id="M&#233;todo_de_Lewis_Carroll">M&#233;todo de Lewis Carroll</span></h3>
+<p>Charles Lutwidge Dodgson (<a href="https://es.wikipedia.org/wiki/Lewis_Carroll" title="Lewis Carroll">Lewis Carroll</a>) ide&#243; un m&#233;todo que se asemeja a un rompecabezas, pero en parte tabular al usar los mismos n&#250;meros de &#237;ndice para los meses que en la "Tabla completa: calendarios juliano y gregoriano" anterior. Enumera los mismos tres ajustes para los primeros tres meses de los a&#241;os no bisiestos, uno m&#225;s alto para el &#250;ltimo, y da instrucciones cr&#237;pticas para encontrar el resto; Sus ajustes por siglos se determinar&#225;n utilizando f&#243;rmulas similares a las de la tabla de siglos. Aunque expl&#237;cito al afirmar que su m&#233;todo tambi&#233;n funciona para fechas de <i>estilo antiguo</i>, su ejemplo se reproduce a continuaci&#243;n para determinar que "1676, 23 de febrero" es un mi&#233;rcoles, solo funciona en un calendario juliano que comienza el a&#241;o el 1 de enero, en lugar del 25 de marzo como el el "estilo antiguo".
+</p><p><b>Algoritmo:</b><sup id="cite_ref-Dodgson1887_13-0" class="reference separada"><a href="#cite_note-Dodgson1887-13"><span class="corchete-llamada">[</span>13<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<style data-mw-deduplicate="TemplateStyles:r119797252">.mw-parser-output .flexquote{display:flex;flex-direction:column;background-color:#F9F9F9;border-left:3px solid #c8ccd1;font-size:90%;margin:1em 4em;padding:.4em .8em}.mw-parser-output .flexquote&gt;.flex{display:flex;flex-direction:row}.mw-parser-output .flexquote&gt;.flex&gt;.quote{width:100%}.mw-parser-output .flexquote&gt;.flex&gt;.separator{border-left:1px solid #c8ccd1;border-top:1px solid #c8ccd1;margin:.4em .8em}.mw-parser-output .flexquote&gt;.cite{text-align:right}@media all and (max-width:600px){.mw-parser-output .flexquote&gt;.flex{flex-direction:column}}</style>
+<blockquote class="flexquote">
+ <div class="flex">
+  <div class="quote">Tome la fecha indicada en 4 porciones, a saber. el n&#250;mero de siglos, el n&#250;mero de a&#241;os transcurridos, el mes, el d&#237;a del mes.
+<p>Calcule los siguientes 4 elementos, agregando cada uno, cuando lo encuentre, al total de los elementos anteriores. Cuando un art&#237;culo o un total exceda de 7, divida entre 7 y conserve el resto &#250;nicamente.
+</p><p>&#205;tem del siglo: Para ' Estilo antiguo ' (que termin&#243; el 2 de septiembre de 1752) reste de 18. Para ' Estilo nuevo ' (que comenz&#243; el 14 de septiembre de 1752) divida por 4, tome m&#225;s de 3, multiplique el resto por 2.
+</p><p>&#205;tem del a&#241;o: Sume el n&#250;mero de docenas, el excedente y el n&#250;mero de 4 en el excedente.
+</p><p>&#205;tem del mes: si comienza o termina con una vocal, reste el n&#250;mero, indicando su lugar en el a&#241;o, de 10. Esto, m&#225;s el n&#250;mero de d&#237;as, da el elemento del mes siguiente. El art&#237;culo de enero es "0"; para febrero o marzo, "3"; para diciembre, "12".
+</p><p>&#205;tem del d&#237;a: El total as&#237; alcanzado debe corregirse, deduciendo "1" (primero sumando 7, si el total es "0"), si la fecha es enero o febrero en un a&#241;o bisiesto, recordando que cada a&#241;o, divisible por 4, es un a&#241;o bisiesto, excepto s&#243;lo los a&#241;os-siglo, en "Nuevo estilo", cuando el n&#250;mero de siglos no es tan divisible (por ejemplo, 1800).
+</p>
+El resultado final da el d&#237;a de la semana, "0" significa domingo, "1" lunes, y as&#237; sucesivamente.</div>
+ </div>
+</blockquote>
+<p><b>Ejemplos:</b><sup id="cite_ref-Dodgson1887_13-1" class="reference separada"><a href="#cite_note-Dodgson1887-13"><span class="corchete-llamada">[</span>13<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<dl><dt>1783, 18 de septiembre</dt></dl>
+<p>17, dividido entre 4, deja "1" encima; 1 de 3 da "2"; dos veces 2 es "4". 83 son 6 docenas y 11, dando 17; m&#225;s 2 da 19, es decir (dividiendo entre 7) "5". Total 9, es decir, "2" El elemento de agosto es "8 de 10", es decir, "2"; entonces, para septiembre, es "2 m&#225;s 31", es decir, "5" Total 7, es decir, "0", que se apaga. 18 da "4". Respuesta, "jueves".
+</p>
+<dl><dt>1676, 23 de febrero</dt></dl>
+<p>16 de 18 da "2" 76 son 6 docenas y 4, dando 10; m&#225;s 1 da 11, es decir, "4". Total "6" El art&#237;culo de febrero es "3". Total 9, es decir, "2" 23 da "2". La correcci&#243;n total "4" para el a&#241;o bisiesto da "3". Respuesta, "mi&#233;rcoles".
+</p><p>Dado que el 23 de febrero de 1676 (contando febrero como el segundo mes) es, para Carroll, el mismo d&#237;a que el gregoriano 4 de marzo de 1676, no llega a la respuesta correcta, a saber, "viernes", para una fecha de estilo antiguo que figura en el calendario gregoriano. es el mismo d&#237;a que el 5 de marzo de 1677. Si hubiera asumido correctamente que el a&#241;o comenzar&#237;a el 25 de marzo, su m&#233;todo habr&#237;a tenido en cuenta los n&#250;meros de a&#241;os diferentes, al igual que el cumplea&#241;os de <a href="https://es.wikipedia.org/wiki/George_Washington" title="George Washington">George Washington</a>, entre los dos calendarios.
+</p><p>Es de destacar que aquellos que han vuelto a publicar el m&#233;todo de Carroll no han se&#241;alado su error, sobre todo <a href="https://es.wikipedia.org/wiki/Martin_Gardner" title="Martin Gardner">Martin Gardner</a>.<sup id="cite_ref-14" class="reference separada"><a href="#cite_note-14"><span class="corchete-llamada">[</span>14<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p><p>En 1752, el Imperio Brit&#225;nico abandon&#243; el uso del <a href="https://es.wikipedia.org/wiki/Calendario_juliano" title="Calendario juliano">calendario juliano</a> de estilo antiguo al adoptar el <a href="https://es.wikipedia.org/wiki/Calendario_gregoriano" title="Calendario gregoriano">calendario gregoriano</a>, que se ha convertido en el est&#225;ndar actual en la mayor&#237;a de los pa&#237;ses del mundo.
+</p>
+<h3><span id="M.C3.A9todos_dependientes_de_la_implementaci.C3.B3n"/><span class="mw-headline" id="M&#233;todos_dependientes_de_la_implementaci&#243;n">M&#233;todos dependientes de la implementaci&#243;n</span></h3>
+<p>En las expresiones de abajo en <a href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)" title="C (lenguaje de programaci&#243;n)">lenguaje C</a>, <code>y</code> , <code>m</code> y <code>d</code> son, respectivamente, n&#250;mero entero variables que representan el a&#241;o (por ejemplo, 1988), meses (1-12) y el d&#237;a del mes (1-31).  
+</p>
+<pre>        (d+=m&lt;3?y--:y-2,23*m/9+d+4+y/4-y/100+y/400)%7  
+</pre>
+<p>En 1990, Michael Keith y Tom Craver publicaron la expresi&#243;n anterior que busca minimizar el n&#250;mero de pulsaciones de teclas necesarias para ingresar a una funci&#243;n aut&#243;noma para convertir una fecha gregoriana en un d&#237;a num&#233;rico de la semana.<sup id="cite_ref-15" class="reference separada"><a href="#cite_note-15"><span class="corchete-llamada">[</span>15<span class="corchete-llamada">]</span></a></sup>&#8203; No conserva ni <code>y</code> ni <code>d</code> , y devuelve <code>0</code> = domingo, <code>1</code> = lunes, etc.
+</p><p>Poco despu&#233;s, Hans Lachman simplific&#243; su algoritmo para facilitar su uso en dispositivos de gama baja. Tal como se dise&#241;&#243; originalmente para calculadoras de cuatro funciones, su m&#233;todo necesita menos entradas de teclado al limitar su rango a 1905-2099 d. C. o fechas julianas hist&#243;ricas. Posteriormente se modific&#243; para convertir cualquier fecha gregoriana, incluso en un <a href="https://es.wikipedia.org/wiki/%C3%81baco" title="&#193;baco">&#225;baco</a>. En los dispositivos basados en <a href="https://es.wikipedia.org/wiki/Motorola_68000#Example_code" title="Motorola 68000">Motorola 68000</a> hay igualmente menos necesidad de <a href="https://es.wikipedia.org/wiki/Registro_(hardware)" title="Registro (hardware)">registros de procesador</a> o <a href="https://es.wikipedia.org/wiki/C%C3%B3digo_de_operaci%C3%B3n" title="C&#243;digo de operaci&#243;n">c&#243;digos de operaci&#243;n</a>, seg&#250;n el objetivo de dise&#241;o previsto.<sup id="cite_ref-16" class="reference separada"><a href="#cite_note-16"><span class="corchete-llamada">[</span>16<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<h4><span id="M.C3.A9todos_de_Sakamoto"/><span class="mw-headline" id="M&#233;todos_de_Sakamoto">M&#233;todos de Sakamoto</span></h4>
+<p>El precursor tabular para el algoritmo de T&#248;ndering se materializa en la siguiente K &amp; R C funci&#243;n.<sup id="cite_ref-17" class="reference separada"><a href="#cite_note-17"><span class="corchete-llamada">[</span>17<span class="corchete-llamada">]</span></a></sup>&#8203; Con cambios menores, fue adaptado para otros <a href="https://es.wikipedia.org/wiki/Lenguaje_de_alto_nivel" title="Lenguaje de alto nivel">lenguajes de programaci&#243;n de alto nivel</a> como <a href="https://es.wikipedia.org/wiki/APL" title="APL">APL2</a>.<sup id="cite_ref-18" class="reference separada"><a href="#cite_note-18"><span class="corchete-llamada">[</span>18<span class="corchete-llamada">]</span></a></sup>&#8203; Publicado por Tomohiko Sakamoto en el <a href="https://es.wikipedia.org/wiki/Grupo_de_noticias" title="Grupo de noticias">grupo de noticias</a> de <a href="https://es.wikipedia.org/wiki/Usenet" title="Usenet">Usenet</a> comp.lang.c en 1992, es exacto para cualquier fecha gregoriana.<sup id="cite_ref-19" class="reference separada"><a href="#cite_note-19"><span class="corchete-llamada">[</span>19<span class="corchete-llamada">]</span></a></sup>&#8203;<sup id="cite_ref-20" class="reference separada"><a href="#cite_note-20"><span class="corchete-llamada">[</span>20<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<pre>    dayofweek(y, m, d)	/* 1 &lt;= m &lt;= 12,  y &gt; 1752 (in the U.K.) */
+    {
+        static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+        if( m &lt; 3 )
+        {
+          y -= 1;
+        }
+        return (y + y/4 - y/100 + y/400 + t[m-1] + d)&#160;% 7;
+    }
+</pre>
+<p>La funci&#243;n no siempre conserva <code>y</code> , y devuelve <code>0</code> = domingo, <code>1</code> = lunes, etc. Por el contrario, la siguiente expresi&#243;n
+</p>
+<pre>    dow(m,d,y) { y-=m&lt;3; return(y+y/4-y/100+y/400+"-bed=pen+mad."[m]+d)%7; }
+</pre>
+<p>publicado simult&#225;neamente por Sakamoto no es f&#225;cilmente adaptable a otros idiomas, e incluso puede fallar si se compila en una computadora que codifica caracteres utilizando valores distintos de est&#225;ndar <a href="https://es.wikipedia.org/wiki/ASCII" title="ASCII">ASCII</a> (por ejemplo, <a href="https://es.wikipedia.org/wiki/EBCDIC" title="EBCDIC">EBCDIC</a>), o en compiladores C que hacen cumplir el cumplimiento de <a href="https://es.wikipedia.org/wiki/ANSI_C" title="ANSI C">ANSI C</a> (incluso en c&#243;digo que sigue siendo compatible con la especificaci&#243;n K&amp;R C original , donde se supone que las declaraciones de tipo omitidas son n&#250;meros enteros). Solo para esta &#250;ltima consideraci&#243;n, la versi&#243;n m&#225;s detallada de Sakamoto podr&#237;a considerarse no <a href="https://es.wikipedia.org/wiki/Portabilidad" title="Portabilidad">port&#225;til</a>, al igual que la de Keith y Craver.
+</p>
+<h4><span class="mw-headline" id="Rata_Die">Rata Die</span></h4>
+<p>El m&#233;todo Rata Die de <a href="https://es.wikipedia.org/wiki/IBM" title="IBM">IBM</a>'s requiere que uno sepa el "d&#237;a clave" del <a href="https://es.wikipedia.org/wiki/Calendario_gregoriano_prol%C3%A9ptico" title="Calendario gregoriano prol&#233;ptico">calendario gregoriano prol&#233;ptico</a>, es decir, el d&#237;a de la semana del 1 de enero del 1 d.C. (su primera fecha). Esto debe hacerse para establecer el n&#250;mero restante en funci&#243;n del cual se determina el d&#237;a de la semana para la &#250;ltima parte del an&#225;lisis. Mediante el uso de un d&#237;a dio a 13 de agosto de, 2009, que era un jueves como referencia, con <i>Base</i> y <i>n</i> es el n&#250;mero de d&#237;as y semanas que ha sido desde 01/01/0001 al d&#237;a dado, respectivamente, y <i>k</i> el d&#237;a en el dado semana que debe ser inferior a 7, la <i>base</i> se expresa como
+</p>
+<pre>                      <i>Base</i> = <i>7n</i> + <i>k</i>       (i)
+</pre>
+<p>Sabiendo que un a&#241;o divisible por 4 o 400 es un a&#241;o bisiesto, mientras que un a&#241;o divisible por 100 y no 400 no es un a&#241;o bisiesto, se puede escribir un programa de software para encontrar el n&#250;mero de d&#237;as. La siguiente es una traducci&#243;n a C del m&#233;todo de IBM para su lenguaje de programaci&#243;n <a href="https://es.wikipedia.org/wiki/REXX" title="REXX">REXX</a>:
+</p>
+<pre>int daystotal (int y, int m, int d)
+{
+	static char daytab[2][13] =
+	{
+		{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+		{0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+	};
+	int daystotal = d;
+	for (int year = 1&#160;; year &lt;= y&#160;; year++)
+	{
+		int max_month = ( year &lt; y&#160;? 12&#160;: m-1 );
+		int leap = (year%4 == 0);
+		if (year%100 == 0 &amp;&amp; year%400&#160;!= 0)
+			leap = 0;
+		for (int month = 1&#160;; month &lt;= max_month&#160;; month++)
+		{
+			daystotal += daytab[leap][month];
+		}
+	}
+	return daystotal;
+}
+</pre>
+<p>Se encuentra que <tt>daystotal</tt> es 733632 a partir de la fecha base del 1 de enero de AD 1. Este n&#250;mero total de d&#237;as se puede verificar con un c&#225;lculo simple: Ya hay 2008 a&#241;os completos desde el 01/01/0001. El n&#250;mero total de d&#237;as en 2008 a&#241;os sin contar los d&#237;as bisiestos es 365 * 2008 = 732920 d&#237;as. Suponga que todos los a&#241;os divisibles por 4 son a&#241;os bisiestos. Sume 2008/4 = 502 al total; luego reste los 15 d&#237;as bisiestos porque los a&#241;os que son exactamente divisibles por 100 pero no 400 no son bisiestos. Contin&#250;e agregando al nuevo total el n&#250;mero de d&#237;as en los primeros siete meses de 2009 que ya han pasado, que son 31 + 28 + 31 + 30 + 31 + 30 + 31 = 212 d&#237;as y los 13 d&#237;as de agosto para obtener <i>Base</i> = 732920 + 502 - 20 + 5 + 212 + 13 = 733632.
+</p><p>Lo que esto significa es que han pasado 733632 d&#237;as desde la fecha base. Sustituya el valor de <i>Base</i> en la ecuaci&#243;n anterior (i) para obtener 733632 = 7 * 104804 + 4, <i>n</i> = 104804 <i>yk</i> = 4, lo que implica que el 13 de agosto de 2009 es el cuarto d&#237;a de la semana 104805 desde el 01/01/0001 . El 13 de agosto de 2009 es jueves; por lo tanto, el primer d&#237;a de la semana debe ser el lunes, y se concluye que el primer d&#237;a 01/01/0001 del calendario es el <i>lunes</i> . Con base en esto, el resto de la relaci&#243;n <i>Base / 7</i> , definida anteriormente como <i>k</i> , decide qu&#233; d&#237;a de la semana es. Si <i>k</i> = 0, es lunes, <i>k</i> = 1, es martes, etc.<sup id="cite_ref-21" class="reference separada"><a href="#cite_note-21"><span class="corchete-llamada">[</span>21<span class="corchete-llamada">]</span></a></sup>&#8203;
+</p>
+<h2><span id="V.C3.A9ase_tambi.C3.A9n"/><span class="mw-headline" id="V&#233;ase_tambi&#233;n">V&#233;ase tambi&#233;n</span></h2>
+<ul><li><a href="https://es.wikipedia.org/wiki/Regla_del_fin_del_mundo" title="Regla del fin del mundo">Regla del fin del mundo</a></li>
+<li><a href="https://es.wikipedia.org/wiki/D%C3%ADa_juliano" class="mw-redirect" title="D&#237;a juliano">D&#237;a juliano</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Calendario_perpetuo" title="Calendario perpetuo">Calendario perpetuo</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Calendario_budista" title="Calendario budista">Calendario budista</a></li>
+<li><a href="https://es.wikipedia.org/wiki/0_de_enero" title="0 de enero">0 de enero</a></li>
+<li><a href="https://es.wikipedia.org/wiki/0_de_marzo" title="0 de marzo">0 de marzo</a></li></ul>
+<h2><span class="mw-headline" id="Referencias">Referencias</span></h2>
+<div class="listaref" style="-moz-column-count:2; -webkit-column-count:2; column-count:2; list-style-type: decimal;"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">&#8593;</a></span> <span class="reference-text">Para explicar esto en detalle, visualice un calendario colgado en la pared que representa un mes que comienza el domingo (por ejemplo, marzo de 2020). Ver&#225;s que el 1&#186; es domingo. Ahora cuente siete d&#237;as hacia adelante. Esto te lleva al 8, que tambi&#233;n es domingo. Cuente diez d&#237;as hacia adelante. Esto te lleva al d&#237;a 18, que es mi&#233;rcoles. Ahora el 4 es mi&#233;rcoles (tres d&#237;as despu&#233;s del domingo 1). Cuente siete d&#237;as hacia adelante. Esto te lleva al mi&#233;rcoles 11, tres d&#237;as despu&#233;s del domingo 8. Cuente otros siete d&#237;as. Esto te lleva al mi&#233;rcoles 18, tres d&#237;as despu&#233;s del domingo 15, que cae dos semanas despu&#233;s del domingo 1.</span>
+</li>
+<li id="cite_note-4DOS_8.00_HELP-2"><span class="mw-cite-backlink">&#8593; <a href="#cite_ref-4DOS_8.00_HELP_2-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-4DOS_8.00_HELP_2-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><span id="CITAREFBrothersRawsonConnPaul2002-02-27" class="citation libro">Brothers, Hardin; <a href="https://es.wikipedia.org/w/index.php?title=Tom_Rawson&amp;action=edit&amp;redlink=1" class="new" title="Tom Rawson (a&#250;n no redactado)">Rawson, Tom</a>; <a href="https://es.wikipedia.org/w/index.php?title=Rex_C._Conn&amp;action=edit&amp;redlink=1" class="new" title="Rex C. Conn (a&#250;n no redactado)">Conn, Rex C.</a>; Paul, Matthias R.; Dye, Charles E.; Georgiev, Luchezar I. (27 de febrero de 2002). <i>4DOS 8.00 online help</i>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Brothers%2C+Hardin&amp;rft.au=Conn%2C+Rex+C.&amp;rft.au=Dye%2C+Charles+E.&amp;rft.au=Georgiev%2C+Luchezar+I.&amp;rft.au=Paul%2C+Matthias+R.&amp;rft.au=Rawson%2C+Tom&amp;rft.aufirst=Hardin&amp;rft.aulast=Brothers&amp;rft.btitle=4DOS+8.00+online+help&amp;rft.date=2002-02-27&amp;rft.genre=book&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Moravia_2015-3"><span class="mw-cite-backlink"><a href="#cite_ref-Moravia_2015_3-0">&#8593;</a></span> <span class="reference-text"><span class="citation web"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20161105001326/http://hp-prime.de/de/id/61-firmware-update">&#171;HP Prime - Portal: Firmware update&#187;</a> <span style="color:#555;">(en alem&#225;n)</span>. Moravia Education. 15 de mayo de 2015. Archivado desde <a rel="nofollow" class="external text" href="http://hp-prime.de/de/id/61-firmware-update">el original</a> el 5 de noviembre de 2016<span class="reference-accessdate">. Consultado el 28 de agosto de 2015</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.btitle=HP+Prime+-+Portal%3A+Firmware+update&amp;rft.date=2015-05-15&amp;rft.genre=book&amp;rft.pub=Moravia+Education&amp;rft_id=http%3A%2F%2Fhp-prime.de%2Fde%2Fid%2F61-firmware-update&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">&#8593;</a></span> <span class="reference-text"><span id="CITAREFPaul1997-07-30" class="citation libro">Paul, Matthias R. (30 de julio de 1997). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161104235829/http://www.antonis.de/dos/dos-tuts/mpdostip/html/nwdostip.htm"><i>NWDOS-TIPs &#8212; Tips &amp; Tricks rund um Novell DOS 7, mit Blick auf undokumentierte Details, Bugs und Workarounds</i></a>. Release 157 <span style="color:#555;">(en alem&#225;n)</span> (3rd edici&#243;n). Archivado desde <a rel="nofollow" class="external text" href="http://www.antonis.de/dos/dos-tuts/mpdostip/html/nwdostip.htm">el original</a> el 4 de noviembre de 2016<span class="reference-accessdate">. Consultado el 6 de agosto de 2014</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Paul%2C+Matthias+R.&amp;rft.aufirst=Matthias+R.&amp;rft.aulast=Paul&amp;rft.btitle=NWDOS-TIPs+%E2%80%94+Tips+%26amp%3B+Tricks+rund+um+Novell+DOS+7%2C+mit+Blick+auf+undokumentierte+Details%2C+Bugs+und+Workarounds&amp;rft.date=1997-07-30&amp;rft.edition=3rd&amp;rft.genre=book&amp;rft.series=Release+157&amp;rft_id=http%3A%2F%2Fwww.antonis.de%2Fdos%2Fdos-tuts%2Fmpdostip%2Fhtml%2Fnwdostip.htm&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span> (NB. <code>NWDOSTIP.TXT</code> es un trabajo comprensivo sobre <a href="https://es.wikipedia.org/w/index.php?title=Novell_DOS_7&amp;action=edit&amp;redlink=1" class="new" title="Novell DOS 7 (a&#250;n no redactado)">Novell DOS 7</a> y<a href="https://es.wikipedia.org/w/index.php?title=OpenDOS_7.01&amp;action=edit&amp;redlink=1" class="new" title="OpenDOS 7.01 (a&#250;n no redactado)">OpenDOS 7.01</a>, incluyendo la descripci&#243;n de muchas caracter&#237;sticas internas no documentadas. Es parte del a&#250;n m&#225;s largo <code>MPDOSTIP.ZIP</code>, colecci&#243;n mantenida hasta 2001 y distribuida en muchos sitios en ese momento.El enlace apunta a una Versi&#243;n anterior convertida en HTML delarchivo <code>NWDOSTIP.TXT</code>.)</span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><a href="#cite_ref-5">&#8593;</a></span> <span class="reference-text"><span id="CITAREFRichards1999" class="citation libro">Richards, E. G. (1999). <a rel="nofollow" class="external text" href="https://archive.org/details/mappingtimecalen00rich"><i>Mapping Time: The Calendar and Its History</i></a>. <a href="https://es.wikipedia.org/wiki/Oxford_University_Press" title="Oxford University Press">Oxford University Press</a>. <span style="font-size:0.95em; font-size:90%; color:#555">(requiere registro)</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Richards%2C+E.+G.&amp;rft.aufirst=E.+G.&amp;rft.aulast=Richards&amp;rft.btitle=Mapping+Time%3A+The+Calendar+and+Its+History&amp;rft.date=1999&amp;rft.genre=book&amp;rft.pub=Oxford+University+Press&amp;rft_id=https%3A%2F%2Farchive.org%2Fdetails%2Fmappingtimecalen00rich&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><a href="#cite_ref-6">&#8593;</a></span> <span class="reference-text">Los n&#250;meros en la primera columna son prol&#233;pticos - el calendario gregoriano no fue ideado hasta 1582. Ver la nota balo la tabla.</span>
+</li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><a href="#cite_ref-7">&#8593;</a></span> <span class="reference-text">El siglo juliano que comienza en el 1 a. C. tambi&#233;n aparecer&#237;a en esta l&#237;nea de la tabla (a la izquierda de 700) pero no hay espacio para incluirla.</span>
+</li>
+<li id="cite_note-Schwerdtfeger-8"><span class="mw-cite-backlink">&#8593; <a href="#cite_ref-Schwerdtfeger_8-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-2"><sup><i><b>c</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-3"><sup><i><b>d</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-4"><sup><i><b>e</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-5"><sup><i><b>f</b></i></sup></a> <a href="#cite_ref-Schwerdtfeger_8-6"><sup><i><b>g</b></i></sup></a></span> <span class="reference-text"><span id="CITAREFSchwerdtfeger2010-05-07" class="citation web">Schwerdtfeger, Berndt E. (7 de mayo de 2010). <a rel="nofollow" class="external text" href="http://berndt-schwerdtfeger.de/wp-content/uploads/pdf/cal.pdf">&#171;Gauss' calendar formula for the day of the week&#187;</a> (1.4.26 edici&#243;n)<span class="reference-accessdate">. Consultado el 23 de diciembre de 2012</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Schwerdtfeger%2C+Berndt+E.&amp;rft.aufirst=Berndt+E.&amp;rft.aulast=Schwerdtfeger&amp;rft.btitle=Gauss%27+calendar+formula+for+the+day+of+the+week&amp;rft.date=2010-05-07&amp;rft.edition=1.4.26&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fberndt-schwerdtfeger.de%2Fwp-content%2Fuploads%2Fpdf%2Fcal.pdf&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Gauss-9"><span class="mw-cite-backlink"><a href="#cite_ref-Gauss_9-0">&#8593;</a></span> <span class="reference-text"><span id="CITAREFGauss1981" class="citation libro">Gauss, Carl F. (1981). &#171;Den Wochentag des 1. Januar eines Jahres zu finden. Gueldene Zahl. Epakte. Ostergrenze.&#187;. <i>Werke. herausgegeben von der Koeniglichen Gesellschaft der Wissenschaften zu Goettingen.</i> (2nd edici&#243;n). Hildesheim: Georg Olms Verlag. pp.&#160;206-207. <small><a href="https://es.wikipedia.org/wiki/ISBN" title="ISBN">ISBN</a>&#160;<a href="https://es.wikipedia.org/wiki/Especial:FuentesDeLibros/978-3-48704643-3" title="Especial:FuentesDeLibros/978-3-48704643-3">978-3-48704643-3</a></small>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=Werke.+herausgegeben+von+der+Koeniglichen+Gesellschaft+der+Wissenschaften+zu+Goettingen.&amp;rft.au=Gauss%2C+Carl+F.&amp;rft.aufirst=Carl+F.&amp;rft.aulast=Gauss&amp;rft.btitle=Den+Wochentag+des+1.+Januar+eines+Jahres+zu+finden.+Gueldene+Zahl.+Epakte.+Ostergrenze.&amp;rft.date=1981&amp;rft.edition=2nd&amp;rft.genre=bookitem&amp;rft.isbn=978-3-48704643-3&amp;rft.pages=206-207&amp;rft.place=Hildesheim&amp;rft.pub=Georg+Olms+Verlag&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Kraitchik-10"><span class="mw-cite-backlink"><a href="#cite_ref-Kraitchik_10-0">&#8593;</a></span> <span class="reference-text"><span id="CITAREFKraitchik1942" class="citation libro">Kraitchik, Maurice (1942). &#171;Chapter 5: The calendar&#187;. <i>Mathematical recreations</i> (2nd revised [Dover] edici&#243;n). Mineola: <a href="https://es.wikipedia.org/wiki/Dover_Publications" title="Dover Publications">Dover Publications</a>. pp.&#160;109-116. <small><a href="https://es.wikipedia.org/wiki/ISBN" title="ISBN">ISBN</a>&#160;<a href="https://es.wikipedia.org/wiki/Especial:FuentesDeLibros/978-0-48645358-3" title="Especial:FuentesDeLibros/978-0-48645358-3">978-0-48645358-3</a></small>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=Mathematical+recreations&amp;rft.au=Kraitchik%2C+Maurice&amp;rft.aufirst=Maurice&amp;rft.aulast=Kraitchik&amp;rft.btitle=Chapter+5%3A+The+calendar&amp;rft.date=1942&amp;rft.edition=2nd+revised+%5BDover%5D&amp;rft.genre=bookitem&amp;rft.isbn=978-0-48645358-3&amp;rft.pages=109-116&amp;rft.place=Mineola&amp;rft.pub=Dover+Publications&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><a href="#cite_ref-11">&#8593;</a></span> <span class="reference-text"><span id="CITAREFStockton2010-03-19" class="citation web">Stockton, J. R. (19 de marzo de 2010). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20130729204547/http://www.merlyn.demon.co.uk/zeller-c.htm#Alg">&#171;The Calendrical Works of Rektor Chr. Zeller: The Day-of-Week and Easter Formulae&#187;</a>. <i>Merlyn</i>. Archivado desde <a rel="nofollow" class="external text" href="http://www.merlyn.demon.co.uk/zeller-c.htm#Alg">el original</a> el 29 de julio de 2013<span class="reference-accessdate">. Consultado el 19 de diciembre de 2012</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=The+Calendrical+Works+of+Rektor+Chr.+Zeller%3A+The+Day-of-Week+and+Easter+Formulae&amp;rft.au=Stockton%2C+J.+R.&amp;rft.aufirst=J.+R.&amp;rft.aulast=Stockton&amp;rft.date=2010-03-19&amp;rft.genre=article&amp;rft.jtitle=Merlyn&amp;rft_id=http%3A%2F%2Fwww.merlyn.demon.co.uk%2Fzeller-c.htm%23Alg&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Wang-12"><span class="mw-cite-backlink"><a href="#cite_ref-Wang_12-0">&#8593;</a></span> <span class="reference-text"><span id="CITAREFWangMarch_2015" class="citation publicaci&#243;n">Wang, Xiang-Sheng (March 2015). <a rel="nofollow" class="external text" href="http://rmm.ludus-opuscula.org/PDF_Files/Wang_Day_5_8(3_2015)_high.pdf">&#171;Calculating the day of the week: null-days algorithm&#187;</a>. <i>Recreational Mathematics Magazine</i> (3): 5.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=Calculating+the+day+of+the+week%3A+null-days+algorithm&amp;rft.au=Wang%2C+Xiang-Sheng&amp;rft.aufirst=Xiang-Sheng&amp;rft.aulast=Wang&amp;rft.date=March+2015&amp;rft.genre=article&amp;rft.issue=3&amp;rft.jtitle=Recreational+Mathematics+Magazine&amp;rft.pages=5&amp;rft_id=http%3A%2F%2Frmm.ludus-opuscula.org%2FPDF_Files%2FWang_Day_5_8%283_2015%29_high.pdf&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-Dodgson1887-13"><span class="mw-cite-backlink">&#8593; <a href="#cite_ref-Dodgson1887_13-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Dodgson1887_13-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><span id="CITAREFDodgson,_C.L.31_de_marzo_de_1887" class="citation publicaci&#243;n">Dodgson, C.L., (Lewis Carroll) (31 de marzo de 1887). &#171;<span style="padding-left:0.2em;">"</span>To find the day of the week for any given date".&#187;. <i><span/></i>Nature<i><span/></i>: 299-301.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=%22To+find+the+day+of+the+week+for+any+given+date%22.&amp;rft.au=Dodgson%2C+C.L.%2C+%28Lewis+Carroll%29&amp;rft.aufirst=%28Lewis+Carroll%29&amp;rft.aulast=Dodgson%2C+C.L.&amp;rft.date=31+de+marzo+de+1887&amp;rft.genre=article&amp;rft.jtitle=%27%27Nature%27%27&amp;rft.pages=299-301&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-14"><span class="mw-cite-backlink"><a href="#cite_ref-14">&#8593;</a></span> <span class="reference-text">Martin Gardner. (1996). 
+<i>The Universe in a Handkerchief: Lewis Carroll's Mathematical Recreations, Games, Puzzles, and Word Plays</i>, pages&#160;24-26. Springer-Verlag.</span>
+</li>
+<li id="cite_note-15"><span class="mw-cite-backlink"><a href="#cite_ref-15">&#8593;</a></span> <span class="reference-text">
+Michael Keith; Tom Craver. (1990). <i>The ultimate perpetual calendar?</i> Journal of Recreational Mathematics, 22:4, pp.280-282.</span>
+</li>
+<li id="cite_note-16"><span class="mw-cite-backlink"><a href="#cite_ref-16">&#8593;</a></span> <span class="reference-text">
+The 4-function Calculator; The Assembly of Motorola 68000 Orphans; The Abacus. <a rel="nofollow" class="external free" href="gopher://sdf.org/1/users/retroburrowers/TemporalRetrology">gopher://sdf.org/1/users/retroburrowers/TemporalRetrology</a></span>
+</li>
+<li id="cite_note-17"><span class="mw-cite-backlink"><a href="#cite_ref-17">&#8593;</a></span> <span class="reference-text">"Day-of-week algorithm NEEDED!" <a rel="nofollow" class="external free" href="news:1993Apr20.075917.16920@sm.sony.co.jp">news:1993Apr20.075917.16920@sm.sony.co.jp</a></span>
+</li>
+<li id="cite_note-18"><span class="mw-cite-backlink"><a href="#cite_ref-18">&#8593;</a></span> <span class="reference-text">APL2 IDIOMS workspace: Date and Time Algorithms, line 15. <a rel="nofollow" class="external free" href="ftp://ftp.software.ibm.com/ps/products/apl2/info/APL2IDIOMS.pdf">ftp://ftp.software.ibm.com/ps/products/apl2/info/APL2IDIOMS.pdf</a> (2002)</span>
+</li>
+<li id="cite_note-19"><span class="mw-cite-backlink"><a href="#cite_ref-19">&#8593;</a></span> <span class="reference-text"><span id="CITAREFGoogle_newsgroups:comp.lang.c.December_1992" class="citation web">Google newsgroups:comp.lang.c. (December 1992). <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/comp.lang.c/GPA5wwrVnVw/hi2wB0TXGkAJ">&#171;Date -&gt; Day of week conversion&#187;</a><span class="reference-accessdate">. Consultado el 21 June 2020</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Google+newsgroups%3Acomp.lang.c.&amp;rft.aulast=Google+newsgroups%3Acomp.lang.c.&amp;rft.btitle=Date+-%26gt%3B+Day+of+week+conversion&amp;rft.date=December+1992&amp;rft.genre=book&amp;rft_id=https%3A%2F%2Fgroups.google.com%2Fd%2Fmsg%2Fcomp.lang.c%2FGPA5wwrVnVw%2Fhi2wB0TXGkAJ&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-20"><span class="mw-cite-backlink"><a href="#cite_ref-20">&#8593;</a></span> <span class="reference-text"><span id="CITAREFGoogle_newsgroups:comp.lang.c.1994" class="citation web">Google newsgroups:comp.lang.c. (1994). <a rel="nofollow" class="external text" href="https://groups.google.com/d/msg/comp.lang.c/IvROHSayPEM/fQ7B2J5wn10J">&#171;DOW algorithm&#187;</a><span class="reference-accessdate">. Consultado el 21 June 2020</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.au=Google+newsgroups%3Acomp.lang.c.&amp;rft.aulast=Google+newsgroups%3Acomp.lang.c.&amp;rft.btitle=DOW+algorithm&amp;rft.date=1994&amp;rft.genre=book&amp;rft_id=https%3A%2F%2Fgroups.google.com%2Fd%2Fmsg%2Fcomp.lang.c%2FIvROHSayPEM%2FfQ7B2J5wn10J&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+<li id="cite_note-21"><span class="mw-cite-backlink"><a href="#cite_ref-21">&#8593;</a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="https://www.ibm.com/support/knowledgecenter/ssw_i5_54/books/sc415729.pdf?sc=_latest">Manual de referencia de REXX/400</a> pag. 87 (1997).</span>
+</li>
+</ol></div>
+<style data-mw-deduplicate="TemplateStyles:r140299052">.mw-parser-output .refbegin{font-size:90%;margin-bottom:0.5em}.mw-parser-output .refbegin-hanging-indents&gt;ul{margin-left:0}.mw-parser-output .refbegin-hanging-indents&gt;ul&gt;li{margin-left:0;padding-left:3.2em;text-indent:-3.2em}.mw-parser-output .refbegin-hanging-indents ul,.mw-parser-output .refbegin-hanging-indents ul li{list-style:none}@media(max-width:720px){.mw-parser-output .refbegin-hanging-indents&gt;ul&gt;li{padding-left:1.6em;text-indent:-1.6em}}.mw-parser-output .refbegin-columns{margin-top:0.3em}.mw-parser-output .refbegin-columns ul{margin-top:0}.mw-parser-output .refbegin-columns li{page-break-inside:avoid;break-inside:avoid-column}</style><div class="refbegin" style="">
+<ul><li><span id="CITAREFHale-Evans2006" class="citation libro">Hale-Evans, Ron (2006). <a rel="nofollow" class="external text" href="https://archive.org/details/mindperformanceh00hale/page/164">&#171;Hack #43: Calculate any weekday&#187;</a>. <i>Mind performance hacks</i> (1st edici&#243;n). Beijing: O'Reilly. pp.&#160;<a rel="nofollow" class="external text" href="https://archive.org/details/mindperformanceh00hale/page/164">164&#8211;169</a>. <small><a href="https://es.wikipedia.org/wiki/ISBN" title="ISBN">ISBN</a>&#160;<a href="https://es.wikipedia.org/wiki/Especial:FuentesDeLibros/9780596101534" title="Especial:FuentesDeLibros/9780596101534">9780596101534</a></small>. <span style="font-size:0.95em; font-size:90%; color:#555">(requiere registro)</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=Mind+performance+hacks&amp;rft.au=Hale-Evans%2C+Ron&amp;rft.aufirst=Ron&amp;rft.aulast=Hale-Evans&amp;rft.btitle=Hack+%2343%3A+Calculate+any+weekday&amp;rft.date=2006&amp;rft.edition=1st&amp;rft.genre=bookitem&amp;rft.isbn=9780596101534&amp;rft.pages=164-169&amp;rft.place=Beijing&amp;rft.pub=O%27Reilly&amp;rft_id=https%3A%2F%2Farchive.org%2Fdetails%2Fmindperformanceh00hale%2Fpage%2F164&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></li>
+<li><span id="CITAREFThiouxStark,_David_E.Klaiman,_CherylSchultz,_Robert_T.2006" class="citation publicaci&#243;n">Thioux, Marc; Stark, David E.; Klaiman, Cheryl; Schultz, Robert T. (2006). &#171;The day of the week when you were born in 700 ms: Calendar computation in an autistic savant.&#187;. <i>Journal of Experimental Psychology: Human Perception and Performance</i> <b>32</b> (5): 1155-1168. <small><a href="https://es.wikipedia.org/wiki/Digital_object_identifier" class="mw-redirect" title="Digital object identifier">doi</a>:<a rel="nofollow" class="external text" href="https://dx.doi.org/10.1037%2F0096-1523.32.5.1155">10.1037/0096-1523.32.5.1155</a></small>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=The+day+of+the+week+when+you+were+born+in+700+ms%3A+Calendar+computation+in+an+autistic+savant.&amp;rft.au=Klaiman%2C+Cheryl&amp;rft.au=Schultz%2C+Robert+T.&amp;rft.au=Stark%2C+David+E.&amp;rft.au=Thioux%2C+Marc&amp;rft.aufirst=Marc&amp;rft.aulast=Thioux&amp;rft.date=2006&amp;rft.genre=article&amp;rft.issue=5&amp;rft.jtitle=Journal+of+Experimental+Psychology%3A+Human+Perception+and+Performance&amp;rft.pages=1155-1168&amp;rft.volume=32&amp;rft_id=info%3Adoi%2F10.1037%2F0096-1523.32.5.1155&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></li>
+<li><span id="CITAREFTreffert" class="citation libro">Treffert, Darold A. &#171;Why calendar calculating?&#187;. <i>Islands of genius&#160;: the bountiful mind of the autistic, acquired, and sudden savant</i> (1. publ., [repr.]. edici&#243;n). London: Jessica Kingsley. pp.&#160;63-66. <small><a href="https://es.wikipedia.org/wiki/ISBN" title="ISBN">ISBN</a>&#160;<a href="https://es.wikipedia.org/wiki/Especial:FuentesDeLibros/9781849058735" title="Especial:FuentesDeLibros/9781849058735">9781849058735</a></small>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AC%C3%A1lculo+del+d%C3%ADa+de+la+semana&amp;rft.atitle=Islands+of+genius+%3A+the+bountiful+mind+of+the+autistic%2C+acquired%2C+and+sudden+savant&amp;rft.au=Treffert%2C+Darold+A.&amp;rft.aufirst=Darold+A.&amp;rft.aulast=Treffert&amp;rft.btitle=Why+calendar+calculating%3F&amp;rft.edition=1.+publ.%2C+%5Brepr.%5D.&amp;rft.genre=bookitem&amp;rft.isbn=9781849058735&amp;rft.pages=63-66&amp;rft.place=London&amp;rft.pub=Jessica+Kingsley&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></li></ul>
+</div>
+<h2><span class="mw-headline" id="Enlaces_externos">Enlaces externos</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://accent.main.jp/espancal/retro.htm">Identifique el a&#241;o por mes, d&#237;a, d&#237;a de la semana</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.tondering.dk/claus/cal/chrweek.php#calcdow">Algoritmo de T&#248;ndering para calendarios gregoriano y juliano</a></li>
+<li><a rel="nofollow" class="external text" href="http://katzentier.de/_misc/perpetual_calendar.htm">M&#233;todo tabular compacto para memorizaci&#243;n, tambi&#233;n para el calendario juliano</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.recordholders.org/en/records/dates.html">R&#233;cords mundiales por calcular mentalmente el d&#237;a de la semana en el calendario gregoriano</a></li></ul>
+<style data-mw-deduplicate="TemplateStyles:r118746331">.mw-parser-output .mw-authority-control{margin-top:1.5em}.mw-parser-output .mw-authority-control .navbox hr:last-child{display:none}.mw-parser-output .mw-authority-control .navbox+.mw-mf-linked-projects{display:none}.mw-parser-output .mw-authority-control .mw-mf-linked-projects{display:flex;padding:0.5em;border:1px solid #c8ccd1;background-color:#eaecf0;color:#222222}.mw-parser-output .mw-authority-control .mw-mf-linked-projects ul li{margin-bottom:0}</style><div class="mw-authority-control"><div role="navigation" class="navbox" aria-label="Navbox" style="width: inherit;padding:3px"><table class="hlist navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="row" class="navbox-group" style="width: 12%; text-align:center;"><a href="https://es.wikipedia.org/wiki/Control_de_autoridades" title="Control de autoridades">Control de autoridades</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><b>Proyectos Wikimedia</b></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikidata" title="Wikidata"><img alt="Wd" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png" decoding="async" width="20" height="11" srcset="" data-file-width="1050" data-file-height="590"/></a> Datos:</span> <span class="uid"><a href="https://www.wikidata.org/wiki/Q979637" class="extiw" title="wikidata:Q979637">Q979637</a></span></li></ul>
+</div></td></tr></tbody></table></div><div class="mw-mf-linked-projects hlist">
+<ul><li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikidata" title="Wikidata"><img alt="Wd" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png" decoding="async" width="20" height="11" srcset="" data-file-width="1050" data-file-height="590"/></a> Datos:</span> <span class="uid"><a href="https://www.wikidata.org/wiki/Q979637" class="extiw" title="wikidata:Q979637">Q979637</a></span></li></ul>
+</div></div>
+</div><noscript><img src="https://es.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;"/></noscript>
+<div class="printfooter">Obtenido de &#171;<a dir="ltr" href="https://es.wikipedia.org/w/index.php?title=C&#225;lculo_del_d&#237;a_de_la_semana&amp;oldid=141314701">https://es.wikipedia.org/w/index.php?title=C&#225;lculo_del_d&#237;a_de_la_semana&amp;oldid=141314701</a>&#187;</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://es.wikipedia.org/wiki/Especial:Categor%C3%ADas" title="Especial:Categor&#237;as">Categor&#237;as</a>: <ul><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:Algoritmos_de_calendarios" title="Categor&#237;a:Algoritmos de calendarios">Algoritmos de calendarios</a></li><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:D%C3%ADas_de_la_semana" title="Categor&#237;a:D&#237;as de la semana">D&#237;as de la semana</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Categor&#237;a oculta: <ul><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:Wikipedia:P%C3%A1ginas_con_referencias_que_requieren_registro" title="Categor&#237;a:Wikipedia:P&#225;ginas con referencias que requieren registro">Wikipedia:P&#225;ginas con referencias que requieren registro</a></li></ul></div></div>
+	</div>
+</div>
+
+</article>
+</body>

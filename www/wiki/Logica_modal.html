@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lógica modal - Wikipedia, la enciclopedia libre</title>
+    <link rel="preload" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+<article>
+<div id="content" class="mw-body" role="main">
+	<a id="top"/>
+	<div id="siteNotice"/>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading mw-first-heading">L&#243;gica modal</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">De Wikipedia, la enciclopedia libre</div>
+		<div id="contentSub"/>
+		<div id="contentSub2"/>
+		
+		<div id="jump-to-nav"/>
+		<a class="mw-jump-link" href="#mw-head">Ir a la navegaci&#243;n</a>
+		<a class="mw-jump-link" href="#searchInput">Ir a la b&#250;squeda</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="es" dir="ltr"><div class="mw-parser-output"><p>Una <b>l&#243;gica modal</b> es un <a href="https://es.wikipedia.org/wiki/Sistema_formal" title="Sistema formal">sistema formal</a> que intenta capturar el comportamiento deductivo de alg&#250;n grupo de operadores modales.<sup id="cite_ref-sep_1-0" class="reference separada"><a href="#cite_note-sep-1"><span class="corchete-llamada">[</span>1<span class="corchete-llamada">]</span></a></sup>&#8203; Los operadores modales son expresiones que <i>califican</i> la verdad de los juicios.<sup id="cite_ref-sep_1-1" class="reference separada"><a href="#cite_note-sep-1"><span class="corchete-llamada">[</span>1<span class="corchete-llamada">]</span></a></sup>&#8203; Por ejemplo, en el juicio &#171;es necesario que 2 + 2 = 4&#187;, la expresi&#243;n &#171;es necesario que&#187; es un operador modal que califica de <i>necesaria</i> a la verdad del juicio &#171;2 + 2 = 4&#187;. De manera an&#225;loga, la expresi&#243;n &#171;siempre&#187; califica a un juicio verdadero como verdadero en cualquier momento, es decir, <i>siempre</i>. No es lo mismo decir &#171;est&#225; lloviendo&#187; que decir &#171;siempre est&#225; lloviendo&#187;.
+</p><p>En un sentido m&#225;s restringido, sin embargo, una <b>l&#243;gica modal</b> es un sistema formal que intenta capturar el comportamiento deductivo de las expresiones &#171;es necesario que&#187; y &#171;es posible que&#187;.<sup id="cite_ref-sep_1-2" class="reference separada"><a href="#cite_note-sep-1"><span class="corchete-llamada">[</span>1<span class="corchete-llamada">]</span></a></sup>&#8203; Este art&#237;culo trata exclusivamente sobre l&#243;gicas modales en este sentido restringido. Las l&#243;gicas modales pertenecen al grupo de las llamadas &#171;extensiones de la l&#243;gica cl&#225;sica&#187; o &#171;l&#243;gicas extendidas&#187; entre las cuales se incluyen adem&#225;s la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_de%C3%B3ntica" title="L&#243;gica de&#243;ntica">l&#243;gica de&#243;ntica</a>, la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_temporal" title="L&#243;gica temporal">l&#243;gica temporal</a>, la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_epist%C3%A9mica" title="L&#243;gica epist&#233;mica">l&#243;gica epist&#233;mica</a> y la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_dox%C3%A1stica" title="L&#243;gica dox&#225;stica">l&#243;gica dox&#225;stica</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"/><div class="toctitle" lang="es" dir="ltr"><h2 id="mw-toc-heading">&#205;ndice</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"/></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Sistema_formal"><span class="tocnumber">1</span> <span class="toctext">Sistema formal</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Vocabulario"><span class="tocnumber">1.1</span> <span class="toctext">Vocabulario</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Gram&#225;tica"><span class="tocnumber">1.2</span> <span class="toctext">Gram&#225;tica</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Reglas_de_inferencia"><span class="tocnumber">1.3</span> <span class="toctext">Reglas de inferencia</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Axiomas"><span class="tocnumber">1.4</span> <span class="toctext">Axiomas</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Sem&#225;ntica"><span class="tocnumber">1.5</span> <span class="toctext">Sem&#225;ntica</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Consecuencia_l&#243;gica_y_deducci&#243;n"><span class="tocnumber">2</span> <span class="toctext">Consecuencia l&#243;gica y deducci&#243;n</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Consecuencia_l&#243;gica"><span class="tocnumber">2.1</span> <span class="toctext">Consecuencia l&#243;gica</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Deducci&#243;n"><span class="tocnumber">2.2</span> <span class="toctext">Deducci&#243;n</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Restricciones_en_la_relaci&#243;n_de_accesibilidad"><span class="tocnumber">2.3</span> <span class="toctext">Restricciones en la relaci&#243;n de accesibilidad</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Mundos_no-normales"><span class="tocnumber">2.4</span> <span class="toctext">Mundos no-normales</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Historia"><span class="tocnumber">3</span> <span class="toctext">Historia</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#V&#233;ase_tambi&#233;n"><span class="tocnumber">4</span> <span class="toctext">V&#233;ase tambi&#233;n</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Notas_y_referencias"><span class="tocnumber">5</span> <span class="toctext">Notas y referencias</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Sistema_formal">Sistema formal</span></h2>
+<h3><span class="mw-headline" id="Vocabulario">Vocabulario</span></h3>
+<p>La l&#243;gica modal solo agrega dos s&#237;mbolos al vocabulario de la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_proposicional" title="L&#243;gica proposicional">l&#243;gica proposicional</a>: el s&#237;mbolo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/029b77f09ebeaf7528fc831fe57848be51f2240b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.808ex; height:2.176ex;" alt="{\displaystyle \Box }"/></span> , que representa la expresi&#243;n del <a href="https://es.wikipedia.org/wiki/Lenguaje_natural" title="Lenguaje natural">lenguaje natural</a> "es necesario que", y el s&#237;mbolo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1e5e6f31a91de53f443e2cd4c7478693a1a6a57b" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.505ex; width:1.55ex; height:2.343ex;" alt="{\displaystyle \Diamond }"/></span>, que representa la expresi&#243;n "es posible que". Ambos s&#237;mbolos se prefijan a proposiciones, de modo que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6fa5310caae4cbefab3d3730ccd93b1159162cc5" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.978ex; height:2.509ex;" alt="{\displaystyle \Box p}"/></span> se lee "es necesario que <i>p</i>", y <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e1fb96c0fe1144abb54bb4e954299048e596da20" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.72ex; height:2.509ex;" alt="{\displaystyle \Diamond p}"/></span> se lee "es posible que <i>p</i>". Adem&#225;s, en la l&#243;gica modal cl&#225;sica, ambos s&#237;mbolos son interdefinibles por medio del otro y de la negaci&#243;n; as&#237;:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond p=\neg \Box \neg p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>p</mi>
+        <mo>=</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#9723;</mi>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond p=\neg \Box \neg p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8b50b96a696ae526c650cff6b282909ca8a99a7a" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.896ex; height:2.509ex;" alt="{\displaystyle \Diamond p=\neg \Box \neg p}"/></span></dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box p=\neg \Diamond \neg p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>p</mi>
+        <mo>=</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#9674;</mi>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box p=\neg \Diamond \neg p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/50776897b5544191010122f99e29c684c6b83583" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.896ex; height:2.509ex;" alt="{\displaystyle \Box p=\neg \Diamond \neg p}"/></span></dd></dl>
+<p>Esto implica que en principio, solo es necesario tomar uno de los dos s&#237;mbolos como primitivo, ya que el otro se puede definir a partir de &#233;ste y del vocabulario de la l&#243;gica proposicional. En general, el s&#237;mbolo que se toma como primitivo es el de necesidad. Estas interdefiniciones son paralelas a las de los <a href="https://es.wikipedia.org/wiki/Cuantificador" title="Cuantificador">cuantificadores</a> en la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_de_primer_orden" title="L&#243;gica de primer orden">l&#243;gica de primer orden</a>:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \exists x\ \phi (x)=\neg \forall x\ \neg \phi (x)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#8707;</mi>
+        <mi>x</mi>
+        <mtext>&#160;</mtext>
+        <mi>&#981;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>x</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi mathvariant="normal">&#8704;</mi>
+        <mi>x</mi>
+        <mtext>&#160;</mtext>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>x</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \exists x\ \phi (x)=\neg \forall x\ \neg \phi (x)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5a1eb996de5e9b6ce1b19abc8ec3444f89a0dffd" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:21.654ex; height:2.843ex;" alt="{\displaystyle \exists x\ \phi (x)=\neg \forall x\ \neg \phi (x)}"/></span></dd>
+<dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \forall x\ \phi (x)=\neg \exists x\ \neg \phi (x)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#8704;</mi>
+        <mi>x</mi>
+        <mtext>&#160;</mtext>
+        <mi>&#981;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>x</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi mathvariant="normal">&#8707;</mi>
+        <mi>x</mi>
+        <mtext>&#160;</mtext>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>x</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \forall x\ \phi (x)=\neg \exists x\ \neg \phi (x)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d26a86164846146f6e6c31101c5f4d52d41c3be9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:21.654ex; height:2.843ex;" alt="{\displaystyle \forall x\ \phi (x)=\neg \exists x\ \neg \phi (x)}"/></span></dd></dl>
+<p>Las razones de este paralelismo resultar&#225;n m&#225;s claras en la secci&#243;n de sem&#225;ntica de mundos posibles.
+</p>
+<h3><span id="Gram.C3.A1tica"/><span class="mw-headline" id="Gram&#225;tica">Gram&#225;tica</span></h3>
+<p>La gram&#225;tica nos indica qu&#233; secuencias de signos del vocabulario est&#225;n bien construidas. A estas secuencias se las llama <a href="https://es.wikipedia.org/wiki/F%C3%B3rmula_bien_formada" title="F&#243;rmula bien formada">f&#243;rmulas bien formadas</a>. La gram&#225;tica de la l&#243;gica modal es igual a la de la <a href="https://es.wikipedia.org/wiki/L%C3%B3gica_proposicional" title="L&#243;gica proposicional">l&#243;gica proposicional</a>, excepto que a&#241;ade una regla para los operadores modales, la cual ya fue indicada informalmente en la secci&#243;n anterior:
+</p>
+<ul><li>Si <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es una f&#243;rmula bien formada, entonces <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bac6d8e20bfba09462096d4f815c14b676e4b2f4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:3.194ex; height:2.509ex;" alt="{\displaystyle \Box \phi }"/></span> tambi&#233;n lo es.</li></ul>
+<p>Algunos ejemplos de f&#243;rmulas bien formadas del lenguaje ser&#225;n, por lo tanto:
+</p><p><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond (p\to \Box q)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond (p\to \Box q)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8fee6a184cb51f457a476b18d15821088f4cc452" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:11.021ex; height:2.843ex;" alt="{\displaystyle \Diamond (p\to \Box q)}"/></span>
+</p><p><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \neg (\Diamond p\land \neg p)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#172;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>&#9674;</mi>
+        <mi>p</mi>
+        <mo>&#8743;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \neg (\Diamond p\land \neg p)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cb6ea32268957cf60a69d8dc6980d191d2a6efb0" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:11.382ex; height:2.843ex;" alt="{\displaystyle \neg (\Diamond p\land \neg p)}"/></span>
+</p><p><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box (p\lor \neg p)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box (p\lor \neg p)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/601508ae5f7d415a8dca812c68f7c46c9aafde29" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:10.089ex; height:2.843ex;" alt="{\displaystyle \Box (p\lor \neg p)}"/></span>
+</p>
+<h3><span class="mw-headline" id="Reglas_de_inferencia">Reglas de inferencia</span></h3>
+<table class="vertical-navbox nowraplinks plainlist" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tbody><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em"><a href="https://es.wikipedia.org/wiki/Reglas_de_inferencia" class="mw-redirect" title="Reglas de inferencia">Reglas de transformaci&#243;n</a></th></tr><tr><th style="padding:0.1em;background:#eaeaff;;background:#ddf;font-size:110%; border-bottom:1px #fefefe solid;">
+<a href="https://es.wikipedia.org/wiki/L%C3%B3gica_proposicional" title="L&#243;gica proposicional">L&#243;gica proposicional</a></th></tr><tr><th style="padding:0.1em;background:#eaeaff;">
+<a href="https://es.wikipedia.org/wiki/Reglas_de_inferencia" class="mw-redirect" title="Reglas de inferencia">Reglas de inferencia</a></th></tr><tr><td style="padding:0 0.1em 0.4em;padding-top:0.15em;">
+<ul><li><a href="https://es.wikipedia.org/wiki/Modus_tollendo_tollens" title="Modus tollendo tollens"><span title="A&#8594;B, A &#8866; B"><i>Modus tollendo tollens</i></span></a> / <a href="https://es.wikipedia.org/wiki/Modus_tollendo_ponens" title="Modus tollendo ponens"><span title="A&#8594;B, &#172;B &#8866; &#172;A"><i>ponens</i></span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Modus_ponendo_ponens" title="Modus ponendo ponens"><span title="A&#8594;B, A &#8866; B"><i>Modus ponendo ponens</i></span></a> / <i><a href="https://es.wikipedia.org/wiki/Modus_ponendo_tollens" title="Modus ponendo tollens">tollens</a></i></li>
+<li><a href="https://es.wikipedia.org/wiki/Introducci%C3%B3n_del_bicondicional" title="Introducci&#243;n del bicondicional"><span title="A&#8594;B, B&#8594;A &#8866; A&#8596;B">Introducci&#243;n del bicondicional </span></a> / <a href="https://es.wikipedia.org/wiki/Eliminaci%C3%B3n_del_bicondicional" title="Eliminaci&#243;n del bicondicional">eliminaci&#243;n</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Introducci%C3%B3n_de_la_conjunci%C3%B3n" title="Introducci&#243;n de la conjunci&#243;n"><span title="A, B &#8866; A&#8743;B">Introducci&#243;n de la conjunci&#243;n</span></a> / <a href="https://es.wikipedia.org/wiki/Simplificaci%C3%B3n" title="Simplificaci&#243;n"><span title="A&#8743;B &#8866; A">eliminaci&#243;n</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Introducci%C3%B3n_de_la_disyunci%C3%B3n" title="Introducci&#243;n de la disyunci&#243;n"><span title="A &#8866; A&#8744;B">Introducci&#243;n de la disyunci&#243;n</span></a> / <a href="https://es.wikipedia.org/wiki/Eliminaci%C3%B3n_de_la_disyunci%C3%B3n" title="Eliminaci&#243;n de la disyunci&#243;n"><span title="A&#8744;B, A&#8594;C, B&#8594;C &#8866; C">eliminaci&#243;n</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Modus_tollendo_ponens" title="Modus tollendo ponens"><span title="A&#8744;B, &#172;A &#8866; B">Silogismo disyuntivo</span></a> / <a href="https://es.wikipedia.org/wiki/Silogismo_hipot%C3%A9tico" title="Silogismo hipot&#233;tico"><span title="A&#8594;B, B&#8594;C &#8866; A&#8594;C"> hipot&#233;tico</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Dilema_constructivo" title="Dilema constructivo"><span title="A&#8594;P, B&#8594;Q, A&#8744;B &#8866; P&#8744;Q">Dilema constructivo</span></a> / <a href="https://es.wikipedia.org/wiki/Dilema_destructivo" title="Dilema destructivo"><span title="A&#8594;P, B&#8594;Q, &#172;P&#8744;&#172;Q &#8866; &#172;A&#8744;&#172;B">destructivo</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Absorci%C3%B3n_(l%C3%B3gica)" title="Absorci&#243;n (l&#243;gica)"><span title="A&#8594;B &#8866; A&#8594;A&#8743;B">Absorci&#243;n</span></a></li></ul></td>
+</tr><tr><th style="padding:0.1em;background:#eaeaff;">
+<a href="https://es.wikipedia.org/wiki/Reglas_de_reemplazo" title="Reglas de reemplazo">Reglas de reemplazo</a></th></tr><tr><td style="padding:0 0.1em 0.4em;padding-top:0.15em;">
+<div class="hlist hlist-separated" style="margin-left: 0em;">
+<ul><li><a href="https://es.wikipedia.org/wiki/Asociatividad_(%C3%A1lgebra)" title="Asociatividad (&#225;lgebra)"><span title="A&#8744;(B&#8744;C) = (A&#8744;B)&#8744;C">Asociatividad</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Conmutatividad" title="Conmutatividad">Conmutatividad</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Distributividad" title="Distributividad"><span title="A&#8743;(B&#8744;C) = (A&#8743;B)&#8744;(A&#8743;C)">Distributividad</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Doble_negaci%C3%B3n_(l%C3%B3gica)" title="Doble negaci&#243;n (l&#243;gica)"><span title="&#172;&#172;A = A">Doble negaci&#243;n</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Leyes_de_De_Morgan" title="Leyes de De Morgan">Leyes de De Morgan</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Transposici%C3%B3n_(l%C3%B3gica)" title="Transposici&#243;n (l&#243;gica)">Transposici&#243;n</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Implicaci%C3%B3n_material_(regla_de_inferencia)" class="mw-redirect" title="Implicaci&#243;n material (regla de inferencia)"><span title="A&#8594;B &#8866; &#172;A&#8744;B">Implicaci&#243;n material</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Exportaci%C3%B3n_(l%C3%B3gica)" title="Exportaci&#243;n (l&#243;gica)"><span title="(A&#8743;B)&#8594;C &#8866; A&#8594;(B&#8594;C)">Exportaci&#243;n</span></a></li>
+<li><a href="https://es.wikipedia.org/wiki/Tautolog%C3%ADa_(regla_de_inferencia)" title="Tautolog&#237;a (regla de inferencia)">Tautolog&#237;a</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Introducci%C3%B3n_de_la_negaci%C3%B3n" title="Introducci&#243;n de la negaci&#243;n">Introducci&#243;n de la negaci&#243;n</a></li></ul></div></td>
+</tr><tr><th style="padding:0.1em;background:#eaeaff;;background:#ddf;font-size:110%;">
+<a href="https://es.wikipedia.org/wiki/L%C3%B3gica_de_primer_orden" title="L&#243;gica de primer orden">L&#243;gica predicativa</a></th></tr><tr><td style="padding:0 0.1em 0.4em;padding-top:0.15em;">
+<ul><li><a href="https://es.wikipedia.org/wiki/Generalizaci%C3%B3n_universal" title="Generalizaci&#243;n universal">Generalizaci&#243;n</a> / <a href="https://es.wikipedia.org/wiki/Instanciaci%C3%B3n_universal" title="Instanciaci&#243;n universal">instanciaci&#243;n universal</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Generalizaci%C3%B3n_existencial" title="Generalizaci&#243;n existencial">Generalizaci&#243;n</a> / <a href="https://es.wikipedia.org/wiki/Instanciaci%C3%B3n_existencial" title="Instanciaci&#243;n existencial">instanciaci&#243;n existencial</a></li></ul></td>
+</tr><tr><th style="padding:0.1em;background:#eaeaff;;background:#ddf;font-size:110%;">
+<a class="mw-selflink selflink">L&#243;gica modal</a></th></tr><tr><td style="text-align:right;font-size:115%"><style data-mw-deduplicate="TemplateStyles:r134093784">.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}.mw-parser-output .infobox .navbar{font-size:100%}.mw-parser-output .navbox .navbar{display:block;font-size:100%}.mw-parser-output .navbox-title .navbar{float:left;text-align:left;margin-right:0.5em}</style><div class="navbar plainlinks hlist navbar-mini"><ul><li class="nv-ver"><a href="https://es.wikipedia.org/wiki/Plantilla:Reglas_de_transformaci%C3%B3n" title="Plantilla:Reglas de transformaci&#243;n"><abbr title="Ver esta plantilla">v</abbr></a></li><li class="nv-discusi&#243;n"><a href="https://es.wikipedia.org/w/index.php?title=Plantilla_discusi%C3%B3n:Reglas_de_transformaci%C3%B3n&amp;action=edit&amp;redlink=1" class="new" title="Plantilla discusi&#243;n:Reglas de transformaci&#243;n (a&#250;n no redactado)"><abbr title="Conversar sobre esta plantilla">t</abbr></a></li><li class="nv-editar"><a class="external text" href="https://es.wikipedia.org/w/index.php?title=Plantilla:Reglas_de_transformaci%C3%B3n&amp;action=edit"><abbr title="Editar esta plantilla">e</abbr></a></li></ul></div></td></tr></tbody></table>
+<p>La <a href="https://es.wikipedia.org/wiki/Regla_de_inferencia" title="Regla de inferencia">regla de inferencia</a> m&#225;s propia de la l&#243;gica modal se llama <b>N</b> (o regla de <i>Necesitaci&#243;n</i>), y dice que si una f&#243;rmula <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es un <a href="https://es.wikipedia.org/wiki/Teorema" title="Teorema">teorema</a>, entonces "es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span>" tambi&#233;n es un teorema. En otros t&#233;rminos:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle {\frac {\vdash \phi }{\vdash \Box \phi }}}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mrow>
+              <mo>&#8866;</mo>
+              <mi>&#981;</mi>
+            </mrow>
+            <mrow>
+              <mo>&#8866;</mo>
+              <mi>&#9723;</mi>
+              <mi>&#981;</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle {\frac {\vdash \phi }{\vdash \Box \phi }}}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9744763dcc3651e2fa603d73c258a781131a4615" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.338ex; width:6.095ex; height:5.843ex;" alt="{\displaystyle {\frac {\vdash \phi }{\vdash \Box \phi }}}"/></span></dd></dl>
+<p>A esta regla hay que sumarle, por supuesto, el <a href="https://es.wikipedia.org/wiki/Modus_ponens" class="mw-redirect" title="Modus ponens">modus ponens</a> heredado de la l&#243;gica proposicional.
+</p>
+<h3><span class="mw-headline" id="Axiomas">Axiomas</span></h3>
+<p>Cu&#225;les deben ser los <a href="https://es.wikipedia.org/wiki/Axioma" title="Axioma">axiomas</a> de la l&#243;gica modal es algo muy debatido. Diferentes conjuntos de axiomas permiten demostrar diferentes <a href="https://es.wikipedia.org/wiki/Teorema" title="Teorema">teoremas</a>, y por lo tanto los axiomas que se eligen muchas veces dependen de los teoremas que se quieren demostrar, y de la posici&#243;n filos&#243;fica que se defiende.
+</p><p>La siguiente es una lista de algunos de los axiomas m&#225;s conocidos:
+</p>
+<table style="text-align:left">
+
+<tbody><tr>
+<th style="width:60px">Nombre
+</th>
+<th style="width:250px">Axioma
+</th>
+<th>Lectura informal
+</th></tr>
+<tr>
+<td>K
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box (\phi \to \psi )\to (\Box \phi \to \Box \psi )}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+        <mo stretchy="false">&#8594;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box (\phi \to \psi )\to (\Box \phi \to \Box \psi )}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9121d29d030c146677d9cb9c5eb4ba8dddcc7a24" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:25.682ex; height:2.843ex;" alt="{\displaystyle \Box (\phi \to \psi )\to (\Box \phi \to \Box \psi )}"/></span>
+</td>
+<td>Si es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> implica <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \psi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#968;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \psi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3c0246f660f8317d29b9b2f21c339b3fe1171740" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.9ex; height:2.509ex;" alt="\psi \,"/></span>, entonces si <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es necesario, <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \psi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#968;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \psi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3c0246f660f8317d29b9b2f21c339b3fe1171740" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.9ex; height:2.509ex;" alt="\psi \,"/></span> tambi&#233;n lo es.
+</td></tr>
+<tr>
+<td>T (o M)
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi \to \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi \to \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6a5d644484623825d62865ca86260267c2d404b6" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:8.193ex; height:2.509ex;" alt="{\displaystyle \Box \phi \to \phi }"/></span>
+</td>
+<td>Si es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span>, entonces <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es el caso.
+</td></tr>
+<tr>
+<td>4
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi \to \Box \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi \to \Box \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ef9d30a3560b99d23658a708123092116861b0ad" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.809ex; height:2.509ex;" alt="{\displaystyle \Box \phi \to \Box \Box \phi }"/></span>
+</td>
+<td>Si es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span>, entonces es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> sea necesario.
+</td></tr>
+<tr>
+<td>5
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi \to \Box \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi \to \Box \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9ab15d5e9775bdb51c63cadc7462030798867b95" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.294ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi \to \Box \Diamond \phi }"/></span>
+</td>
+<td>Si es posible que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span>, entonces es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> sea posible.
+</td></tr>
+<tr>
+<td>B
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \to \Box \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \to \Box \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a76e48a497ac1340bc2668c242cd40f132488b52" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:9.743ex; height:2.509ex;" alt="{\displaystyle \phi \to \Box \Diamond \phi }"/></span>
+</td>
+<td>Si <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es el caso, entonces es necesario que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> sea posible.
+</td></tr></tbody></table>
+<p>Diferentes combinaciones de axiomas dan lugar a diferentes sistemas de l&#243;gica modal. El sistema <b>K</b> (llamado as&#237; en honor a <a href="https://es.wikipedia.org/wiki/Saul_Kripke" title="Saul Kripke">Saul Kripke</a>) es el que menos axiomas utiliza: aparte de los axiomas de la l&#243;gica proposicional, el sistema <b>K</b> se sirve solo del axioma K (no confundir el axioma con el sistema). Por esta misma raz&#243;n, sin embargo, el sistema <b>K</b> tambi&#233;n es el m&#225;s d&#233;bil de los sistemas, es decir, el que menos teoremas puede demostrar. Sistemas m&#225;s fuertes se construyen agregando axiomas a <b>K</b>. A continuaci&#243;n hay una tabla con los nombres de los sistemas m&#225;s conocidos y sus axiomas:
+</p>
+<table style="text-align:left">
+
+<tbody><tr>
+<th style="width:60px">Sistema
+</th>
+<th>Axiomas
+</th></tr>
+<tr>
+<td>K
+</td>
+<td>K
+</td></tr>
+<tr>
+<td>T
+</td>
+<td>K, T
+</td></tr>
+<tr>
+<td>S4
+</td>
+<td>K, T, 4
+</td></tr>
+<tr>
+<td>S5
+</td>
+<td>K, T, 5
+</td></tr>
+<tr>
+<td>B
+</td>
+<td>K, T, B
+</td></tr></tbody></table>
+<h3><span id="Sem.C3.A1ntica"/><span class="mw-headline" id="Sem&#225;ntica">Sem&#225;ntica</span></h3>
+<p>Una interpretaci&#243;n para un lenguaje modal es un conjunto ordenado de tres elementos: &lt;<i>W</i>, <i>R</i>, <i>V</i>&gt;
+</p>
+<ul><li><i><b>W</b></i> es un conjunto cuyos elementos generalmente son llamados <i>mundos posibles</i>. Qu&#233; es exactamente un mundo posible es materia de debate. Una de las posturas dice que un mundo posible es un conjunto maximal-<a href="https://es.wikipedia.org/wiki/Consistencia_(l%C3%B3gica)" title="Consistencia (l&#243;gica)">consistente</a> de proposiciones. Esto es, un conjunto de proposiciones al que si se agregara una proposici&#243;n cualquiera m&#225;s, se volver&#237;a inconsistente. Esta definici&#243;n intenta capturar la idea de una descripci&#243;n <i>completa</i> del mundo (de <i>un</i> mundo).</li></ul>
+<ul><li><i><b>R</b></i> es una relaci&#243;n entre mundos posibles llamada <i>relaci&#243;n de accesibilidad</i>. La funci&#243;n de la relaci&#243;n de accesibilidad es ayudar a expresar una necesidad o posibilidad relativa. En principio, no todo lo que es posible en un mundo es posible en otro mundo. Supongamos tres situaciones o mundos posibles: <i>w</i>0, <i>w</i>1 y <i>w</i>2. Supongamos adem&#225;s que <i>w</i>0 es la situaci&#243;n actual, en la que el se&#241;or Fern&#225;ndez se tir&#243; sin paraca&#237;das de un avi&#243;n volando a miles de metros, con el fin de suicidarse. Convengamos que en esta situaci&#243;n, el se&#241;or Fern&#225;ndez va a morir necesariamente (por necesidad f&#237;sica). Por otro lado, <i>w</i>1 es una situaci&#243;n anterior a <i>w</i>0 en la que el se&#241;or Fern&#225;ndez est&#225; decidiendo si tirarse o no del avi&#243;n, y <i>w</i>2 es una situaci&#243;n posterior a <i>w</i>1 en donde el se&#241;or Fern&#225;ndez decidi&#243; no tirarse del avi&#243;n. Hay un sentido del t&#233;rmino "posible" en el que el enunciado "es posible que el se&#241;or Fern&#225;ndez no muera" es verdadero en <i>w</i>1 pero no en <i>w</i>0. De modo que <i>w</i>2 es un mundo posible relativo a <i>w</i>1, pero no relativo a <i>w</i>0. Expresamos esta posibilidad relativa diciendo que <i>w</i>1 tiene acceso a <i>w</i>2, pero que <i>w</i>0 no tiene acceso a <i>w</i>2.</li></ul>
+<ul><li><i><b>V</b></i> es una funci&#243;n que asigna valores de verdad a proposiciones dentro de cada mundo posible. Es decir, la funci&#243;n <i>V</i> asigna a cada proposici&#243;n <i>p</i> un valor de verdad, pero este valor de verdad puede variar dependiendo del mundo posible en donde se est&#233; evaluando su verdad. Estrictamente hablando, por lo tanto, la funci&#243;n <i>V</i> es una funci&#243;n que toma pares ordenados como argumentos, y devuelve valores de verdad. Estos pares contienen, por un lado, la proposici&#243;n a ser evaluada, y por el otro, el mundo posible donde ser&#225; evaluada.</li></ul>
+<p>A los dos primeros elementos de la interpretaci&#243;n se los llama el <i>marco</i> de la interpretaci&#243;n, y cuando se les suma el tercero se tiene un <i>modelo</i> para el sistema. Los mundos posibles no juegan ning&#250;n papel sustancial en la definici&#243;n de los operadores l&#243;gicos no-modales, salvo que las condiciones de verdad se definen relativamente a mundos posibles. Por ejemplo:
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\neg \phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\neg \phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/723da62e2c3128b71ec1f6aa4a51e68640c15782" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.878ex; height:2.843ex;" alt="{\displaystyle V(w,\neg \phi )=1\,}"/></span> &#160;&#160;si y solo si&#160;&#160; <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi )=0\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi )=0\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b289a920214eca4f20b660755313dca21393a148" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.328ex; height:2.843ex;" alt="{\displaystyle V(w,\phi )=0\,}"/></span></li></ul>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi \land \psi )=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo>&#8743;</mo>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi \land \psi )=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/240e9622be1861469cdb75fe61203c5331b33c5e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:16.037ex; height:2.843ex;" alt="{\displaystyle V(w,\phi \land \psi )=1}"/></span> &#160;&#160;si y solo si&#160;&#160; <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5bb58875ba3d70e1f6f4e543b1165ca78bb4e97e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.328ex; height:2.843ex;" alt="{\displaystyle V(w,\phi )=1\,}"/></span> &#160;&#160;y&#160;&#160; <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\psi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\psi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a1f4f4add61adf39b7e6eed7dd1938280b972902" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.456ex; height:2.843ex;" alt="{\displaystyle V(w,\psi )=1\,}"/></span></li></ul>
+<p>Pero los mundos posibles juegan un papel clave en la definici&#243;n de las condiciones de verdad de los operadores modales:
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\Box \phi )=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\Box \phi )=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6d65c2278bba81d87afeb841b4e742878a5adaad" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.749ex; height:2.843ex;" alt="{\displaystyle V(w,\Box \phi )=1}"/></span> &#160;&#160;si y solo si para todo mundo posible <i>w*</i> tal que <i>wRw*</i> (<i>w</i> tiene acceso a <i>w*</i>) se cumple que&#160;&#160; <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w^{*},\phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>&#8727;</mo>
+          </mrow>
+        </msup>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w^{*},\phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a4e64f6a347092a95b3cfbda845d5ee193ab82fe" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.382ex; height:2.843ex;" alt="{\displaystyle V(w^{*},\phi )=1\,}"/></span></li></ul>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\Diamond \phi )=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\Diamond \phi )=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/72552c6a3f29e83c7f0447505805672b64c9de29" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.491ex; height:2.843ex;" alt="{\displaystyle V(w,\Diamond \phi )=1}"/></span> &#160;&#160;si y solo si en al menos un mundo posible <i>w*</i> tal que <i>wRw*</i> se cumple que&#160;&#160; <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w^{*},\phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>w</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo>&#8727;</mo>
+          </mrow>
+        </msup>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w^{*},\phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a4e64f6a347092a95b3cfbda845d5ee193ab82fe" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.382ex; height:2.843ex;" alt="{\displaystyle V(w^{*},\phi )=1\,}"/></span></li></ul>
+<p>Una observaci&#243;n: Si desde un mundo posible <i>w</i> no se puede acceder a ning&#250;n otro mundo posible, entonces todas las f&#243;rmulas de la forma <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bac6d8e20bfba09462096d4f815c14b676e4b2f4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:3.194ex; height:2.509ex;" alt="{\displaystyle \Box \phi }"/></span> ser&#225;n verdaderas en <i>w</i>, mientras que todas las de la forma <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a66fbb65d563e99aa91360d0da21ee6637080ea9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.936ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi }"/></span> ser&#225;n falsas. Las condiciones de verdad de <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bac6d8e20bfba09462096d4f815c14b676e4b2f4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:3.194ex; height:2.509ex;" alt="{\displaystyle \Box \phi }"/></span> no requieren la existencia de un mundo posible que sea accesible, ya que "todo mundo posible <i>w*</i> tal que <i>wRw*</i> y <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi )=0\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi )=0\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b289a920214eca4f20b660755313dca21393a148" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.328ex; height:2.843ex;" alt="{\displaystyle V(w,\phi )=0\,}"/></span>&#160;" es equivalente a "no hay ning&#250;n mundo posible tal que <i>wRw*</i> y <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\neg \phi )=0}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\neg \phi )=0}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8843a1febcb34817f98c7ab4a1f3a17504d41031" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.491ex; height:2.843ex;" alt="{\displaystyle V(w,\neg \phi )=0}"/></span>&#160;". Es decir, todo lo que se requiere para que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bac6d8e20bfba09462096d4f815c14b676e4b2f4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:3.194ex; height:2.509ex;" alt="{\displaystyle \Box \phi }"/></span> sea verdadero en <i>w</i> es que no haya ning&#250;n mundo accesible desde <i>w</i> donde <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> sea falso. Por otro lado las condiciones de verdad de <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a66fbb65d563e99aa91360d0da21ee6637080ea9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.936ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi }"/></span> requieren la existencia de un mundo posible. Para que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a66fbb65d563e99aa91360d0da21ee6637080ea9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.936ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi }"/></span> sea verdadero en <i>w</i>, debe haber al menos un mundo accesible desde <i>w</i> en el que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> sea verdadero. Si desde <i>w</i> no se accede a ning&#250;n mundo posible, entonces <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a66fbb65d563e99aa91360d0da21ee6637080ea9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.936ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi }"/></span> ser&#225; falso en <i>w</i>.
+</p>
+<h2><span id="Consecuencia_l.C3.B3gica_y_deducci.C3.B3n"/><span class="mw-headline" id="Consecuencia_l&#243;gica_y_deducci&#243;n">Consecuencia l&#243;gica y deducci&#243;n</span></h2>
+<p>Dentro de los lenguajes l&#243;gicos podemos distinguir dos tipos de relaciones de consecuencia entre premisas y conclusi&#243;n: la <a href="https://es.wikipedia.org/wiki/Consecuencia_l%C3%B3gica" title="Consecuencia l&#243;gica">consecuencia l&#243;gica</a> y la deducibilidad. La relaci&#243;n de consecuencia l&#243;gica es una relaci&#243;n <i><a href="https://es.wikipedia.org/wiki/Sem%C3%A1ntica" title="Sem&#225;ntica">sem&#225;ntica</a></i> en el sentido de que es una relaci&#243;n entre las premisas bajo una interpretaci&#243;n y la conclusi&#243;n bajo la misma interpretaci&#243;n. La relaci&#243;n de deducibilidad es una relaci&#243;n <i>sint&#225;ctica</i> porque queda caracterizada por un conjunto de reglas (un sistema deductivo) que atienden solamente a la forma de las premisas y conclusi&#243;n. Se entiende habitualmente que la relaci&#243;n de consecuencia l&#243;gica es <i>m&#225;s b&#225;sica</i> (aunque esto est&#225; sujeto a cierto debate) y que el objetivo de un sistema deductivo es caracterizar en t&#233;rminos puramente sint&#225;cticos la relaci&#243;n de consecuencia l&#243;gica. Un sistema deductivo caracteriza de un modo satisfactorio la consecuencia l&#243;gica cuando nos permite deducir solo consecuencias l&#243;gicas (se dice entonces que el sistema es consistente o correcto, en ingl&#233;s <i>sound</i>) y todas las consecuencias l&#243;gicas (se dice que es completo, en ingl&#233;s <i>complete</i>).
+</p><p>En l&#243;gica cl&#225;sica hay una sola relaci&#243;n de consecuencia l&#243;gica y distintos sistemas deductivos para caracterizarla (sistemas axiom&#225;ticos, <i>tableaux</i>, deducci&#243;n natural, sistemas de Gentzen, entre otros). Esto no es as&#237; en l&#243;gica modal. En l&#243;gica modal hay distintos sistemas modales que caracterizan distintas relaciones de consecuencia l&#243;gica. En este sentido m&#225;s que de <i>l&#243;gica modal</i> deber&#237;a hablarse de <i>l&#243;gicas modales</i>. En primer lugar introduciremos una definici&#243;n general de consecuencia l&#243;gica. En segundo lugar se tratar&#225; el sistema modal b&#225;sico llamado K. Despu&#233;s indicaremos c&#243;mo modificar los sistemas modales y cu&#225;les son sus correspondientes relaciones de consecuencia l&#243;gica.
+</p>
+<h3><span id="Consecuencia_l.C3.B3gica"/><span class="mw-headline" id="Consecuencia_l&#243;gica">Consecuencia l&#243;gica</span></h3>
+<p>La <a href="https://es.wikipedia.org/wiki/Consecuencia_l%C3%B3gica" title="Consecuencia l&#243;gica">consecuencia l&#243;gica</a> est&#225; ligada a la noci&#243;n de verdad; que un argumento es v&#225;lido quiere decir que preserva necesariamente la verdad. En l&#243;gica modal la verdad es relativa a <a href="https://es.wikipedia.org/wiki/Mundos_posibles" class="mw-redirect" title="Mundos posibles">mundos posibles</a> (una f&#243;rmula es verdadera en una interpretaci&#243;n en un mundo posible) de modo que la consecuencia l&#243;gica tambi&#233;n ser&#225; relativa a mundos posibles: un argumento ser&#225; v&#225;lido justo cuando, si sus premisas son todas verdaderas en un mundo posible, su conclusi&#243;n es verdadera en ese mundo posible.
+Por otro lado, suele entenderse la necesaria preservaci&#243;n de verdad como preservaci&#243;n de verdad en toda interpretaci&#243;n. Por tanto, un argumento es v&#225;lido en nuestro lenguaje modal cuando preserva la verdad en todos los mundos posibles en toda interpretaci&#243;n:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \models \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8872;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \models \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c75af98ced3a0a3238651bbf9e3416ec0dd15561" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.143ex; height:2.843ex;" alt="{\displaystyle \Gamma \models \phi }"/></span> si y solo si para toda interpretaci&#243;n &lt;<i>W</i>, <i>R</i>, <i>V</i>&gt; y todo mundo posible <i>w</i> en <i>W</i>, si &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\psi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\psi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a1f4f4add61adf39b7e6eed7dd1938280b972902" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.456ex; height:2.843ex;" alt="{\displaystyle V(w,\psi )=1\,}"/></span>&#160; para todo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \psi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#968;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \psi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3c0246f660f8317d29b9b2f21c339b3fe1171740" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.9ex; height:2.509ex;" alt="\psi \,"/></span> en <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f7eb5039764f13bd45b57a37f374ed22eae752ca" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.84ex; height:2.176ex;" alt="{\displaystyle \Gamma \,}"/></span>, entonces &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5bb58875ba3d70e1f6f4e543b1165ca78bb4e97e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.328ex; height:2.843ex;" alt="{\displaystyle V(w,\phi )=1\,}"/></span></dd></dl>
+<h3><span id="Deducci.C3.B3n"/><span class="mw-headline" id="Deducci&#243;n">Deducci&#243;n</span></h3>
+<p>Un <a href="https://es.wikipedia.org/wiki/Sistema_deductivo" title="Sistema deductivo">sistema deductivo</a> es un conjunto de reglas que nos permite establecer afirmaciones de consecuencia entre un conjunto de oraciones y una oraci&#243;n atendiendo solamente a su forma. Cuando <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c69f1c4a95b2d750b30fa4cf5d5d068a573ac0d8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.773ex; height:2.509ex;" alt="\phi \,"/></span> es una consecuencia deductiva de <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f7eb5039764f13bd45b57a37f374ed22eae752ca" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.84ex; height:2.176ex;" alt="{\displaystyle \Gamma \,}"/></span> en un sistema deductivo S se suele escribir "<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \vdash \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8866;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \vdash \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e98da8d3cf0372a4701a3ff204982a36cd0f4251" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:5.549ex; height:2.509ex;" alt="{\displaystyle \Gamma \vdash \phi }"/></span>&#160; en S". El tipo de sistemas deductivos tradicionales en l&#243;gica modal son los sistemas axiom&#225;ticos. Un sistema axiom&#225;tico es un conjunto de enunciados del lenguaje (o <i>formas de enunciados</i> si contienen metavariables) y un conjunto de reglas de inferencia. Una consecuencia deductiva de un sistema axiom&#225;tico es, o bien un axioma, o bien un enunciado que puede obtenerse a partir de los axiomas y las reglas de inferencia. El sistema axiom&#225;tico b&#225;sico para la l&#243;gica modal es el sistema K, descrito m&#225;s arriba. La relaci&#243;n de deducibilidad en K (es decir, todo aquello que es deducible en K), queda por lo tanto definida por sus axiomas y sus reglas de inferencia.
+</p><p>Como comentamos al inicio de esta secci&#243;n, la deducibilidad en los distintos sistemas modales caracteriza diversas relaciones de consecuencia l&#243;gica. El sistema modal K es considerado b&#225;sico porque la deducci&#243;n en K caracteriza (es consistente y completo respecto a) la consecuencia l&#243;gica en <i>todas las interpretaciones (normales)</i>. Por tanto:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \vdash \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8866;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \vdash \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e98da8d3cf0372a4701a3ff204982a36cd0f4251" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:5.549ex; height:2.509ex;" alt="{\displaystyle \Gamma \vdash \phi }"/></span> en K si y solo si <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \models \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8872;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \models \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c75af98ced3a0a3238651bbf9e3416ec0dd15561" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.143ex; height:2.843ex;" alt="{\displaystyle \Gamma \models \phi }"/></span> para toda interpretaci&#243;n &lt;<i>W</i>, <i>R</i>, <i>V</i>&gt;.</dd></dl>
+<h3><span id="Restricciones_en_la_relaci.C3.B3n_de_accesibilidad"/><span class="mw-headline" id="Restricciones_en_la_relaci&#243;n_de_accesibilidad">Restricciones en la relaci&#243;n de accesibilidad</span></h3>
+<p>Recordemos que varios de los sistemas modales se obtienen simplemente a&#241;adiendo axiomas a la lista de axiomas del sistema K. Por ejemplo, el sistema T se obtiene a&#241;adiendo a K el axioma:
+</p>
+<dl><dd>(<b>T</b>) &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi \to \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi \to \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6a5d644484623825d62865ca86260267c2d404b6" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:8.193ex; height:2.509ex;" alt="{\displaystyle \Box \phi \to \phi }"/></span></dd></dl>
+<p>En cada uno de los sistemas, la relaci&#243;n de consecuencia l&#243;gica que caracteriza la deducibilidad en el sistema es distinta. Por ejemplo, en el sistema T, la relaci&#243;n de consecuencia l&#243;gica (respecto a la cual T es consistente y completo) es la consecuencia l&#243;gica en todas las interpretaciones en las que la relaci&#243;n de accesibilidad es <a href="https://es.wikipedia.org/wiki/Relaci%C3%B3n_reflexiva" title="Relaci&#243;n reflexiva">reflexiva</a>. Es decir, la clase de todas las interpretaciones &lt;<i>W</i>, <i>R</i>, <i>V</i>&gt; en las que <i>R</i> es reflexiva (todo mundo <i>w</i> en <i>W</i> es accesible desde s&#237; mismo: <i>wRw</i>). Por tanto, la adici&#243;n del axioma T a K da lugar a un sistema que es completo y consistente respecto a todas las interpretaciones en que <i>R</i> es reflexiva:
+</p>
+<dl><dd><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \vdash \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8866;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \vdash \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e98da8d3cf0372a4701a3ff204982a36cd0f4251" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:5.549ex; height:2.509ex;" alt="{\displaystyle \Gamma \vdash \phi }"/></span>&#160; en T si y solo si &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \models \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8872;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \models \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c75af98ced3a0a3238651bbf9e3416ec0dd15561" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.143ex; height:2.843ex;" alt="{\displaystyle \Gamma \models \phi }"/></span>&#160; para toda interpretaci&#243;n &lt;<i>W</i>, <i>R</i>, <i>V</i>&gt; en la que <i>R</i> es reflexiva.</dd></dl>
+<p>Otros sistemas modales se obtienen a trav&#233;s de la adici&#243;n de axiomas y sus respectivas consecuencias l&#243;gicas a trav&#233;s de la adici&#243;n de restricciones sobre <i>R</i>. Algunos de los axiomas m&#225;s conocidos con sus respectivas restricciones sobre <i>R</i> son:
+</p>
+<table style="text-align:left">
+
+<tbody><tr>
+<th style="width:60px">Nombre
+</th>
+<th style="width:120px">Axioma
+</th>
+<th style="width:80px"><i>R</i> es...
+</th>
+<th>Restricci&#243;n en <i>R</i>
+</th></tr>
+<tr>
+<td>T (o M)
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi \to \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi \to \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6a5d644484623825d62865ca86260267c2d404b6" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:8.193ex; height:2.509ex;" alt="{\displaystyle \Box \phi \to \phi }"/></span>
+</td>
+<td><a href="https://es.wikipedia.org/wiki/Relaci%C3%B3n_reflexiva" title="Relaci&#243;n reflexiva">Reflexiva</a>
+</td>
+<td>Para todo <i>w</i> en <i>W</i>, <i>wRw</i>.
+</td></tr>
+<tr>
+<td>4
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi \to \Box \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi \to \Box \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ef9d30a3560b99d23658a708123092116861b0ad" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.809ex; height:2.509ex;" alt="{\displaystyle \Box \phi \to \Box \Box \phi }"/></span>
+</td>
+<td><a href="https://es.wikipedia.org/wiki/Relaci%C3%B3n_transitiva" title="Relaci&#243;n transitiva">Transitiva</a>
+</td>
+<td>Para todo <i>w</i>, <i>w*</i> y <i>w**</i> en <i>W</i>, si <i>wRw*</i> y <i>w*Rw**</i> entonces <i>wRw**</i>.
+</td></tr>
+<tr>
+<td>5
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi \to \Box \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi \to \Box \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9ab15d5e9775bdb51c63cadc7462030798867b95" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:11.294ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi \to \Box \Diamond \phi }"/></span>
+</td>
+<td>Euclidiana
+</td>
+<td>Para todo <i>w</i>, <i>w*</i> y <i>w**</i> en <i>W</i>, si <i>wRw*</i> y <i>wRw**</i> entonces <i>w*Rw**</i>.
+</td></tr>
+<tr>
+<td>B
+</td>
+<td><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \phi \to \Box \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#981;</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>&#9723;</mi>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \phi \to \Box \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a76e48a497ac1340bc2668c242cd40f132488b52" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:9.743ex; height:2.509ex;" alt="{\displaystyle \phi \to \Box \Diamond \phi }"/></span>
+</td>
+<td><a href="https://es.wikipedia.org/wiki/Relaci%C3%B3n_sim%C3%A9trica" title="Relaci&#243;n sim&#233;trica">Sim&#233;trica</a>
+</td>
+<td>Para todo <i>w</i> y <i>w*</i> en <i>W</i> si <i>wRw*</i> entonces <i>w*Rw</i>.
+</td></tr></tbody></table>
+<p>Atendiendo a los axiomas podemos ver cu&#225;l es la relaci&#243;n de consecuencia que caracterizan. Por ejemplo, el sistema S4, que incluye los axiomas T y B, es consistente y completo respecto a las interpretaciones en que <i>R</i> es reflexiva y transitiva. El sistema S5 respecto a las interpretaciones en que <i>R</i> es reflexiva y eucl&#237;dea.
+</p><p>El m&#233;todo axiom&#225;tico tiene ciertas ventajas. Por ejemplo, se puede ver f&#225;cilmente cu&#225;l es la relaci&#243;n entre sistemas modales. Se dice que un sistema modal B es una <i>extensi&#243;n</i> de otro sistema modal A, cuando todas las deducciones que se pueden realizar en A se pueden realizar en B. Se dice que B es una <i>extensi&#243;n propia</i> de A cuando B es una extensi&#243;n de A y A no es una extensi&#243;n de B (es decir, hay deducciones en B que no hay en A). El m&#233;todo axiom&#225;tico tiene la ventaja de mostrar de un modo claro algunas relaciones entre sistemas modales. Por ejemplo, es evidente que como el sistema T se obtiene a&#241;adiendo un axioma a K, T es una extensi&#243;n de K. Para ver que T es una extensi&#243;n propia de K, solo tenemos que comprobar que el axioma T no es deducible en K.
+</p><p>Existen otros m&#233;todos a este prop&#243;sito como los <i>tableaux</i> o tablas anal&#237;ticas. El m&#233;todo axiom&#225;tico tiene la desventaja de que resulta dif&#237;cil para el no-iniciado establecer afirmaciones de deducci&#243;n mientras que las tablas anal&#237;ticas aportan un procedimiento algor&#237;tmico con el que resulta muy sencillo construir las pruebas. Por otra parte, las pruebas de completud y consistencia con las tablas anal&#237;ticas son extremadamente sencillas en comparaci&#243;n con las pruebas que emplean sistemas axiom&#225;ticos. El libro de Graham Priest (2001) es una buena introducci&#243;n a las l&#243;gicas modales (entre otras l&#243;gicas no cl&#225;sicas) que emplea las tablas anal&#237;ticas.
+</p>
+<h3><span class="mw-headline" id="Mundos_no-normales">Mundos no-normales</span></h3>
+<p>Algunos de los sistemas que Lewis propuso para su <a href="https://es.wikipedia.org/wiki/Implicaci%C3%B3n_estricta" class="mw-redirect" title="Implicaci&#243;n estricta">implicaci&#243;n estricta</a> son m&#225;s d&#233;biles que el sistema modal K. Para obtener una sem&#225;ntica para sistemas modales m&#225;s d&#233;biles que K se introdujo la noci&#243;n de <i>mundo no-normal</i> (introducido por <a href="https://es.wikipedia.org/wiki/Saul_Kripke" title="Saul Kripke">Saul Kripke</a> en 1965). Un mundo no-normal es un mundo en el que las condiciones de verdad de los operadores modales son distintas: un enunciado del tipo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Diamond \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Diamond \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a66fbb65d563e99aa91360d0da21ee6637080ea9" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:2.936ex; height:2.509ex;" alt="{\displaystyle \Diamond \phi }"/></span> es siempre verdadero en un mundo no-normal, mientras que un enunciado de la forma <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bac6d8e20bfba09462096d4f815c14b676e4b2f4" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:3.194ex; height:2.509ex;" alt="{\displaystyle \Box \phi }"/></span> es siempre falso. En los mundos no-normales todo es posible y nada es necesario.
+</p><p>Una interpretaci&#243;n no-normal para un lenguaje proposicional modal es una estructura &lt;<i>W</i>, <i>N</i>, <i>R</i>, <i>V</i>&gt; donde <i>W</i>, <i>R</i> y <i>V</i> son como antes y <i>N</i> es un subconjunto de <i>W</i>. <i>N</i> es el conjunto de mundos <i>normales</i> en la interpretaci&#243;n; el resto (si los hay) son los mundos <i>no-normales</i>. Las condiciones de verdad de los operadores l&#243;gicos son igual que antes; solo var&#237;an las condiciones de los operadores modales en mundos no-normales. Si <i>w</i> es no-normal:
+</p>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\Diamond \phi )=1}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#9674;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\Diamond \phi )=1}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/72552c6a3f29e83c7f0447505805672b64c9de29" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.491ex; height:2.843ex;" alt="{\displaystyle V(w,\Diamond \phi )=1}"/></span></li></ul>
+<ul><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\Box \phi )=0}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#9723;</mi>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\Box \phi )=0}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/234dffa7a29fb6e381f1211f0a8a846e53d5c194" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.749ex; height:2.843ex;" alt="{\displaystyle V(w,\Box \phi )=0}"/></span></li></ul>
+<p>A partir de interpretaciones no-normales podemos obtener sem&#225;nticas para sistemas modales m&#225;s d&#233;biles que K. Podemos definir, por ejemplo, la relaci&#243;n de consecuencia l&#243;gica como preservaci&#243;n de verdad sobre <i>mundos normales</i>:
+</p><p>Definici&#243;n: <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \models \phi }">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mo>&#8872;</mo>
+        <mi>&#981;</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \models \phi }</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c75af98ced3a0a3238651bbf9e3416ec0dd15561" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:6.143ex; height:2.843ex;" alt="{\displaystyle \Gamma \models \phi }"/></span>&#160; si y solo para toda interpretaci&#243;n &lt;<i>W</i>, <i>N</i>, <i>R</i>, <i>V</i>&gt; y todo mundo posible <i>w</i> en <i>N</i>, si &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\psi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#968;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\psi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a1f4f4add61adf39b7e6eed7dd1938280b972902" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.456ex; height:2.843ex;" alt="{\displaystyle V(w,\psi )=1\,}"/></span>&#160; para todo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \psi \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#968;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \psi \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3c0246f660f8317d29b9b2f21c339b3fe1171740" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; width:1.9ex; height:2.509ex;" alt="\psi \,"/></span>&#160; en &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Gamma \,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#915;</mi>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Gamma \,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f7eb5039764f13bd45b57a37f374ed22eae752ca" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.338ex; width:1.84ex; height:2.176ex;" alt="{\displaystyle \Gamma \,}"/></span>, entonces &#160;<span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle V(w,\phi )=1\,}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>V</mi>
+        <mo stretchy="false">(</mo>
+        <mi>w</mi>
+        <mo>,</mo>
+        <mi>&#981;</mi>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>1</mn>
+        <mspace width="thinmathspace"/>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle V(w,\phi )=1\,}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5bb58875ba3d70e1f6f4e543b1165ca78bb4e97e" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.328ex; height:2.843ex;" alt="{\displaystyle V(w,\phi )=1\,}"/></span>.
+</p><p>La l&#243;gica que obtenemos si permitimos que <i>R</i> sea una relaci&#243;n binaria cualquiera en <i>W</i> es m&#225;s d&#233;bil que K. Llamemos a esta l&#243;gica N. El hecho m&#225;s singular de las interpretaciones no-normales es que la regla de <i>Necesitaci&#243;n</i>, que era correcta en K y todas sus extensiones, deja de ser correcta. Las f&#243;rmulas l&#243;gicamente v&#225;lidas de la l&#243;gica cl&#225;sica, por ejemplo <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle p\lor \neg p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle p\lor \neg p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8e3bf9be747e7e36aab73fa48705b07ef135c7cc" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; margin-left: -0.089ex; width:6.561ex; height:2.343ex;" alt="{\displaystyle p\lor \neg p}"/></span>, son verdaderas en todo mundo posible (normal o no). Por tanto, tenemos que en N, <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \models p\lor \neg p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo>&#8872;</mo>
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \models p\lor \neg p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2f1c1e365bf0025283264aeaf1c9146fc83b192d" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:9.132ex; height:2.843ex;" alt="{\displaystyle \models p\lor \neg p}"/></span>. M&#225;s a&#250;n, dado que la consecuencia l&#243;gica se define sobre mundos normales, tenemos que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \models \Box (p\lor \neg p)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo>&#8872;</mo>
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \models \Box (p\lor \neg p)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/23e56f65ddb50c76358df19af3cb1660feefaf89" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:12.749ex; height:2.843ex;" alt="{\displaystyle \models \Box (p\lor \neg p)}"/></span> ya que <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle p\lor \neg p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle p\lor \neg p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8e3bf9be747e7e36aab73fa48705b07ef135c7cc" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.671ex; margin-left: -0.089ex; width:6.561ex; height:2.343ex;" alt="{\displaystyle p\lor \neg p}"/></span> ser&#225; verdadera en todo mundo accesible desde un mundo normal. Sin embargo, <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box \Box (p\lor \neg p)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box \Box (p\lor \neg p)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8c29a27052fce1d6c54fd0f565b86f28dcd89669" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:11.897ex; height:2.843ex;" alt="{\displaystyle \Box \Box (p\lor \neg p)}"/></span> no es verdadera en todo mundo normal, ya que este puede acceder a un mundo no-normal, en donde <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box (p\lor \neg p)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo>&#8744;</mo>
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box (p\lor \neg p)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/601508ae5f7d415a8dca812c68f7c46c9aafde29" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:10.089ex; height:2.843ex;" alt="{\displaystyle \Box (p\lor \neg p)}"/></span> ser&#225; falsa.
+</p>
+<h2><span class="mw-headline" id="Historia">Historia</span></h2>
+<p>La l&#243;gica modal es tan antigua como el <a href="https://es.wikipedia.org/wiki/Organon" class="mw-redirect" title="Organon">Organon</a> de <a href="https://es.wikipedia.org/wiki/Arist%C3%B3teles" title="Arist&#243;teles">Arist&#243;teles</a>. Hay pasajes en su obra, como el famoso argumento de la batalla naval en <i>Sobre la interpretaci&#243;n</i>, que ahora se ven como anticipaciones de la l&#243;gica modal y su conexi&#243;n con la potencialidad y el tiempo.
+</p><p>El primer sistema formal de l&#243;gica modal fue desarrollado por <a href="https://es.wikipedia.org/wiki/Avicena" title="Avicena">Avicenna</a>, quien finalmente desarroll&#243; una teor&#237;a silog&#237;stica &#171;temporalmente modalizada&#187;.
+</p><p>La l&#243;gica modal contempor&#225;nea, sin embargo, surge a principios del siglo XX como una reacci&#243;n a la l&#243;gica cl&#225;sica que madur&#243; en las obras de autores como <a href="https://es.wikipedia.org/wiki/Gottlob_Frege" title="Gottlob Frege">Gottlob Frege</a>, <a href="https://es.wikipedia.org/wiki/Bertrand_Russell" title="Bertrand Russell">Bertrand Russell</a> y <a href="https://es.wikipedia.org/wiki/Alfred_North_Whitehead" title="Alfred North Whitehead">Alfred North Whitehead</a>. Los patrones de razonamiento v&#225;lidos, aquellos que indican una relaci&#243;n de <a href="https://es.wikipedia.org/wiki/Consecuencia_l%C3%B3gica" title="Consecuencia l&#243;gica">consecuencia l&#243;gica</a> entre un conjunto de enunciados &#8211;las premisas&#8211; y otro enunciado &#8211;la conclusi&#243;n&#8211; en un argumento, est&#225;n en parte determinados por cu&#225;les sean las constantes l&#243;gicas. En la l&#243;gica cl&#225;sica los siguientes patrones de razonamiento son v&#225;lidos:
+</p>
+<ol><li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle q\models p\to q}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>q</mi>
+        <mo>&#8872;</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle q\models p\to q}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/851a078c92947a6d485aab0d607f75c40d4083a8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:10.228ex; height:2.843ex;" alt="{\displaystyle q\models p\to q}"/></span></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \neg p\models p\to q}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#172;</mi>
+        <mi>p</mi>
+        <mo>&#8872;</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \neg p\models p\to q}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7f67b80472c40a36a6807db7cabfab104fccad48" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:11.878ex; height:2.843ex;" alt="{\displaystyle \neg p\models p\to q}"/></span></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle (p\to q)\land (r\to s)\models (p\to s)\lor (r\to q)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+        <mo>&#8743;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>r</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>s</mi>
+        <mo stretchy="false">)</mo>
+        <mo>&#8872;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>s</mi>
+        <mo stretchy="false">)</mo>
+        <mo>&#8744;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>r</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle (p\to q)\land (r\to s)\models (p\to s)\lor (r\to q)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7f4ad7fa700dabae5ee4226cbca63df7fb6ffe46" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:38.92ex; height:2.843ex;" alt="{\displaystyle (p\to q)\land (r\to s)\models (p\to s)\lor (r\to q)}"/></span></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle (p\land q)\to r\models (p\to r)\lor (q\to r)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo>&#8743;</mo>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>r</mi>
+        <mo>&#8872;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>r</mi>
+        <mo stretchy="false">)</mo>
+        <mo>&#8744;</mo>
+        <mo stretchy="false">(</mo>
+        <mi>q</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>r</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle (p\land q)\to r\models (p\to r)\lor (q\to r)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7849bc52fff964adba461963139a0b4911221350" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:32.364ex; height:2.843ex;" alt="{\displaystyle (p\land q)\to r\models (p\to r)\lor (q\to r)}"/></span></li>
+<li><span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \neg (p\to q)\models p}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi mathvariant="normal">&#172;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+        <mo>&#8872;</mo>
+        <mi>p</mi>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \neg (p\to q)\models p}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e5d80d38f8fbcae1e5e3e5809c20485596bf1c93" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:13.687ex; height:2.843ex;" alt="{\displaystyle \neg (p\to q)\models p}"/></span></li></ol>
+<p>Estos patrones de razonamiento se conocen como las <a href="https://es.wikipedia.org/wiki/Paradojas_de_la_implicaci%C3%B3n_material" title="Paradojas de la implicaci&#243;n material">paradojas de la implicaci&#243;n material</a>, porque son argumentos v&#225;lidos que sin embargo parecen poco naturales o incluso absurdos. Por ejemplo, los siguientes argumentos ser&#237;an v&#225;lidos:
+</p>
+<ol><li value="3"> Si hoy es lunes entonces ma&#241;ana es martes y si hoy es mi&#233;rcoles entonces ma&#241;ana es jueves. Por lo tanto, o bien, si hoy es lunes entonces ma&#241;ana es jueves, o bien, si hoy es mi&#233;rcoles entonces ma&#241;ana es martes.
+
+</li><li value="5"> No es el caso que si Dios existe entonces castigar&#225; a los buenos. Por lo tanto, Dios existe.</li></ol>
+<p>Del segundo uno no dir&#237;a que tiene premisas verdaderas y conclusi&#243;n falsa, pero como m&#237;nimo parece extra&#241;o que podamos probar la existencia de Dios de un modo tan sencillo a partir de una premisa tan plausible (&#161;no parece que haya una relaci&#243;n de consecuencia l&#243;gica entre la premisa y la conclusi&#243;n!).
+</p><p>En 1912 <a href="https://es.wikipedia.org/wiki/Clarence_Irving_Lewis" title="Clarence Irving Lewis">Lewis</a> publica <i>Conditionals and the Algebra of Logic</i>, justo despu&#233;s de los <i><a href="https://es.wikipedia.org/wiki/Principia_mathematica" class="mw-redirect" title="Principia mathematica">Principia mathematica</a></i> de Russell y Whitehead. En 1918 publica <i>A Survey of Symbolic Logic</i> en donde formula una familia de axiomas y propone un nuevo <a href="https://es.wikipedia.org/wiki/Condicional_material" title="Condicional material">condicional</a> m&#225;s adecuado para recoger el significado de la expresi&#243;n "si... entonces" del lenguaje natural, al que llama <a href="https://es.wikipedia.org/wiki/Implicaci%C3%B3n_estricta" class="mw-redirect" title="Implicaci&#243;n estricta">implicaci&#243;n estricta</a>. El nuevo condicional requiere, para ser verdadero, una relaci&#243;n m&#225;s fuerte entre el antecedente y el consecuente que el condicional cl&#225;sico. Lewis define su condicional estricto en t&#233;rminos del condicional cl&#225;sico m&#225;s la noci&#243;n de necesidad:
+</p>
+<dl><dd>"<i>p</i> implica estrictamente <i>q</i>" si y solo si <span class="mwe-math-element"><span class="mwe-math-mathml-inline mwe-math-mathml-a11y" style="display: none;"><math xmlns="http://www.w3.org/1998/Math/MathML" alttext="{\displaystyle \Box (p\to q)}">
+  <semantics>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mstyle displaystyle="true" scriptlevel="0">
+        <mi>&#9723;</mi>
+        <mo stretchy="false">(</mo>
+        <mi>p</mi>
+        <mo stretchy="false">&#8594;</mo>
+        <mi>q</mi>
+        <mo stretchy="false">)</mo>
+      </mstyle>
+    </mrow>
+    <annotation encoding="application/x-tex">{\displaystyle \Box (p\to q)}</annotation>
+  </semantics>
+</math></span><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a5ad7182e2eb4a70aa1ec28c577cf2fdf610a92c" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -0.838ex; width:9.47ex; height:2.843ex;" alt="{\displaystyle \Box (p\to q)}"/></span></dd></dl>
+<p>De 1918 a 1932 Lewis prepara la segunda edici&#243;n del <i>Survey</i>. Durante este per&#237;odo surgen multitud de trabajos sobre el tema. <a href="https://es.wikipedia.org/wiki/Arthur_Prior" title="Arthur Prior">Arthur Prior</a> aplica el mismo lenguaje formal para tratar la l&#243;gica temporal. <a href="https://es.wikipedia.org/wiki/Oskar_Becker" title="Oskar Becker">Oskar Becker</a> desv&#237;a la atenci&#243;n del an&#225;lisis de las conectivas tipo "condicional estricto" a las propias nociones modales: son &#233;stas las que requieren clarificaci&#243;n.
+</p><p>Existen al menos tres factores que hicieron que la l&#243;gica modal tuviera "mala prensa" en la primera mitad del siglo XX. En primer lugar, la interpretaci&#243;n cl&#225;sica de la consecuencia l&#243;gica eliminaba las nociones modales en favor de una visi&#243;n formalista. En segundo lugar, a diferencia del caso de la l&#243;gica cl&#225;sica (que fue axiomatizada de un modo completo por Frege), las nociones modales dieron lugar a distintos sistemas axiom&#225;ticos. En tercer lugar, la l&#243;gica modal se desarroll&#243; sin un an&#225;lisis sem&#225;ntico. A esto se suman las cr&#237;ticas de Quine que comienzan en los a&#241;os treinta.
+</p><p>El trabajo de <a href="https://es.wikipedia.org/wiki/Saul_Kripke" title="Saul Kripke">Saul Kripke</a> en los a&#241;os sesenta (1963: <i>Semantical Analysis of Modal Logic, I: Normal Propositional Calculi</i>; 1965: <i>Semantical Analysis of Modal Logic, II: Non-Normal Modal Propositional Calculi</i>; 1965: <i>Semantical Analysis of Intuitionistic Logic I</i>) fue decisivo para el desarrollo del estudio de la l&#243;gica modal. Kripke aport&#243; la herramienta b&#225;sica para el an&#225;lisis sem&#225;ntico de la l&#243;gica modal: la <a href="https://es.wikipedia.org/w/index.php?title=Sem%C3%A1ntica_de_mundos_posibles&amp;action=edit&amp;redlink=1" class="new" title="Sem&#225;ntica de mundos posibles (a&#250;n no redactado)">sem&#225;ntica de mundos posibles</a>. La sem&#225;ntica de mundos posibles es una herramienta para el an&#225;lisis de una colecci&#243;n importante de expresiones: modales, temporales, dox&#225;sticas, epist&#233;micas, de&#243;nticas, entre otras. Adem&#225;s, la sem&#225;ntica modal permite interpretar una gran variedad de l&#243;gicas no-cl&#225;sicas como el <a href="https://es.wikipedia.org/wiki/Intuicionismo" title="Intuicionismo">intuicionismo</a> y ha impulsado muchas aplicaciones en ling&#252;&#237;stica computacional y l&#243;gica inform&#225;tica.
+</p>
+<h2><span id="V.C3.A9ase_tambi.C3.A9n"/><span class="mw-headline" id="V&#233;ase_tambi&#233;n">V&#233;ase tambi&#233;n</span></h2>
+<ul><li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_proposicional" title="L&#243;gica proposicional">L&#243;gica proposicional</a></li>
+<li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_de_primer_orden" title="L&#243;gica de primer orden">L&#243;gica de primer orden</a></li>
+<li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_de%C3%B3ntica" title="L&#243;gica de&#243;ntica">L&#243;gica de&#243;ntica</a></li>
+<li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_temporal" title="L&#243;gica temporal">L&#243;gica temporal</a></li>
+<li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_epist%C3%A9mica" title="L&#243;gica epist&#233;mica">L&#243;gica epist&#233;mica</a></li>
+<li><a href="https://es.wikipedia.org/wiki/L%C3%B3gica_dox%C3%A1stica" title="L&#243;gica dox&#225;stica">L&#243;gica dox&#225;stica</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Implicaci%C3%B3n" title="Implicaci&#243;n">Implicaci&#243;n</a></li></ul>
+<h2><span class="mw-headline" id="Notas_y_referencias">Notas y referencias</span></h2>
+<div class="listaref" style="list-style-type: decimal;"><ol class="references">
+<li id="cite_note-sep-1"><span class="mw-cite-backlink">&#8593; <a href="#cite_ref-sep_1-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-sep_1-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-sep_1-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><span id="CITAREFGarson" class="citation enciclopedia">Garson, James. <a rel="nofollow" class="external text" href="http://plato.stanford.edu/archives/sum2009/entries/logic-modal/">&#171;Modal logic&#187;</a>.  En Edward N. Zalta, ed. <i>Stanford Encyclopedia of Philosophy</i> <span style="color:#555;">(en ingl&#233;s)</span> (Summer 2009 Edition edici&#243;n).</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fes.wikipedia.org%3AL%C3%B3gica+modal&amp;rft.atitle=Stanford+Encyclopedia+of+Philosophy&amp;rft.au=Garson%2C+James&amp;rft.aufirst=James&amp;rft.aulast=Garson&amp;rft.btitle=Modal+logic&amp;rft.edition=Summer+2009+Edition&amp;rft.genre=bookitem&amp;rft_id=http%3A%2F%2Fplato.stanford.edu%2Farchives%2Fsum2009%2Fentries%2Flogic-modal%2F&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span>
+</li>
+</ol></div>
+<p><br/>
+</p>
+<style data-mw-deduplicate="TemplateStyles:r118746331">.mw-parser-output .mw-authority-control{margin-top:1.5em}.mw-parser-output .mw-authority-control .navbox hr:last-child{display:none}.mw-parser-output .mw-authority-control .navbox+.mw-mf-linked-projects{display:none}.mw-parser-output .mw-authority-control .mw-mf-linked-projects{display:flex;padding:0.5em;border:1px solid #c8ccd1;background-color:#eaecf0;color:#222222}.mw-parser-output .mw-authority-control .mw-mf-linked-projects ul li{margin-bottom:0}</style><div class="mw-authority-control"><div role="navigation" class="navbox" aria-label="Navbox" style="width: inherit;padding:3px"><table class="hlist navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="row" class="navbox-group" style="width: 12%; text-align:center;"><a href="https://es.wikipedia.org/wiki/Control_de_autoridades" title="Control de autoridades">Control de autoridades</a></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><b>Proyectos Wikimedia</b></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikidata" title="Wikidata"><img alt="Wd" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png" decoding="async" width="20" height="11" srcset="" data-file-width="1050" data-file-height="590"/></a> Datos:</span> <span class="uid"><a href="https://www.wikidata.org/wiki/Q210841" class="extiw" title="wikidata:Q210841">Q210841</a></span></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikimedia_Commons" title="Commonscat"><img alt="Commonscat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/15px-Commons-logo.svg.png" decoding="async" width="15" height="20" srcset="" data-file-width="1024" data-file-height="1376"/></a> Multimedia:</span> <span class="uid"><span class="plainlinks"><a class="external text" href="https://commons.wikimedia.org/wiki/Category:Modal_logic">Modal logic</a></span></span></li></ul>
+<hr/>
+<ul><li><b>Identificadores</b></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Gemeinsame_Normdatei" title="Gemeinsame Normdatei">GND</a>:</span> <span class="uid"><a rel="nofollow" class="external text" href="https://d-nb.info/gnd/4074914-9">4074914-9</a></span></li>
+<li><b>Diccionarios y enciclopedias</b></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Enciclopedia_Brit%C3%A1nica" title="Enciclopedia Brit&#225;nica">Britannica</a>:</span> <span class="uid"><a rel="nofollow" class="external text" href="https://www.britannica.com/topic/modal-logic">url</a></span></li></ul>
+</div></td></tr></tbody></table></div><div class="mw-mf-linked-projects hlist">
+<ul><li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikidata" title="Wikidata"><img alt="Wd" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wikidata-logo.svg/20px-Wikidata-logo.svg.png" decoding="async" width="20" height="11" srcset="" data-file-width="1050" data-file-height="590"/></a> Datos:</span> <span class="uid"><a href="https://www.wikidata.org/wiki/Q210841" class="extiw" title="wikidata:Q210841">Q210841</a></span></li>
+<li><span style="white-space:nowrap;"><a href="https://es.wikipedia.org/wiki/Wikimedia_Commons" title="Commonscat"><img alt="Commonscat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/15px-Commons-logo.svg.png" decoding="async" width="15" height="20" srcset="" data-file-width="1024" data-file-height="1376"/></a> Multimedia:</span> <span class="uid"><span class="plainlinks"><a class="external text" href="https://commons.wikimedia.org/wiki/Category:Modal_logic">Modal logic</a></span></span></li></ul>
+</div></div>
+</div><noscript><img src="https://es.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;"/></noscript>
+<div class="printfooter">Obtenido de &#171;<a dir="ltr" href="https://es.wikipedia.org/w/index.php?title=L&#243;gica_modal&amp;oldid=128696230">https://es.wikipedia.org/w/index.php?title=L&#243;gica_modal&amp;oldid=128696230</a>&#187;</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://es.wikipedia.org/wiki/Especial:Categor%C3%ADas" title="Especial:Categor&#237;as">Categor&#237;as</a>: <ul><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:L%C3%B3gicas_no_cl%C3%A1sicas" title="Categor&#237;a:L&#243;gicas no cl&#225;sicas">L&#243;gicas no cl&#225;sicas</a></li><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:Sistemas_l%C3%B3gicos" title="Categor&#237;a:Sistemas l&#243;gicos">Sistemas l&#243;gicos</a></li><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:L%C3%B3gica_modal" title="Categor&#237;a:L&#243;gica modal">L&#243;gica modal</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Categor&#237;a oculta: <ul><li><a href="https://es.wikipedia.org/wiki/Categor%C3%ADa:Wikipedia:Art%C3%ADculos_con_identificadores_GND" title="Categor&#237;a:Wikipedia:Art&#237;culos con identificadores GND">Wikipedia:Art&#237;culos con identificadores GND</a></li></ul></div></div>
+	</div>
+</div>
+
+</article>
+</body>
