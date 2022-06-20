@@ -23,3 +23,12 @@ if(MICROHTTPD_BINARIES)
     endif()
     file(COPY ${MICROHTTPD_BINARIES} DESTINATION ${OUTPUT_DIR} NO_SOURCE_PERMISSIONS)
 endif()
+
+
+
+enable_testing()
+add_executable(edahttpd_test main_test.cpp HttpServer.cpp ServeHttpRequestHandler.cpp EDAoogleHttpRequestHandler.cpp)
+add_test(NAME test1 COMMAND main_test)
+
+target_include_directories(edahttpd_test PRIVATE ${MICROHTTPD_INCLUDE_PATHS})
+target_link_libraries(edahttpd_test PRIVATE ${MICROHTTPD_LIBRARIES})
