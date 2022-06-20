@@ -96,34 +96,48 @@ void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string
     // results.push_back("/wiki/Evolucion_biologica.html");
     // results.push_back("/wiki/elPepe.html");
 
-    for(int i = 0; i < searchString.length(); i++)
+    vector<string> searchWords;
+
+    for (int i = 0; i < searchString.length(); i++)
     {
-        if(searchString[i] == ' ')
+        if (searchString[i] == ' ')
             i++;
-        
+
         else
         {
             int j = i + 1;
 
-            while(searchString[j] != ' ' && j < searchString.length())
+            while (searchString[j] != ' ' && j < searchString.length())
                 j++;
-            
-            map<string, uint32_t> *matches = &(searchIndex[searchString.substr(i, j - i)]);
 
-            for(auto it = matches->begin(); it != matches->end(); it++)
+            searchWords.push_back(searchString.substr(i, j - i));
+
+            map<string, bool> *matches = &(searchIndex[searchWords.back()]);
+
+            for (auto it = matches->begin(); it != matches->end(); it++)
             {
-                results.push_back(it->first);
+                if (!it->second)
+                {
+                    results.push_back(it->first);
+                    it->second = true;
+                }
             }
 
             i = j;
         }
     }
+
+    for (auto word : searchWords)
+    {
+        map<string, bool> *restorer = &(searchIndex[word]);
+
+        for (auto it = restorer->begin(); it != restorer->end(); it++)
+            it->second = false;
+    }
 }
 
 void EDAoogleHttpRequestHandler::buildSearchIndex()
 {
-    wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-
     const auto path = filesystem::absolute("www/wiki");
 
     // Paths de todos los .html
@@ -159,7 +173,8 @@ void EDAoogleHttpRequestHandler::buildSearchIndex()
                     decodeHtmlEntities(words);
 
                     for (auto word : words)
-                        searchIndex[word][webPath]++;
+                        searchIndex[word][webPath] = false;
+                    ;
                 }
             }
         }
@@ -204,7 +219,6 @@ static bool isNotSeparator(char c)
 {
     return !(c == ' ' || c == ',' || c == '.' || c == '\r' || c == '-' || c == '\t');
 }
-
 
 static void decodeHtmlEntities(vector<string> &words)
 {

@@ -24,7 +24,7 @@ private:
     void matchSearch(std::string &searchString, std::vector<std::string> &results);
     void buildSearchIndex();
 
-    std::map<std::string, std::map<std::string, uint32_t>> searchIndex;
+    std::map<std::string, std::map<std::string, bool>> searchIndex;
 };
 
 #endif
