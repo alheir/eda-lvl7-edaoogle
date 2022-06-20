@@ -1,6 +1,6 @@
 # eda-lvl7-edaoogle
 
-* Fecha de entrega: 14/06/2022
+* Fecha de entrega: 24/06/2022
 * Grupo: 7
   * HEIR, Alejandro Nahuel
   * HERRTER, José Iván
