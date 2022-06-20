@@ -9,13 +9,24 @@
  */
 
 #include <iostream>
+#include <algorithm>
+#include <filesystem>
+#include <fstream>
+#include <vector>
+#include <regex>
 
 #include "EDAoogleHttpRequestHandler.h"
 
 using namespace std;
 
+static void removeHtmlFromLine(string &line);
+static void splitLineInStrings(string &linel, vector<string> &output);
+static bool isNotSeparator(char c);
+static void decodeHtmlEntities(vector<string> &words);
+
 EDAoogleHttpRequestHandler::EDAoogleHttpRequestHandler(string homePath) : ServeHttpRequestHandler(homePath)
 {
+    buildSearchIndex();
 }
 
 bool EDAoogleHttpRequestHandler::handleRequest(string url,
@@ -54,9 +65,9 @@ bool EDAoogleHttpRequestHandler::handleRequest(string url,
         </div>\
         ");
 
-        // YOUR JOB: fill in results
         float searchTime = 0.1F;
         vector<string> results;
+        matchSearch(searchString, results);
 
         // Print search results
         responseString += "<div class=\"results\">" + to_string(results.size()) +
@@ -78,4 +89,174 @@ bool EDAoogleHttpRequestHandler::handleRequest(string url,
         return serve(url, response);
 
     return false;
+}
+
+void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string> &results)
+{
+    // results.push_back("/wiki/Evolucion_biologica.html");
+    // results.push_back("/wiki/elPepe.html");
+
+    for(int i = 0; i < searchString.length(); i++)
+    {
+        if(searchString[i] == ' ')
+            i++;
+        
+        else
+        {
+            int j = i + 1;
+
+            while(searchString[j] != ' ' && j < searchString.length())
+                j++;
+            
+            map<string, uint32_t> *matches = &(searchIndex[searchString.substr(i, j - i)]);
+
+            for(auto it = matches->begin(); it != matches->end(); it++)
+            {
+                results.push_back(it->first);
+            }
+
+            i = j;
+        }
+    }
+}
+
+void EDAoogleHttpRequestHandler::buildSearchIndex()
+{
+    wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+
+    const auto path = filesystem::absolute("www/wiki");
+
+    // Paths de todos los .html
+    vector fileList(filesystem::directory_iterator(path), {});
+
+    for (auto &file : fileList)
+    {
+        if (filesystem::is_regular_file(file.path()))
+        {
+            ifstream fileStream(file.path().string());
+
+            if (fileStream)
+            {
+                string webPath = file.path().string();
+                webPath = webPath.substr(webPath.find("/wiki"));
+
+                string tempStr;
+
+                // while (getline(fileStream, tempStr))
+                // {
+                //     if (tempStr.substr(0, 3) == "<p>")
+                //         break;
+                // }
+
+                while (getline(fileStream, tempStr))
+                {
+                    removeHtmlFromLine(tempStr);
+                    // RemoveHTMLTags(tempStr);
+
+                    vector<string> words;
+                    splitLineInStrings(tempStr, words);
+
+                    decodeHtmlEntities(words);
+
+                    for (auto word : words)
+                        searchIndex[word][webPath]++;
+                }
+            }
+        }
+    }
+}
+
+static void removeHtmlFromLine(string &line)
+{
+    while ((line.find('<')) != string::npos)
+    {
+        int starter = line.find('<');
+        int ender = line.find('>') + 1;
+
+        if (ender != string::npos)
+        {
+            line.erase(starter, ender - starter);
+        }
+    }
+}
+
+static void splitLineInStrings(string &line, vector<string> &output)
+{
+
+    output.clear();
+    for (int i = 0; i < line.length(); i++)
+    {
+        if (isNotSeparator(line[i]))
+        {
+            int j = i + 1;
+
+            while (isNotSeparator(line[j]) && j < line.length())
+                j++;
+
+            output.push_back(line.substr(i, j - i));
+
+            i = j;
+        }
+    }
+}
+
+static bool isNotSeparator(char c)
+{
+    return !(c == ' ' || c == ',' || c == '.' || c == '\r' || c == '-' || c == '\t');
+}
+
+
+static void decodeHtmlEntities(vector<string> &words)
+{
+    for (auto &word : words)
+    {
+        int startIndex = word.find("&#");
+
+        if (startIndex != string::npos)
+        {
+            int endIndex = startIndex + 4;
+
+            if (word[endIndex] != ';')
+                endIndex++;
+
+            int code = stoi(word.substr(startIndex + 2, endIndex - 1));
+
+            string realChar;
+
+            switch (code)
+            {
+            case 225:
+                realChar = "á";
+                break;
+            case 233:
+                realChar = "é";
+                break;
+            case 237:
+                realChar = "í";
+                break;
+            case 243:
+                realChar = "ó";
+                break;
+            case 250:
+                realChar = "ú";
+                break;
+            case 63:
+                realChar = "?";
+                break;
+            case 191:
+                realChar = "¿";
+                break;
+            case 33:
+                realChar = "!";
+                break;
+            case 161:
+                realChar = "¡";
+                break;
+            default:
+                break;
+            }
+
+            word.replace(startIndex, (code <= 99) ? 5 : 6, realChar);
+        }
+    }
 }

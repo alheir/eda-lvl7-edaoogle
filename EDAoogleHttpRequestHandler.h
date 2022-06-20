@@ -19,6 +19,12 @@ public:
     EDAoogleHttpRequestHandler(std::string homePath);
 
     bool handleRequest(std::string url, HttpArguments arguments, std::vector<char> &response);
+
+private:
+    void matchSearch(std::string &searchString, std::vector<std::string> &results);
+    void buildSearchIndex();
+
+    std::map<std::string, std::map<std::string, uint32_t>> searchIndex;
 };
 
 #endif
