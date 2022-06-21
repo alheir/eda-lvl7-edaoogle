@@ -23,10 +23,12 @@ static void removeHtmlFromLine(string &line);
 static void splitLineInStrings(string &linel, vector<string> &output);
 static bool isNotSeparator(char c);
 static void decodeHtmlEntities(vector<string> &words);
+static void printSearchIndex();
 
 EDAoogleHttpRequestHandler::EDAoogleHttpRequestHandler(string homePath) : ServeHttpRequestHandler(homePath)
 {
     buildSearchIndex();
+    printSearchIndex();
 }
 
 bool EDAoogleHttpRequestHandler::handleRequest(string url,
@@ -96,8 +98,6 @@ void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string
     // results.push_back("/wiki/Evolucion_biologica.html");
     // results.push_back("/wiki/elPepe.html");
 
-    vector<string> searchWords;
-
     for (int i = 0; i < searchString.length(); i++)
     {
         if (searchString[i] == ' ')
@@ -110,30 +110,29 @@ void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string
             while (searchString[j] != ' ' && j < searchString.length())
                 j++;
 
-            searchWords.push_back(searchString.substr(i, j - i));
+            string word = searchString.substr(i, j);
 
-            map<string, bool> *matches = &(searchIndex[searchWords.back()]);
+            for (auto &c : word)
+                c = tolower(c);
 
-            for (auto it = matches->begin(); it != matches->end(); it++)
+            // Para cada path que coincida con la palabra a buscar...
+            for (auto path : searchIndex[word])
             {
-                if (!it->second)
-                {
-                    results.push_back(it->first);
-                    it->second = true;
-                }
+                if (find(results.begin(), results.end(), path) == results.end()) // check de que no se haya pasado ese webPath ya
+                    results.push_back(path);                                     // se agrega a results
             }
 
             i = j;
         }
     }
 
-    for (auto word : searchWords)
-    {
-        map<string, bool> *restorer = &(searchIndex[word]);
+    // for (auto word : searchWords)
+    // {
+    //     map<string, bool> *restorer = &(searchIndex[word]);
 
-        for (auto it = restorer->begin(); it != restorer->end(); it++)
-            it->second = false;
-    }
+    //     for (auto it = restorer->begin(); it != restorer->end(); it++)
+    //         it->second = false;
+    // }
 }
 
 void EDAoogleHttpRequestHandler::buildSearchIndex()
@@ -173,8 +172,12 @@ void EDAoogleHttpRequestHandler::buildSearchIndex()
                     decodeHtmlEntities(words);
 
                     for (auto word : words)
-                        searchIndex[word][webPath] = false;
-                    ;
+                    {
+                        for (auto &c : word)
+                            c = tolower(c);
+
+                        searchIndex[word].insert(webPath);
+                    }
                 }
             }
         }
@@ -273,4 +276,21 @@ static void decodeHtmlEntities(vector<string> &words)
             word.replace(startIndex, (code <= 99) ? 5 : 6, realChar);
         }
     }
+}
+
+void EDAoogleHttpRequestHandler::printSearchIndex()
+{
+    ofstream file("searchIndex.txt");
+
+    if (file.is_open())
+    {
+        for (auto word : searchIndex)
+        {
+            file << word.first << endl;
+            for (auto it = word.second.begin(); it != word.second.end(); it++)
+                file << '\t' << it->data() << endl;
+        }
+    }
+
+    file.close();
 }

@@ -5,6 +5,10 @@ project(microhttpdtest)
 # Enable C++17
 set(CMAKE_CXX_STANDARD 17)
 
+# Copy resources folder to build folder
+file(COPY ${CMAKE_SOURCE_DIR}/www  DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE_INIT})
+
+
 # main
 add_executable(edahttpd main.cpp CommandLineParser.cpp HttpServer.cpp ServeHttpRequestHandler.cpp EDAoogleHttpRequestHandler.cpp)
 

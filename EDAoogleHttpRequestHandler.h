@@ -12,6 +12,8 @@
 #define EDAOOGLEHTTPREQUESTHANDLER_H
 
 #include "ServeHttpRequestHandler.h"
+#include <unordered_map>
+#include <unordered_set>
 
 class EDAoogleHttpRequestHandler : public ServeHttpRequestHandler
 {
@@ -23,8 +25,10 @@ public:
 private:
     void matchSearch(std::string &searchString, std::vector<std::string> &results);
     void buildSearchIndex();
+    void printSearchIndex();
 
-    std::map<std::string, std::map<std::string, bool>> searchIndex;
+    // std::map<std::string, std::map<std::string, bool>> searchIndex;
+    std::unordered_map<std::string, std::unordered_set<std::string>> searchIndex;
 };
 
 #endif
