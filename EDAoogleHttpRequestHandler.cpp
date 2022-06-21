@@ -19,8 +19,6 @@
 
 using namespace std;
 
-static const string KEYS_SEPARATOR = "~~~~~~";
-
 static void removeHtmlFromLine(string &line);
 static void splitLineInStrings(string &linel, vector<string> &output);
 static bool isNotSeparator(char c);
@@ -289,7 +287,7 @@ void EDAoogleHttpRequestHandler::printSearchIndex()
 
     if (file.is_open())
     {
-        file << KEYS_SEPARATOR << endl;
+        file << endl;
 
         for (auto word : searchIndex)
         {
@@ -300,8 +298,8 @@ void EDAoogleHttpRequestHandler::printSearchIndex()
 
             for (auto it = word.second.begin(); it != word.second.end(); it++)
                 file << it->data() << endl;
-            
-            file << KEYS_SEPARATOR << endl;
+
+            file << endl;
         }
     }
 
@@ -319,14 +317,14 @@ bool EDAoogleHttpRequestHandler::loadSearchIndex()
         string tempStr, word;
         bool nextIsWord = false, nextIsPath = false;
 
-        while(getline(file, tempStr))
+        while (getline(file, tempStr))
         {
-            if(!tempStr.compare(KEYS_SEPARATOR))
+            if (tempStr.empty()) // Salto de linea...
             {
                 nextIsWord = true;
                 nextIsPath = false;
             }
-            else if(nextIsWord)
+            else if (nextIsWord)
             {
                 word = tempStr;
                 nextIsWord = false;
@@ -338,7 +336,7 @@ bool EDAoogleHttpRequestHandler::loadSearchIndex()
             }
         }
 
-        cout << "Index leído..." << endl;
+        cout << "Índice leído..." << endl;
         return true;
     }
 
