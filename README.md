@@ -4,6 +4,6 @@
 * Grupo: 7
   * HEIR, Alejandro Nahuel
   * HERRTER, José Iván
-  * ULISES VIEIRA, Valentín
+  * VIEIRA, Valentín Ulises
 
 22.08 - Algoritmos y Estructuras de Datos - Ingeniería Electrónica - ITBA
