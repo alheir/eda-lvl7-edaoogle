@@ -14,6 +14,7 @@
 #include <fstream>
 #include <vector>
 #include <regex>
+#include <set>
 
 #include "EDAoogleHttpRequestHandler.h"
 
@@ -98,44 +99,40 @@ bool EDAoogleHttpRequestHandler::handleRequest(string url,
 
 void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string> &results)
 {
-    // results.push_back("/wiki/Evolucion_biologica.html");
-    // results.push_back("/wiki/elPepe.html");
-
-    for (int i = 0; i < searchString.length(); i++)
+    if (searchString.size())
     {
-        if (searchString[i] == ' ')
-            i++;
+        vector<string> wordsToSearch;
+        splitLineInStrings(searchString, wordsToSearch);
 
-        else
+        vector<unordered_set<string>> partialResults;
+
+        for (auto &word : wordsToSearch)
         {
-            int j = i + 1;
-
-            while (searchString[j] != ' ' && j < searchString.length())
-                j++;
-
-            string word = searchString.substr(i, j);
-
             for (auto &c : word)
                 c = tolower(c);
 
-            // Para cada path que coincida con la palabra a buscar...
-            for (auto path : searchIndex[word])
+            // Se separan todas las coincidencias para cada palabra
+            partialResults.push_back(searchIndex[word]);
+        }
+
+        // Solo se aceptan solo los paths comunes a todas las coincidencias
+        for (auto path : partialResults[0])
+        {
+            bool pathChecker = false;
+
+            for (int i = 1; i < partialResults.size(); i++)
             {
-                if (find(results.begin(), results.end(), path) == results.end()) // check de que no se haya pasado ese webPath ya
-                    results.push_back(path);                                     // se agrega a results
+                if (!partialResults[i].count(path))
+                {
+                    pathChecker = true;
+                    break;
+                }
             }
 
-            i = j;
+            if (!pathChecker)
+                results.push_back(path);
         }
     }
-
-    // for (auto word : searchWords)
-    // {
-    //     map<string, bool> *restorer = &(searchIndex[word]);
-
-    //     for (auto it = restorer->begin(); it != restorer->end(); it++)
-    //         it->second = false;
-    // }
 }
 
 void EDAoogleHttpRequestHandler::buildSearchIndex()
@@ -158,16 +155,9 @@ void EDAoogleHttpRequestHandler::buildSearchIndex()
 
                 string tempStr;
 
-                // while (getline(fileStream, tempStr))
-                // {
-                //     if (tempStr.substr(0, 3) == "<p>")
-                //         break;
-                // }
-
                 while (getline(fileStream, tempStr))
                 {
                     removeHtmlFromLine(tempStr);
-                    // RemoveHTMLTags(tempStr);
 
                     vector<string> words;
                     splitLineInStrings(tempStr, words);
