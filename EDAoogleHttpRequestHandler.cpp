@@ -19,6 +19,8 @@
 
 using namespace std;
 
+static const string KEYS_SEPARATOR = "~~~~~~";
+
 static void removeHtmlFromLine(string &line);
 static void splitLineInStrings(string &linel, vector<string> &output);
 static bool isNotSeparator(char c);
@@ -27,8 +29,11 @@ static void printSearchIndex();
 
 EDAoogleHttpRequestHandler::EDAoogleHttpRequestHandler(string homePath) : ServeHttpRequestHandler(homePath)
 {
-    buildSearchIndex();
-    printSearchIndex();
+    if (!loadSearchIndex())
+    {
+        buildSearchIndex();
+        printSearchIndex();
+    }
 }
 
 bool EDAoogleHttpRequestHandler::handleRequest(string url,
@@ -284,13 +289,59 @@ void EDAoogleHttpRequestHandler::printSearchIndex()
 
     if (file.is_open())
     {
+        file << KEYS_SEPARATOR << endl;
+
         for (auto word : searchIndex)
         {
             file << word.first << endl;
+
+            // for (auto it = word.second.begin(); it != word.second.end(); it++)
+            //     file << '\t' << it->data() << endl;
+
             for (auto it = word.second.begin(); it != word.second.end(); it++)
-                file << '\t' << it->data() << endl;
+                file << it->data() << endl;
+            
+            file << KEYS_SEPARATOR << endl;
         }
     }
 
     file.close();
+}
+
+bool EDAoogleHttpRequestHandler::loadSearchIndex()
+{
+    ifstream file("searchIndex.txt");
+
+    if (file.is_open())
+    {
+        cout << "Leyendo índice..." << endl;
+
+        string tempStr, word;
+        bool nextIsWord = false, nextIsPath = false;
+
+        while(getline(file, tempStr))
+        {
+            if(!tempStr.compare(KEYS_SEPARATOR))
+            {
+                nextIsWord = true;
+                nextIsPath = false;
+            }
+            else if(nextIsWord)
+            {
+                word = tempStr;
+                nextIsWord = false;
+                nextIsPath = true;
+            }
+            else if (nextIsPath)
+            {
+                searchIndex[word].insert(tempStr);
+            }
+        }
+
+        cout << "Index leído..." << endl;
+        return true;
+    }
+
+    cout << "No existe índice..." << endl;
+    return false;
 }

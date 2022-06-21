@@ -26,6 +26,7 @@ private:
     void matchSearch(std::string &searchString, std::vector<std::string> &results);
     void buildSearchIndex();
     void printSearchIndex();
+    bool loadSearchIndex();
 
     // std::map<std::string, std::map<std::string, bool>> searchIndex;
     std::unordered_map<std::string, std::unordered_set<std::string>> searchIndex;
