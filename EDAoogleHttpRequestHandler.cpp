@@ -13,8 +13,6 @@
 #include <filesystem>
 #include <fstream>
 #include <vector>
-#include <regex>
-#include <set>
 
 #include "EDAoogleHttpRequestHandler.h"
 
@@ -277,17 +275,12 @@ void EDAoogleHttpRequestHandler::printSearchIndex()
 
     if (file.is_open())
     {
-        file << endl;
-
         for (auto word : searchIndex)
         {
-            file << word.first << endl;
-
-            // for (auto it = word.second.begin(); it != word.second.end(); it++)
-            //     file << '\t' << it->data() << endl;
+            file << word.first << " ";
 
             for (auto it = word.second.begin(); it != word.second.end(); it++)
-                file << it->data() << endl;
+                file << it->data() << " ";
 
             file << endl;
         }
@@ -304,25 +297,21 @@ bool EDAoogleHttpRequestHandler::loadSearchIndex()
     {
         cout << "Leyendo índice..." << endl;
 
-        string tempStr, word;
-        bool nextIsWord = false, nextIsPath = false;
+        string tempStr;
 
         while (getline(file, tempStr))
         {
-            if (tempStr.empty()) // Salto de linea...
+            size_t startIndex = 0;
+            size_t endIndex = tempStr.find_first_of(' ');
+
+            string word = tempStr.substr(startIndex, endIndex - startIndex);
+
+            startIndex = endIndex + 1;
+
+            while ((endIndex = tempStr.find(' ', startIndex)) != string::npos)
             {
-                nextIsWord = true;
-                nextIsPath = false;
-            }
-            else if (nextIsWord)
-            {
-                word = tempStr;
-                nextIsWord = false;
-                nextIsPath = true;
-            }
-            else if (nextIsPath)
-            {
-                searchIndex[word].insert(tempStr);
+                searchIndex[word].insert(tempStr.substr(startIndex, endIndex - startIndex));
+                startIndex = endIndex + 1;
             }
         }
 
@@ -330,6 +319,6 @@ bool EDAoogleHttpRequestHandler::loadSearchIndex()
         return true;
     }
 
-    cout << "No existe índice..." << endl;
+    cout << "No existe índice. Creándolo..." << endl;
     return false;
 }
