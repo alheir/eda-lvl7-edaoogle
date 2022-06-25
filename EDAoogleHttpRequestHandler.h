@@ -28,7 +28,6 @@ private:
     void printSearchIndex();
     bool loadSearchIndex();
 
-    // std::map<std::string, std::map<std::string, bool>> searchIndex;
     std::unordered_map<std::string, std::unordered_set<std::string>> searchIndex;
 };
 

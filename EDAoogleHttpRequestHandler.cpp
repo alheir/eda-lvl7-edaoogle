@@ -1,9 +1,8 @@
 /**
  * @file EDAoogleHttpRequestHandler.h
- * @author Marc S. Ressl
+ * @authors Marc S. Ressl, Heir Alejandro, Hertter José, Vieira Valentín
  * @brief EDAoggle search engine
  * @version 0.1
- *
  * @copyright Copyright (c) 2022
  *
  */
@@ -14,6 +13,10 @@
 #include <fstream>
 #include <vector>
 
+// Referencia para la implementación de medición de tiempos:
+// https://stackoverflow.com/questions/22387586/measuring-execution-time-of-a-function-in-c
+#include <chrono>
+
 #include "EDAoogleHttpRequestHandler.h"
 
 using namespace std;
@@ -22,14 +25,39 @@ static void removeHtmlFromLine(string &line);
 static void splitLineInStrings(string &linel, vector<string> &output);
 static bool isNotSeparator(char c);
 static void decodeHtmlEntities(vector<string> &words);
+static void encodeHtmlEntities(vector<string> &words);
 static void printSearchIndex();
 
+/**
+ * @brief Construct a new EDAoogleHttpRequestHandler::EDAoogleHttpRequestHandler object
+ *
+ * @param homePath
+ */
 EDAoogleHttpRequestHandler::EDAoogleHttpRequestHandler(string homePath) : ServeHttpRequestHandler(homePath)
 {
+    auto t1 = chrono::high_resolution_clock::now();
     if (!loadSearchIndex())
     {
+        auto t1 = chrono::high_resolution_clock::now();
+
         buildSearchIndex();
+
+        auto t2 = chrono::high_resolution_clock::now();
+        chrono::duration<double, std::milli> buildSearchIndexTime = t2 - t1;
+
         printSearchIndex();
+        t1 = chrono::high_resolution_clock::now();
+
+        chrono::duration<double, std::milli> printSearchIndexTime = t1 - t2;
+
+        cout << "Tiempo de armado de índice: " << buildSearchIndexTime.count() << "ms" << endl;
+        cout << "Tiempo de escritura de índice : " << printSearchIndexTime.count() << "ms" << endl;
+    }
+    else
+    {
+        auto t2 = chrono::high_resolution_clock::now();
+        chrono::duration<double, std::milli> loadSearchIndexTime = t2 - t1;
+        cout << "Tiempo de lectura de índice : " << loadSearchIndexTime.count() << "ms" << endl;
     }
 }
 
@@ -69,9 +97,17 @@ bool EDAoogleHttpRequestHandler::handleRequest(string url,
         </div>\
         ");
 
-        float searchTime = 0.1F;
         vector<string> results;
+
+        auto t1 = chrono::high_resolution_clock::now();
+
         matchSearch(searchString, results);
+
+        auto t2 = chrono::high_resolution_clock::now();
+        chrono::duration<double, std::milli> matchSearchTime = t2 - t1;
+        cout << "Tiempo de búsqueda: " << matchSearchTime.count() << "ms" << endl;
+
+        float searchTime = matchSearchTime.count() / 1000.0F;
 
         // Print search results
         responseString += "<div class=\"results\">" + to_string(results.size()) +
@@ -94,7 +130,13 @@ bool EDAoogleHttpRequestHandler::handleRequest(string url,
 
     return false;
 }
-
+/**
+ * @brief Find the pages that contain all the words given in the string "searchString" and
+ *        completes the "results" vector.
+ *
+ * @param searchString
+ * @param results
+ */
 void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string> &results)
 {
     if (searchString.size())
@@ -132,7 +174,11 @@ void EDAoogleHttpRequestHandler::matchSearch(string &searchString, vector<string
         }
     }
 }
-
+/**
+ * @brief makes a search index that contains all the words that appear
+ *        on the available pages
+ *
+ */
 void EDAoogleHttpRequestHandler::buildSearchIndex()
 {
     const auto path = filesystem::absolute("www/wiki");
@@ -160,6 +206,10 @@ void EDAoogleHttpRequestHandler::buildSearchIndex()
                     vector<string> words;
                     splitLineInStrings(tempStr, words);
 
+                    // Intentamos encodear las palabras ingresadas por el usuario, pero se hacía mal
+                    // el reemplazo por htmlEntities (agregaba caracteres extra)
+
+                    // Sería más eficiente, ya que no se decodifica cada palabra de la wiki
                     decodeHtmlEntities(words);
 
                     for (auto word : words)
@@ -174,7 +224,11 @@ void EDAoogleHttpRequestHandler::buildSearchIndex()
         }
     }
 }
-
+/**
+ * @brief removes all HTML content from a given line
+ *
+ * @param line
+ */
 static void removeHtmlFromLine(string &line)
 {
     while ((line.find('<')) != string::npos)
@@ -188,7 +242,12 @@ static void removeHtmlFromLine(string &line)
         }
     }
 }
-
+/**
+ * @brief divides a line into separated strings
+ *
+ * @param line      Line to split into separated strings
+ * @param output    vector that contains the separated strings
+ */
 static void splitLineInStrings(string &line, vector<string> &output)
 {
 
@@ -208,12 +267,23 @@ static void splitLineInStrings(string &line, vector<string> &output)
         }
     }
 }
-
+/**
+ * @brief Determines if a character is a separator of words
+ *
+ * @param c character to evaluate
+ * @return true if c is not a separator
+ * @return false if c is a separator
+ */
 static bool isNotSeparator(char c)
 {
-    return !(c == ' ' || c == ',' || c == '.' || c == '\r' || c == '-' || c == '\t');
+    return !(c == ' ' || c == ',' || c == '.' || c == '\r' || c == '-' || c == '\t' || c == '"' ||
+             c == '\'' || c == ';' || c == '(' || c == ')' || c == '[' || c == ']' || c == ':');
 }
-
+/**
+ * @brief Convert an HTML entity to a UNICODE character
+ *
+ * @param words     words that may contain HTML entities to convert
+ */
 static void decodeHtmlEntities(vector<string> &words)
 {
     for (auto &word : words)
@@ -269,6 +339,45 @@ static void decodeHtmlEntities(vector<string> &words)
     }
 }
 
+/**
+ * @brief convert an Unicode character to a HTML entity
+ *
+ * @param words     Words which may contain the characters to be converted
+ */
+static void encodeHtmlEntities(vector<string> &words)
+{
+    for (auto &word : words)
+    {
+        int entitieIndex;
+
+        if ((entitieIndex = word.find("á")) != string::npos)
+            word.replace(entitieIndex, 1, "&#225;");
+        if ((entitieIndex = word.find("é")) != string::npos)
+            word.replace(entitieIndex, 1, "&#233;");
+        if ((entitieIndex = word.find("í")) != string::npos)
+            word.replace(entitieIndex, 0, "&#237;");
+        if ((entitieIndex = word.find("ó")) != string::npos)
+            word.replace(entitieIndex, 1, "&#243;");
+        if ((entitieIndex = word.find("ú")) != string::npos)
+            word.replace(entitieIndex, 1, "&#250;");
+
+        if ((entitieIndex = word.find("?")) != string::npos)
+            word.replace(entitieIndex, 1, "&#63;");
+        if ((entitieIndex = word.find("¿")) != string::npos)
+            word.replace(entitieIndex, 1, "&#191;");
+
+        if ((entitieIndex = word.find("!")) != string::npos)
+            word.replace(entitieIndex, 1, "&#33;");
+        if ((entitieIndex = word.find("¡")) != string::npos)
+            word.replace(entitieIndex, 1, "&#161;");
+    }
+}
+
+/**
+ * @brief Saves in disk the search index
+ *
+ */
+
 void EDAoogleHttpRequestHandler::printSearchIndex()
 {
     ofstream file("searchIndex.txt");
@@ -289,6 +398,12 @@ void EDAoogleHttpRequestHandler::printSearchIndex()
     file.close();
 }
 
+/**
+ * @brief Checks if the index exists and in that case, it reads it
+ *
+ * @return true if the search was read
+ * @return false if the index does not exist
+ */
 bool EDAoogleHttpRequestHandler::loadSearchIndex()
 {
     ifstream file("searchIndex.txt");
